@@ -3,12 +3,12 @@ README
 
 This website is based on the [Yii 2](http://www.yiiframework.com/) framework and the Yii 2 CMS extension [yii2-cms](https://github.com/davidhirtz/yii2-cms/).
 
-REQUIREMENTS
+Requirements
 ------------
 
 This project requires PHP 8.1 or higher, MySQL and ImageMagick. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
 
-INSTALLATION
+Installation
 ------------
 
 Fetch source code via GIT.
@@ -34,7 +34,7 @@ You can then install the dependencies using the following command:
 php composer.phar install --optimize-autoloader --no-dev
 ~~~
 
-CONFIGURATION
+Configuration
 -------------
 
 ### Credentials
@@ -78,7 +78,7 @@ CSS and Javascript assets are processed with [esbuild](https://esbuild.github.io
 Make sure you have [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed, run `npm install` to install the development dependencies, 
 then run `npm run build`.
 
-STRUCTURE
+Structure
 -------------------
 
       app/                the PSR-4 application root, containing custom application models, components, controllers, views and widgets
