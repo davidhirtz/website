@@ -1,0 +1,53 @@
+{
+  "name": "davidhirtz/yii2-cms-template",
+  "description": "Yii2 CMS Template",
+  "homepage": "https://www.github.com/davidhirtz/yii2-cms-template",
+  "type": "project",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "davidhirtz/yii2-cms": "^2.0.5",
+    "davidhirtz/yii2-anakin": "^2.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": ">=2.1",
+    "symfony/var-dumper": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    },
+    "platform": {
+      "php": "8.1"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "yii\\composer\\Installer::postInstall",
+      "php yii migrate --interactive=0"
+    ]
+  },
+  "extra": {
+    "yii\\composer\\Installer::postInstall": {
+      "setPermission": [
+        {
+          "runtime": "0777",
+          "web/assets": "0777",
+          "web/uploads": "0777",
+          "yii": "0755"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.flex {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.static {
+  position: static;
+}
+.text-center {
+  text-align: center;
+}
+
+.w-12 {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .w-6-sm {
+    width: 50%;
+  }
+}

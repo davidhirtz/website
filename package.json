@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "type": "module",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch"
+  },
+  "devDependencies": {
+    "air-esbuild": "^1.0.0",
+    "air-scss": "^2.1.2",
+    "skeleton-router": "^3.1.1"
+  }
+}

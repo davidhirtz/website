@@ -1,0 +1,21 @@
+@use "../../node_modules/air-scss/scss/mixins/breakpoints" as *;
+
+:root {
+  --box-x: 20px;
+  --box-y: 20px;
+
+  @include media-breakpoint-up(md) {
+    --box-x: 30px;
+    --box-y: 30px;
+    --wrap-x: 20px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    --box-x: 40px;
+    --box-y: 40px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    --box-y: 60px;
+  }
+}

@@ -1,0 +1,19 @@
+# Config
+/config/db.php
+/config/params.php
+/config/local.php
+
+# Development
+/node_modules
+/vendor
+/web/css/*.map
+/web/js/*.map
+composer.phar
+
+# OS cache files
+Thumbs.db
+.DS_Store
+
+# PhpUnit and local PhpUnit config
+phpunit.phar
+phpunit.xml
