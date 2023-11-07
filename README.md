@@ -3,10 +3,12 @@ README
 
 This website is based on the [Yii 2](http://www.yiiframework.com/) framework and the Yii 2 CMS extension [yii2-cms](https://github.com/davidhirtz/yii2-cms/).
 
+
 Requirements
 ------------
 
 This project requires PHP 8.1 or higher, MySQL and ImageMagick. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
+
 
 Installation
 ------------
@@ -34,6 +36,7 @@ You can then install the dependencies using the following command:
 php composer.phar install --optimize-autoloader --no-dev
 ~~~
 
+
 Configuration
 -------------
 
@@ -52,6 +55,7 @@ return [
 ];
 ```
 
+
 ### Database
 
 Apply the database migrations by running the command `php yii migrate`. This will also set up the database configuration before applying the migrations. 
@@ -66,9 +70,11 @@ return [
 ];
 ```
 
+
 ### Permissions
 
 Directories `runtime`, `web/assets` and `web/uploads` need write permissions for web and console user. These permissions are automatically set when running `composer install`.
+
 
 ### Development
 
@@ -77,6 +83,7 @@ You can enable development mode by setting an environment variable `YII_ENV` to 
 CSS and Javascript assets are processed with [esbuild](https://esbuild.github.io/) and need to be recompiled after a change. 
 Make sure you have [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed, run `npm install` to install the development dependencies, 
 then run `npm run build`.
+
 
 Structure
 -------------------
