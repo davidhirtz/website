@@ -17,10 +17,10 @@ return [
     ],
     'container' => [
         'definitions' => [
-            'davidhirtz\yii2\cms\models\Asset' => Asset::class,
-            'davidhirtz\yii2\cms\models\Entry' => Entry::class,
-            'davidhirtz\yii2\cms\models\Section' => Section::class,
-            'davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm' => EntryActiveForm::class,
+            \davidhirtz\yii2\cms\models\Asset::class => Asset::class,
+            \davidhirtz\yii2\cms\models\Entry::class => Entry::class,
+            \davidhirtz\yii2\cms\models\Section::class => Section::class,
+            \davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm::class => EntryActiveForm::class,
         ],
     ],
     'modules' => [

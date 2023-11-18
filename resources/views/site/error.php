@@ -1,6 +1,5 @@
 <?php
 /**
- * Error.
  * @see \app\controllers\SiteController::actionError()
  * @var View $this
  */
@@ -29,13 +28,13 @@ $this->setTitle($response->getIsNotFound() ? Yii::t('app', 'Page not found') : Y
                 <h1><?= Yii::t('app', 'Internal Server Error'); ?></h1>
                 <p>
                     <?= Yii::t('app', 'Please get in touch with {email}', [
-                            'email' => Html::a(Yii::$app->params['email'], 'mailto:' . Yii::$app->params['email']),
+                        'email' => Html::a(Yii::$app->params['email'], 'mailto:' . Yii::$app->params['email']),
                     ]); ?>
                 </p>
                 <?php if (Yii::$app->getUser()->can('admin')) {
                     ?>
                     <p></p>
-                    <h2><?= $exception->getMessage() ?? 'Unknown Error'; ?></h2>
+                    <h2><?= $exception->getMessage() ?: 'Unknown Error'; ?></h2>
                     <p>Code: <?= $exception->getCode(); ?></p>
                     <p></p>
                     <p><?= $exception->getTraceAsString() ?></p>
