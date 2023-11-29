@@ -11,10 +11,7 @@ use davidhirtz\yii2\skeleton\web\View;
 foreach ($assets as $asset) {
     ?>
     <div>
-        <?= Canvas::widget([
-            'asset' => $asset,
-
-        ]) ?>
+        <?= Canvas::widget(['asset' => $asset]) ?>
     </div>
     <?php
 }
