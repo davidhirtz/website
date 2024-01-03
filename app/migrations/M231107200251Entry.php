@@ -40,9 +40,7 @@ class M231107200251Entry extends Migration
         }
     }
 
-    /**
-     * @return array
-     */
+    
     public function getLanguages(): array
     {
         return static::getModule()->enableI18nTables ? Yii::$app->getI18n()->getLanguages() : [Yii::$app->sourceLanguage];
