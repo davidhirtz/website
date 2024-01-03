@@ -7,8 +7,8 @@ use Yii;
 
 class Section extends \davidhirtz\yii2\cms\models\Section
 {
-    public const TYPE_COLUMN = self::TYPE_DEFAULT;
-    public const TYPE_FULL_WIDTH = 2;
+    final public const TYPE_COLUMN = self::TYPE_DEFAULT;
+    final public const TYPE_FULL_WIDTH = 2;
 
     public string|array|null $htmlValidator = [
         HtmlValidator::class,

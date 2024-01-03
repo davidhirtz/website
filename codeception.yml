@@ -1,0 +1,19 @@
+bootstrap: bootstrap.php
+coverage:
+  enabled: true
+  include:
+    - app/*
+extensions:
+  enabled:
+    - Codeception\Extension\RunFailed
+modules:
+  config:
+    davidhirtz\yii2\skeleton\codeception\Yii2:
+      configFile: "tests/config/test.php"
+namespace: app\tests
+paths:
+  tests: tests
+  output: tests/_output
+  data: tests/support/data
+  support: tests/support
+support_namespace: support

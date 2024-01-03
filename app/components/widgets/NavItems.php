@@ -21,14 +21,11 @@ class NavItems
     }
 
     /**
-     * @param Entry $parent
      * @return Entry[]
      */
     public static function getSubmenuItems(Entry $parent): array
     {
-        return !$parent->entry_count ? [] : array_filter(static::getMenuItems(), function (Entry $entry) use ($parent) {
-            return $entry->parent_id == $parent->id;
-        });
+        return !$parent->entry_count ? [] : array_filter(static::getMenuItems(), fn(Entry $entry): bool => $entry->parent_id == $parent->id);
     }
 
     /**
