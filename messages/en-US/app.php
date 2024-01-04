@@ -24,12 +24,9 @@ return [
     'Full width' => '',
     'Internal Server Error' => '',
     'Page not found' => '',
-    'Parent entry "{entry}" is not a menu item' => '',
     'Permission denied' => '',
     'Please accept cookies to load this external video. More information can be found in our {policy}.' => '',
     'Please get in touch with {email}' => '',
-    'Show in footer' => '',
-    'Show in menu' => '',
     'The requested page was not found' => '',
     'privacy policy' => '',
 ];
