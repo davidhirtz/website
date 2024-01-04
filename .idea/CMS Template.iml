@@ -8,11 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/jquery-timeago" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-anakin" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-cms" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-datetime-behavior" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-media" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-skeleton" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-timeago" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/egulias/email-validator" />

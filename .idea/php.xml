@@ -29,7 +29,6 @@
       <path value="$PROJECT_DIR$/vendor/davidhirtz/yii2-timeago" />
       <path value="$PROJECT_DIR$/vendor/davidhirtz/yii2-skeleton" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
-      <path value="$PROJECT_DIR$/vendor/davidhirtz/yii2-anakin" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/oauth-subscriber" />
       <path value="$PROJECT_DIR$/vendor/npm-asset/jstimezonedetect" />
