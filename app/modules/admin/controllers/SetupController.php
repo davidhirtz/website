@@ -13,6 +13,11 @@ class SetupController extends \davidhirtz\yii2\cms\modules\admin\controllers\Set
 {
     use ModuleTrait;
 
+    public function getCategoryAttributes(): array
+    {
+        return [];
+    }
+
     public function getEntryAttributes(): array
     {
         return [

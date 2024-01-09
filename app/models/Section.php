@@ -5,6 +5,10 @@ namespace app\models;
 use davidhirtz\yii2\skeleton\validators\HtmlValidator;
 use Yii;
 
+/**
+ * @property-read Entry $entry {@see static::getEntry()}
+ * @property-read Entry[] $entries {@see static::getEntries()}
+ */
 class Section extends \davidhirtz\yii2\cms\models\Section
 {
     final public const TYPE_COLUMN = self::TYPE_DEFAULT;
@@ -15,11 +19,6 @@ class Section extends \davidhirtz\yii2\cms\models\Section
         'allowedHtmlTags' => ['h1', 'h2', 'h3'],
         'allowedClasses' => ['btn'],
     ];
-
-    public function getViewFile(): ?string
-    {
-        return parent::getViewFile();
-    }
 
     public static function getTypes(): array
     {

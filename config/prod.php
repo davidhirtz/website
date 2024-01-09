@@ -9,6 +9,9 @@ use app\modules\admin\widgets\forms\EntryActiveForm;
 return [
     'name' => 'CMS Template',
     'components' => [
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
         'sitemap' => [
             'models' => [
                 Entry::class,
