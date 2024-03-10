@@ -1,18 +1,19 @@
-# Config
-config/db.php
-config/params.php
-config/local.php
-
-# Development
-.idea
+# PHP
+/vendor
 composer.phar
-node_modules
-tests/config/db.php
-tests/_output/coverage.xml
-tests/_output/coverage.serialized
-vendor
-web/css/*.map
-web/js/*.map
+
+# NPM
+/node_modules
+
+# Application
+/config/db.php
+/config/params.php
+/config/local.php
+/tests/config/db.php
+
+# Debug
+/web/css/*.map
+/web/js/*.map
 
 # OS cache files
 .DS_Store
