@@ -19,14 +19,8 @@
 return [
     'Accept cookies' => '',
     'Column' => '',
-    'Error' => '',
     'External content' => '',
     'Full width' => '',
-    'Internal Server Error' => '',
-    'Page not found' => '',
-    'Permission denied' => '',
     'Please accept cookies to load this external video. More information can be found in our {policy}.' => '',
-    'Please get in touch with {email}' => '',
-    'The requested page was not found' => '',
     'privacy policy' => '',
 ];

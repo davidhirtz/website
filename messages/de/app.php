@@ -19,14 +19,8 @@
 return [
     'Accept cookies' => 'Cookies akzeptieren',
     'Column' => 'Spalte',
-    'Error' => 'Fehler',
     'External content' => 'Externer Inhalt',
     'Full width' => 'Volle Breite',
-    'Internal Server Error' => 'Interner Serverfehler',
-    'Page not found' => 'Seite nicht gefunden',
-    'Permission denied' => 'Zugriff verweigert',
     'Please accept cookies to load this external video. More information can be found in our {policy}.' => 'Bitte akzeptieren Sie unsere Cookies, um ein externes Video zu laden. Weitere Informationen finden Sie in unserer {policy}.',
-    'Please get in touch with {email}' => 'Bitte kontaktieren Sie uns unter {email}',
-    'The requested page was not found' => 'Die angeforderte Seite wurde nicht gefunden',
     'privacy policy' => 'Datenschutzerklärung',
 ];

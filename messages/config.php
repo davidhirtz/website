@@ -1,20 +1,6 @@
 <?php
 
 return [
-    'sourcePath' => dirname(__DIR__),
-    'messagePath' => __DIR__,
-    'languages' => ['de', 'en-US'],
-    'ignoreCategories' => [
-        'cms',
-        'hotspot',
-        'media',
-        'skeleton',
-        'yii',
-    ],
-    'overwrite' => true,
-    'only' => ['*.php'],
-    'format' => 'php',
-    'sort' => true,
     'except' => [
         '/config',
         '/messages',
@@ -24,4 +10,19 @@ return [
         '/vendor',
         '/web',
     ],
+    'format' => 'php',
+    'languages' => ['de', 'en-US'],
+    'messagePath' => __DIR__,
+    'ignoreCategories' => [
+        'cms',
+        'hotspot',
+        'media',
+        'skeleton',
+        'yii',
+    ],
+    'overwrite' => true,
+    'only' => ['*.php'],
+    'removeUnused' => true,
+    'sort' => true,
+    'sourcePath' => dirname(__DIR__),
 ];
