@@ -15,27 +15,26 @@ Installation
 
 Fetch source code via GIT.
 
-~~~
+```bash
 git init
 git remote add origin git@github.com:davidhirtz/REPOSITORY.git
 git fetch origin
 git branch main origin/main
 git checkout main
-~~~
+```
 
 If you do not have [Composer](http://getcomposer.org/) installed, you may install it by following the instructions at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix). 
 On Linux and Mac OS X, you'll run the following commands:
 
-~~~
+```bash
 curl -sS https://getcomposer.org/installer | php
-~~~
+```
 
 You can then install the dependencies using the following command:
 
-~~~
+```bash
 php composer.phar install --optimize-autoloader --no-dev
-~~~
-
+```
 
 Configuration
 -------------
@@ -94,5 +93,6 @@ Structure
       node_modules/       3rd-party NPM libraries (development only)
       resources/          uncompiled CSS and Javascript files and the view templates
       runtime/            cache and log files generated during runtime
+      tests/              various tests for the application
       vendor/             dependent 3rd-party packages
       web/                the webroot, containing the entry script, published resources and uploads

@@ -21,6 +21,6 @@ use davidhirtz\yii2\skeleton\web\View;
                 'exception' => $exception,
                 'message' => $message,
                 'name' => $name,
-           ]) ?>
+           ]); ?>
     </div>
 </div>
