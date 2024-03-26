@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use davidhirtz\yii2\skeleton\controllers\traits\AjaxRouteTrait;
+use davidhirtz\yii2\skeleton\filters\PageCache;
 use davidhirtz\yii2\skeleton\web\ErrorAction;
 use Yii;
 
@@ -20,10 +21,22 @@ class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
         ];
     }
 
+    public function behaviors(): array
+    {
+        return array_merge(parent::behaviors(), [
+            'PageCache' => [
+                'class' => PageCache::class,
+                'params' => ['slug'],
+            ],
+        ]);
+    }
+
     public function init(): void
     {
         Yii::$app->getRequest()->enableCsrfValidation = false;
         $this->spacelessOutput = true;
+
+//        $this->setViewPath('@views/site');
 
         parent::init();
     }
