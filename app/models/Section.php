@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use davidhirtz\yii2\skeleton\validators\HtmlValidator;
 use Yii;
 
 /**
@@ -13,12 +12,6 @@ class Section extends \davidhirtz\yii2\cms\models\Section
 {
     final public const TYPE_COLUMN = self::TYPE_DEFAULT;
     final public const TYPE_FULL_WIDTH = 2;
-
-    public string|array|null $htmlValidator = [
-        HtmlValidator::class,
-        'allowedHtmlTags' => ['h1', 'h2', 'h3'],
-        'allowedClasses' => ['btn'],
-    ];
 
     public static function getTypes(): array
     {
