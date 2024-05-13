@@ -11,12 +11,9 @@ use davidhirtz\yii2\skeleton\validators\HtmlValidator;
 return [
     'name' => 'CMS Template',
     'components' => [
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
         'sitemap' => [
             'models' => [
-                Entry::class,
+                \app\models\Entry::class,
             ],
         ],
     ],
