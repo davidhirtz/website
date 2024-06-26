@@ -1,20 +1,14 @@
 import Router, {Consent} from "skeleton-router";
 
 const doc = document;
-const $body = doc.querySelector('body');
+const $body = doc.querySelector('body') as HTMLBodyElement;
 const $cookieReset = doc.getElementById('reset');
 
 const router = new Router();
 const consent = new Consent();
 
-const addClass = ($el: HTMLElement, className?: string) =>
-    $el.classList.add(className || router.a);
-
-const removeClass = ($el: HTMLElement, className?: string) =>
-    $el && $el.classList.remove(className || router.a);
-
-const queryAll = (selectors: string) =>
-    router.main.querySelectorAll(selectors) as NodeListOf<HTMLElement>;
+const addClass = ($el: HTMLElement, className?: string) => $el.classList.add(className || router.a);
+const removeClass = ($el: HTMLElement, className?: string) => $el && $el.classList.remove(className || router.a);
 
 const clickHandler = (querySelector: string, callback: EventListenerOrEventListenerObject) =>
     doc.querySelectorAll(querySelector).forEach((el) => {
@@ -29,10 +23,13 @@ const observeCssClass = 'observe';
 
 clickHandler('.toggle', (e) => {
     const $btn = e.target as HTMLButtonElement;
+    const target = $btn.dataset.target;
 
-    document.querySelectorAll($btn.dataset.target).forEach(($target: HTMLElement) => {
-        $target.classList.toggle(router.a);
-    });
+    if (target) {
+        document.querySelectorAll(target).forEach(($target) => {
+            $target.classList.toggle(router.a);
+        });
+    }
 });
 
 const observer = new IntersectionObserver(function (e) {
@@ -70,7 +67,7 @@ router.afterRender = () => {
 };
 
 if (consent.getCookie()) {
-    removeClass($cookieReset.parentElement, hiddenClass);
+    removeClass($cookieReset!.parentElement!, hiddenClass);
 }
 
 router.onUnhandledClick = () => {

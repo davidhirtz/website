@@ -1,16 +1,18 @@
 {
   "private": true,
   "type": "module",
-  "browserslist": [
-    "defaults"
-  ],
   "scripts": {
-    "build": "node esbuild.js",
-    "watch": "node esbuild.js --watch"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "air-esbuild": "^1.0.0",
-    "air-scss": "^2.1.2",
-    "skeleton-router": "^3.1.1"
+    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@tailwindcss/vite": "^4.0.0-alpha.16",
+    "postcss-sort-media-queries": "^5.2.0",
+    "skeleton-router": "^3.1.1",
+    "tailwindcss": "^4.0.0-alpha.16",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
   }
 }
