@@ -16,16 +16,16 @@ class Section extends \davidhirtz\yii2\cms\models\Section
     public static function getTypes(): array
     {
         return [
-            static::TYPE_COLUMN => [
+            self::TYPE_COLUMN => [
                 'name' => Yii::t('app', 'Column'),
                 'cssClass' => 'w-12 w-6-sm',
                 'hiddenFields' => [],
                 'sizes' => [],
                 'transformations' => [],
             ],
-            static::TYPE_FULL_WIDTH => [
+            self::TYPE_FULL_WIDTH => [
                 'name' => Yii::t('app', 'Full width'),
-                'cssClass' => 'w-12 w-6-sm',
+                'cssClass' => 'w-12',
                 'hiddenFields' => [],
                 'sizes' => [],
                 'transformations' => [],

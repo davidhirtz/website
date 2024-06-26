@@ -4,7 +4,7 @@
  * @var string $content
  */
 
-use davidhirtz\yii2\skeleton\helpers\Html;
+use app\helpers\Html;
 use davidhirtz\yii2\skeleton\web\View;
 use davidhirtz\yii2\skeleton\widgets\AdminButton;
 use yii\helpers\Url;

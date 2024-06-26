@@ -5,6 +5,7 @@ use davidhirtz\yii2\cms\models\Asset;
 use davidhirtz\yii2\cms\models\Entry;
 use davidhirtz\yii2\cms\models\Section;
 use davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm;
+use davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView;
 use davidhirtz\yii2\cms\widgets\MetaTags;
 use davidhirtz\yii2\skeleton\validators\HtmlValidator;
 
@@ -23,6 +24,7 @@ return [
             Entry::class => \app\models\Entry::class,
             Section::class => \app\models\Section::class,
             EntryActiveForm::class => \app\modules\admin\widgets\forms\EntryActiveForm::class,
+            EntryGridView::class => \app\modules\admin\widgets\grids\EntryGridView::class,
 
             MetaTags::class => [
                 'transformationName' => 'md',
