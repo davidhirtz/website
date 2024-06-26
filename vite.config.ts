@@ -10,7 +10,7 @@ export default defineConfig(({}) => ({
     // base: command === 'serve' ? '' : '/dist/',
     build: {
         assetsDir: '',
-        outDir: './web/dist/',
+        outDir: './web/build/',
         manifest: true,
         modulePreload: {
             polyfill: false,

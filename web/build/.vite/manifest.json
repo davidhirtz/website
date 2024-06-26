@@ -1,0 +1,11 @@
+{
+  "resources/js/app.ts": {
+    "file": "app-C5Koo5_4.js",
+    "name": "app",
+    "src": "resources/js/app.ts",
+    "isEntry": true,
+    "css": [
+      "app-BxJ7oY7C.css"
+    ]
+  }
+}
