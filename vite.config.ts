@@ -10,27 +10,32 @@ export default defineConfig(({}) => ({
     // base: command === 'serve' ? '' : '/dist/',
     build: {
         assetsDir: '',
+        assetsInlineLimit: 0,
         outDir: './web/build/',
         manifest: true,
         modulePreload: {
             polyfill: false,
         },
         rollupOptions: {
+            external: [
+                '/images',
+                '/fonts',
+            ],
             input: {
                 app: './resources/js/app.ts',
             }
         },
     },
-    plugins: [tailwindcss()],
     css: {
         postcss: {
             plugins: [
                 sortMediaQueries(),
                 purgeCSS({
-                    content: ['./resources/views/**.php'],
+                    content: ['./resources/views/**/*.php'],
                     variables: true,
                 }),
             ],
         },
-    }
+    },
+    plugins: [tailwindcss()]
 }));
