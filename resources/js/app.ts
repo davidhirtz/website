@@ -1,4 +1,5 @@
 import Router, {Consent} from "skeleton-router";
+import "../css/app.css";
 
 const doc = document;
 const $body = doc.querySelector('body') as HTMLBodyElement;

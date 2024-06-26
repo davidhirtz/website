@@ -6,9 +6,11 @@ import purgeCSS from "@fullhuman/postcss-purgecss";
 import sortMediaQueries from 'postcss-sort-media-queries'
 
 // noinspection JSUnusedGlobalSymbols
-export default defineConfig({
+export default defineConfig(({}) => ({
+    // base: command === 'serve' ? '' : '/dist/',
     build: {
-        outDir: './web/dist',
+        assetsDir: 'build',
+        outDir: './web/',
         manifest: true,
         modulePreload: {
             polyfill: false,
@@ -31,4 +33,4 @@ export default defineConfig({
             ],
         },
     }
-})
+}));
