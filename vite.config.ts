@@ -9,8 +9,8 @@ import sortMediaQueries from 'postcss-sort-media-queries'
 export default defineConfig(({}) => ({
     // base: command === 'serve' ? '' : '/dist/',
     build: {
-        assetsDir: 'build',
-        outDir: './web/',
+        assetsDir: '',
+        outDir: './web/build/',
         manifest: true,
         modulePreload: {
             polyfill: false,
