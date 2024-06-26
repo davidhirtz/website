@@ -1,0 +1,157 @@
+.block-active:not(.active) {
+    display: none;
+}
+
+#cc {
+    --offset: 10px;
+    --gap: 12px;
+
+    position: fixed;
+    margin: var(--offset);
+    padding: var(--gap);
+    right: 0;
+    bottom: 0;
+    width: calc(100vw - var(--offset) * 2);
+    max-height: calc(100svh - var(--offset) * 2);
+    max-width: 390px;
+    background: #000;
+    border-radius: 7px;
+    color: #fff;
+    z-index: 99;
+
+    @media (min-width: 768px) {
+        --offset: 30px;
+        --gap: 20px;
+    }
+}
+
+.cc-content {
+    font-size: .875rem;
+
+    a {
+        border-bottom: 1px solid #fff;
+    }
+}
+
+.cc-wrap {
+    max-height: calc(100svh - (var(--offset) + var(--gap)) * 2);
+}
+
+.cc-scrollable {
+    overflow-y: scroll;
+}
+
+.cc-buttons {
+    margin-top: 20px;
+    border: 1px solid #fff;
+    border-radius: 7px;
+}
+
+.cc-button {
+    padding: 12px;
+    width: 100%;
+    font-size: 12px;
+    flex-grow: 1;
+    line-height: 1;
+    text-align: center;
+
+    + .cc-button {
+        border-left: 1px solid #fff;
+    }
+}
+
+.cc-secondary {
+    color: #ffffff05;
+}
+
+.cc-detail {
+    margin-top: 20px;
+
+    & + & {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #fff;
+    }
+}
+
+.cc-title {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1;
+
+    &::before {
+        display: block;
+        margin-right: 5px;
+        width: 20px;
+        height: 20px;
+        background: url(/images/cc/arrow.svg) no-repeat;
+        background-size: 100%;
+        transition: transform .3s;
+        content: '';
+
+        .cc-detail.active & {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.cc-description {
+    padding: 10px 60px 10px 0;
+
+    .active > & {
+        display: block;
+    }
+}
+
+.cc-label {
+    flex: 0 0 40px;
+}
+
+.cc-checkbox {
+    position: relative;
+    appearance: none;
+    width: 100%;
+    height: 20px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    outline: none;
+    transition: background-color .3s;
+
+    &::after {
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        border-radius: 50%;
+        opacity: .3;
+        transition: all .3s;
+        content: '';
+    }
+
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+
+    &:checked::after {
+        left: 22px;
+        opacity: 1;
+    }
+
+    &:focus:not(.disabled) {
+        background: #ffffff05;
+    }
+
+    @media (hover: hover) {
+        &:hover:not(:disabled)::after {
+            opacity: 1;
+        }
+    }
+}
+
+@media (hover: hover) {
+    .cc-hover:hover {
+        background: #ffffff08;
+    }
+}

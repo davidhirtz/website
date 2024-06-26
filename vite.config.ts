@@ -10,7 +10,7 @@ export default defineConfig(({}) => ({
     // base: command === 'serve' ? '' : '/dist/',
     build: {
         assetsDir: '',
-        outDir: './web/build/',
+        outDir: './web/dist/',
         manifest: true,
         modulePreload: {
             polyfill: false,
@@ -27,7 +27,7 @@ export default defineConfig(({}) => ({
             plugins: [
                 sortMediaQueries(),
                 purgeCSS({
-                    content: ['./index.html'],
+                    content: ['./resources/views/**.php'],
                     variables: true,
                 }),
             ],
