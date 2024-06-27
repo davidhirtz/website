@@ -27,7 +27,7 @@ use yii\helpers\Url;
     </head>
     <body>
     <?php $this->beginBody(); ?>
-    <main class="inline-table">
+    <main class="mx-auto">
         <?= $content; ?>
     </main>
     <div id="cc" class="block-active">

@@ -1,0 +1,11 @@
+{
+  "js/app.ts": {
+    "file": "app-B254Ygdb.js",
+    "name": "app",
+    "src": "js/app.ts",
+    "isEntry": true,
+    "css": [
+      "app-CJ77oUol.css"
+    ]
+  }
+}
