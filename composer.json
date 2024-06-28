@@ -7,7 +7,8 @@
   "prefer-stable": true,
   "require": {
     "davidhirtz/yii2-anakin": "^2.1",
-    "davidhirtz/yii2-cms": "^2.1"
+    "davidhirtz/yii2-cms": "^2.1",
+    "davidhirtz/yii2-vite": "dev-main"
   },
   "require-dev": {
     "codeception/codeception": "^5.0",
@@ -41,6 +42,11 @@
     }
   },
   "repositories": [
+    {
+      "type": "path",
+      "url": "packages/davidhirtz/*",
+      "symlink": true
+    },
     {
       "type": "composer",
       "url": "https://asset-packagist.org"

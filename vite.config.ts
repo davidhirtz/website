@@ -3,7 +3,7 @@
 // import tailwindcss from '@tailwindcss/vite'
 import tailwind from '@tailwindcss/postcss'
 import {defineConfig} from 'vite'
-// import viteRestart from 'vite-plugin-restart'
+import viteRestart from 'vite-plugin-restart'
 import purgeCSS from "@fullhuman/postcss-purgecss";
 
 // @ts-ignore
@@ -15,7 +15,7 @@ export default defineConfig(({}) => ({
     build: {
         assetsDir: '',
         assetsInlineLimit: 0,
-        outDir: './web/build/',
+        outDir: './web/dist/',
         manifest: true,
         modulePreload: {
             polyfill: false,
@@ -44,12 +44,12 @@ export default defineConfig(({}) => ({
             ],
         },
     },
-    // plugins: [
-    //     // tailwindcss(),
-    //     viteRestart({
-    //         restart: [
-    //             './resources/views/**/*.php',
-    //         ]
-    //     })
-    // ],
+    plugins: [
+        // tailwindcss(),
+        viteRestart({
+            restart: [
+                './resources/views/**/*.php',
+            ]
+        })
+    ],
 }));

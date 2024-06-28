@@ -61,7 +61,7 @@
 }
 
 .cc-secondary {
-    color: #ffffff05;
+    color: #e0e0e0;
 }
 
 .cc-detail {
@@ -152,6 +152,6 @@
 
 @media (hover: hover) {
     .cc-hover:hover {
-        background: #ffffff08;
+        background: #ffffff30;
     }
 }

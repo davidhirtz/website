@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* @import "widgets/_cc.css"; */
+ @import "widgets/_cc.css";
 
 @theme{
     --default-font-family: 'Arial', sans-serif;

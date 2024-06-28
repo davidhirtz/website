@@ -8,10 +8,14 @@ use davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm;
 use davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView;
 use davidhirtz\yii2\cms\widgets\MetaTags;
 use davidhirtz\yii2\skeleton\validators\HtmlValidator;
+use davidhirtz\yii2\vite\components\Vite;
 
 return [
     'name' => 'CMS Template',
     'components' => [
+        'vite' => [
+            'class' => Vite::class,
+        ],
         'sitemap' => [
             'models' => [
                 \app\models\Entry::class,

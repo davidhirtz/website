@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d02057d2e9b2b3128e89015078cd8197",
+    "content-hash": "15b666214c65ff72bb04bbd55bb1c3c7",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -457,6 +457,38 @@
                 "source": "https://github.com/davidhirtz/yii2-timeago/tree/v1.2.0"
             },
             "time": "2022-05-10T11:24:22+00:00"
+        },
+        {
+            "name": "davidhirtz/yii2-vite",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/davidhirtz/yii2-vite",
+                "reference": "0894e36756031184084fd4caea6f60172207e128"
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "davidhirtz\\yii2\\vite\\": "src"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "David Hirtz",
+                    "homepage": "https://www.davidhirtz.com/"
+                }
+            ],
+            "description": "Vite integration for Yii 2 framework",
+            "homepage": "https://www.github.com/davidhirtz/yii2-vite",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "doctrine/lexer",
@@ -7088,7 +7120,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "davidhirtz/yii2-vite": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
