@@ -1,26 +1,15 @@
 #cc {
-    --offset: 10px;
-
-    margin: var(--offset);
-    right: 0;
-    bottom: 0;
-    width: calc(100vw - var(--offset) * 2);
-    max-height: calc(100svh - var(--offset) * 2);
-    max-width: 390px;
-    background: #000;
-    border-radius: 7px;
-    color: #fff;
+    max-width: 26rem;
     z-index: 99;
 }
 
-@media screen(sm) {
-    #cc {
-        --offset: 30px;
-    }
+.cc-wrap {
+    max-height: 80svh;
 }
 
 .cc-content {
-    font-size: .875rem;
+    background: #000;
+    color: #fff;
 
     a {
         border-bottom: 1px solid #fff;
@@ -31,65 +20,17 @@
     max-height: 80svh;
 }
 
-.cc-buttons {
-    margin-top: 20px;
-    border: 1px solid #fff;
-    border-radius: 7px;
-}
-
-.cc-button {
-    padding: 12px;
-    width: 100%;
-    font-size: 12px;
-    flex-grow: 1;
-    line-height: 1;
-    text-align: center;
-
-    + .cc-button {
-        border-left: 1px solid #fff;
-    }
-}
-
 .cc-secondary {
     color: #e0e0e0;
 }
 
-.cc-detail {
-    margin-top: 20px;
+.cc-arrow {
+    background: url(/images/cc/arrow.svg) no-repeat;
+    background-size: 100%;
+    transition: transform .3s;
 
-    & + & {
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px solid #fff;
-    }
-}
-
-.cc-title {
-    text-align: left;
-    font-size: 16px;
-    line-height: 1;
-
-    &::before {
-        display: block;
-        margin-right: 5px;
-        width: 20px;
-        height: 20px;
-        background: url(/images/cc/arrow.svg) no-repeat;
-        background-size: 100%;
-        transition: transform .3s;
-        content: '';
-    }
-
-    .cc-detail[open] &::before {
+    [open] & {
         transform: rotate(90deg);
-    }
-}
-
-.cc-description {
-    padding: 10px 60px 10px 0;
-
-    .active > & {
-        display: block;
     }
 }
 
@@ -99,9 +40,6 @@
 
 .cc-checkbox {
     appearance: none;
-    width: 100%;
-    height: 20px;
-    border: 1px solid #fff;
     border-radius: 10px;
     outline: none;
     transition: background-color .3s;

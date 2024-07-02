@@ -1,8 +1,6 @@
-@layer theme, base, components, utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@import "tailwindcss/theme.css" layer(theme);
-@import "preflight.css" layer(base);
-@import "tailwindcss/utilities" layer(utilities);
-@import "utilities/active-block.css" layer(utilities);
-
-@import "components/cc.css" layer(components);
+@import "utilities/active-block";
+@import "components/cc";
