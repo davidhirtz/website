@@ -7,9 +7,10 @@ use davidhirtz\yii2\skeleton\web\Application;
 
 if (in_array(getenv('YII_ENV'), ['dev', 'local'])) {
     defined('YII_ENV') or define('YII_ENV', getenv('YII_ENV'));
-    defined('YII_ENV_DEV') or define('YII_DEV_ENV', true);
+    defined('YII_ENV_DEV') or define('YII_ENV_DEV', true);
     defined('YII_DEBUG') or define('YII_DEBUG', true);
 }
+
 
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);

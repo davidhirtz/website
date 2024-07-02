@@ -1,7 +1,8 @@
-@import "tailwindcss";
+@layer theme, base, components, utilities;
 
- @import "widgets/_cc.css";
+@import "tailwindcss/theme.css" layer(theme);
+@import "preflight.css" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
+@import "utilities/active-block.css" layer(utilities);
 
-@theme{
-    --default-font-family: 'Arial', sans-serif;
-}
+@import "components/cc.css" layer(components);

@@ -27,81 +27,75 @@ Yii::$app->get('vite')->register('/resources/js/app.ts');
     </head>
     <body>
     <?php $this->beginBody(); ?>
-    <main class="mx-auto p-6">
+    <main>
         <?= $content; ?>
     </main>
-    <div id="cc" class="block-active">
+    <div id="cc" class="fixed p-3 sm:p-5 block-active">
         <div class="cc-content block-active active">
             <p>
                 Wir benötigen Ihre Zustimmung, um Cookies und Inhalte von Drittanbietern (ggf. auch aus dem EU-Ausland)
                 einzubinden. Weitere Informationen in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
             </p>
             <div class="cc-buttons flex">
-                <button class="cc-button cc-secondary cc-hover toggle strong"
-                        data-target=".cc-content">
+                <button class="cc-button cc-secondary cc-hover toggle strong" data-target=".cc-content">
                     Anpassen
                 </button>
-                <button class="cc-button cc-secondary cc-hover cc-confirm strong"
-                        data-consent="none">
+                <button class="cc-button cc-secondary cc-hover cc-confirm strong" data-consent="none">
                     Alle ablehnen
                 </button>
-                <button class="cc-button cc-hover cc-confirm strong"
-                        data-consent="analytics,external">
+                <button class="cc-button cc-hover cc-confirm strong" data-consent="analytics,external">
                     Alle zustimmen
                 </button>
             </div>
         </div>
         <div class="cc-content block-active">
             <div class="cc-wrap flex flex-col">
-                <div class="cc-scrollable">
+                <div class="overflow-y-scroll">
                     <div class="text-right">
                         <button class="strong small toggle" data-target=".cc-content">zurück</button>
                     </div>
-                    <div id="cc-default" class="cc-detail">
-                        <div class="cc-summary flex items-center justify-between">
-                            <button class="cc-title flex items-center strong toggle"
-                                    data-target="#cc-default">
+                    <details class="cc-detail">
+                        <summary class="flex items-center justify-between">
+                            <div class="cc-title flex items-center strong">
                                 Technisch notwendige Cookies
-                            </button>
+                            </div>
                             <label class="cc-label">
-                                <input type="checkbox" class="cc-checkbox" disabled data-consent="none" checked>
+                                <input type="checkbox" class="cc-checkbox relative" disabled data-consent="none" checked>
                             </label>
-                        </div>
-                        <div class="cc-description hidden">
+                        </summary>
+                        <div class="cc-description">
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore
                             </p>
                         </div>
-                    </div>
-                    <div id="cc-external" class="cc-detail">
-                        <div class="cc-summary flex items-center justify-between">
-                            <button class="cc-title flex items-center strong toggle"
-                                    data-target="#cc-external">
+                    </details>
+                    <details class="cc-detail">
+                        <summary class="flex items-center justify-between">
+                            <div class="cc-title flex items-center strong">
                                 Inhalte von Drittanbietern
-                            </button>
+                            </div>
                             <label class="cc-label">
-                                <input type="checkbox" class="cc-checkbox cc-hover" data-consent="external">
+                                <input type="checkbox" class="cc-checkbox cc-hover relative" data-consent="external">
                             </label>
-                        </div>
-                        <div class="cc-description hidden">
+                        </summary>
+                        <div class="cc-description">
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore
                             </p>
                         </div>
-                    </div>
-                    <div id="cc-analytics" class="cc-detail">
-                        <div class="cc-summary flex items-center justify-between">
-                            <button class="cc-title flex items-center strong toggle"
-                                    data-target="#cc-analytics">
+                    </details>
+                    <details id="cc-analytics" class="cc-detail">
+                        <summary class="flex items-center justify-between">
+                            <dic class="cc-title flex items-center strong" >
                                 Statistiken
-                            </button>
+                            </dic>
                             <label class="cc-label">
-                                <input type="checkbox" class="cc-checkbox cc-hover" data-consent="analytics">
+                                <input type="checkbox" class="cc-checkbox cc-hover relative" data-consent="analytics">
                             </label>
-                        </div>
-                        <div class="cc-description hidden">
+                        </summary>
+                        <div class="cc-description">
                             <p>
                                 Statistik-Cookies helfen Webseiten-Besitzern zu verstehen, wie Besucher mit Webseiten
                                 interagieren, indem Informationen anonym gesammelt und gemeldet werden.
@@ -113,7 +107,7 @@ Yii::$app->get('vite')->register('/resources/js/app.ts');
                                 <a href="/datenschutz">Datenschutzerklärung</a> hier.
                             </p>
                         </div>
-                    </div>
+                    </details>
                 </div>
                 <div class="cc-buttons flex">
                     <button class="cc-button cc-hover cc-confirm strong">

@@ -3,7 +3,7 @@
 // import tailwindcss from '@tailwindcss/vite'
 import tailwind from '@tailwindcss/postcss'
 import {defineConfig} from 'vite'
-import viteRestart from 'vite-plugin-restart'
+// import viteRestart from 'vite-plugin-restart'
 import purgeCSS from "@fullhuman/postcss-purgecss";
 
 // @ts-ignore
@@ -35,10 +35,17 @@ export default defineConfig(({}) => ({
             plugins: [
                 tailwind({
                     base: './resources/',
+                    optimize: true,
                 }),
                 sortMediaQueries(),
                 purgeCSS({
-                    content: ['./resources/views/**/*.php'],
+                    content: [
+                        './resources/css/**/*.css',
+                        './resources/js/**/*.ts',
+                        './resources/views/**/*.php',
+                        './app/models/*.php',
+                    ],
+                    defaultExtractor: (content) => content.match(/[\w-:./]+(?<!:)/g) || [],
                     variables: true,
                 }),
             ],
@@ -46,10 +53,10 @@ export default defineConfig(({}) => ({
     },
     plugins: [
         // tailwindcss(),
-        viteRestart({
-            restart: [
-                './resources/views/**/*.php',
-            ]
-        })
+        // viteRestart({
+        //     restart: [
+        //         './resources/**/*.{css,php}',
+        //     ]
+        // })
     ],
 }));

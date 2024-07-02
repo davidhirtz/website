@@ -1,14 +1,7 @@
-.block-active:not(.active) {
-    display: none;
-}
-
 #cc {
     --offset: 10px;
-    --gap: 12px;
 
-    position: fixed;
     margin: var(--offset);
-    padding: var(--gap);
     right: 0;
     bottom: 0;
     width: calc(100vw - var(--offset) * 2);
@@ -18,10 +11,11 @@
     border-radius: 7px;
     color: #fff;
     z-index: 99;
+}
 
-    @media (min-width: 768px) {
+@media screen(sm) {
+    #cc {
         --offset: 30px;
-        --gap: 20px;
     }
 }
 
@@ -34,11 +28,7 @@
 }
 
 .cc-wrap {
-    max-height: calc(100svh - (var(--offset) + var(--gap)) * 2);
-}
-
-.cc-scrollable {
-    overflow-y: scroll;
+    max-height: 80svh;
 }
 
 .cc-buttons {
@@ -84,14 +74,14 @@
         margin-right: 5px;
         width: 20px;
         height: 20px;
-        background: url(./../../images/cc/arrow.svg) no-repeat;
+        background: url(/images/cc/arrow.svg) no-repeat;
         background-size: 100%;
         transition: transform .3s;
         content: '';
+    }
 
-        .cc-detail.active & {
-            transform: rotate(90deg);
-        }
+    .cc-detail[open] &::before {
+        transform: rotate(90deg);
     }
 }
 
@@ -108,7 +98,6 @@
 }
 
 .cc-checkbox {
-    position: relative;
     appearance: none;
     width: 100%;
     height: 20px;

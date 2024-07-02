@@ -3,7 +3,7 @@ import "../css/app.css";
 
 const doc = document;
 const $body = doc.querySelector('body') as HTMLBodyElement;
-const $cookieReset = doc.getElementById('reset');
+// const $cookieReset = doc.getElementById('reset');
 
 const router = new Router();
 const consent = new Consent();
@@ -19,7 +19,7 @@ const clickHandler = (querySelector: string, callback: EventListenerOrEventListe
 const resetMenu = () => removeClass($body, hasMenuClass);
 
 const hasMenuClass = 'has-menu';
-const hiddenClass = 'hidden';
+// const hiddenClass = 'hidden';
 const observeCssClass = 'observe';
 
 clickHandler('.toggle', (e) => {
@@ -67,9 +67,11 @@ router.afterRender = () => {
     );
 };
 
-if (consent.getCookie()) {
-    removeClass($cookieReset!.parentElement!, hiddenClass);
-}
+// if (consent.getCookie()) {
+//     removeClass($cookieReset!.parentElement!, hiddenClass);
+// }
+
+console.log(consent);
 
 router.onUnhandledClick = () => {
     router.scrollTo(0);
