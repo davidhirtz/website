@@ -1,10 +1,10 @@
 # PHP
+/packages
 /vendor
 composer.phar
 
 # NPM
 /node_modules
-/packages
 
 # Application
 /config/db.php
