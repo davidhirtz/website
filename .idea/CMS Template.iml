@@ -115,7 +115,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symplify/easy-coding-standard" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-anakin" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-vite" />
       <excludeFolder url="file://$MODULE_DIR$/web/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
