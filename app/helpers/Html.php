@@ -5,7 +5,7 @@ namespace app\helpers;
 use app\models\Entry;
 use yii\helpers\ArrayHelper;
 
-class Html extends \yii\helpers\Html
+class Html extends \davidhirtz\yii2\media\helpers\Html
 {
     public static function link(Entry $model, array $options = []): string
     {
