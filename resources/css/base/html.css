@@ -1,0 +1,17 @@
+*:focus-visible {
+    outline: 0.125rem solid #000;
+    outline-offset: .5rem;
+}
+
+html {
+    @apply tracking-wide;
+}
+
+section {
+    @apply relative;
+}
+
+picture > img {
+    width: 100%;
+    height: 100%;
+}

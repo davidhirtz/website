@@ -1,6 +1,19 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "base/fonts.css";
+@import "base/root.css";
 
-@import "utilities/active-block";
-@import "components/cc";
+@import "tailwindcss/base";
+
+@import "base/html.css";
+@import "base/theme.css";
+@import "base/typography.css";
+@import "base/header.css";
+@import "base/main.css";
+
+@import "tailwindcss/components";
+
+@import "components/cc.css";
+
+@import "utilities/animations.css";
+@import "utilities/active-block.css";
+@import "utilities/overlay.css";
+@import "tailwindcss/utilities";

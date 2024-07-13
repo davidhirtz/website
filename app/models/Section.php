@@ -18,14 +18,14 @@ class Section extends \davidhirtz\yii2\cms\models\Section
         return [
             self::TYPE_COLUMN => [
                 'name' => Yii::t('app', 'Column'),
-                'cssClass' => 'w-12 w-6-sm',
+                'cssClass' => 'w-full sm:w-1/2',
                 'hiddenFields' => [],
                 'sizes' => [],
                 'transformations' => [],
             ],
             self::TYPE_FULL_WIDTH => [
                 'name' => Yii::t('app', 'Full width'),
-                'cssClass' => 'w-12',
+                'cssClass' => 'w-full',
                 'hiddenFields' => [],
                 'sizes' => [],
                 'transformations' => [],

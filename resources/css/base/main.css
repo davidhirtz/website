@@ -1,0 +1,11 @@
+.wrap {
+    max-width: var(--wrap);
+}
+
+.box {
+    padding: var(--box-y) var(--box-x);
+}
+
+.prose:not(:first-child) {
+    padding-top: var(--box-x);
+}

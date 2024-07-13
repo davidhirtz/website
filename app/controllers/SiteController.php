@@ -33,11 +33,12 @@ class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
 
     public function init(): void
     {
-        Yii::$app->getErrorHandler()->errorAction = 'site/error';
-        Yii::$app->getRequest()->enableCsrfValidation = false;
-        $this->spacelessOutput = true;
+        if (!Yii::$app->getRequest()->getIsConsoleRequest()) {
+            Yii::$app->getErrorHandler()->errorAction = 'site/error';
+            Yii::$app->getRequest()->enableCsrfValidation = false;
+        }
 
-//        $this->setViewPath('@views/site');
+        $this->spacelessOutput = true;
 
         parent::init();
     }

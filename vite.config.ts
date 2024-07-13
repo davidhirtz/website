@@ -1,14 +1,10 @@
-// Replace @tailwindcss/postcss with @tailwindcss/vite once it's possible to set
-// Tailwind V4's output directly in the Vite config.
-// import tailwindcss from '@tailwindcss/vite'
 import autoprefixer from 'autoprefixer'
 import {defineConfig} from 'vite'
 import tailwindcss from "tailwindcss";
 import nesting from 'tailwindcss/nesting'
-// import viteRestart from 'vite-plugin-restart'
 import purgeCSS from "@fullhuman/postcss-purgecss";
-
-// @ts-ignore
+import mergeCss from 'postcss-combine-duplicated-selectors';
+// @ts-ignore-next-line
 import sortMediaQueries from 'postcss-sort-media-queries'
 
 // noinspection JSUnusedGlobalSymbols
@@ -24,40 +20,35 @@ export default defineConfig(({}) => ({
         },
         rollupOptions: {
             external: [
-                '/images',
-                '/fonts',
+                '/images/cc/arrow.svg',
             ],
-            input: {
-                app: './resources/js/app.ts',
-            },
+            input: [
+                './resources/js/app.ts',
+            ],
+            preserveEntrySignatures: 'strict',
         },
     },
     css: {
         postcss: {
             plugins: [
-                tailwindcss(),
                 nesting(),
-                autoprefixer(),
-                sortMediaQueries(),
+                tailwindcss(),
                 purgeCSS({
                     content: [
+                        './app/models/*.php',
+                        './app/helpers/*.php',
+                        './app/widgets/*.php',
                         './resources/css/**/*.css',
                         './resources/js/**/*.ts',
                         './resources/views/**/*.php',
-                        './app/models/*.php',
                     ],
-                    defaultExtractor: (content) => content.match(/[\w-:./]+(?<!:)/g) || [],
+                    defaultExtractor: (content: string) => content.match(/[\w\-:.\/\[#%\]]+(?<!:)/g) || [],
                     variables: true,
                 }),
+                autoprefixer(),
+                mergeCss(),
+                sortMediaQueries(),
             ],
         },
     },
-    plugins: [
-        // tailwindcss(),
-        // viteRestart({
-        //     restart: [
-        //         './resources/**/*.{css,php}',
-        //     ]
-        // })
-    ],
 }));

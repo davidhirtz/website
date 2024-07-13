@@ -7,8 +7,8 @@
  */
 
 use app\models\Section;
+use app\widgets\Gallery;
 use davidhirtz\yii2\cms\widgets\AdminLink;
-use davidhirtz\yii2\cms\widgets\Gallery;
 use davidhirtz\yii2\skeleton\web\View;
 
 ?>
@@ -17,9 +17,7 @@ use davidhirtz\yii2\skeleton\web\View;
     foreach ($sections as $section) {
         ?>
         <section class="<?= $section->getCssClass(); ?> animate" id="<?= $section->getHtmlId(); ?>" data-animation="fade-in">
-            <?php if ($assets = $section->getVisibleAssets()) {
-                echo Gallery::widget(['assets' => $assets]);
-            } ?>
+            <?= Gallery::widget(['section' => $section]); ?>
             <?php if ($content = $section->getVisibleAttribute('content')) {
                 ?>
                 <div class="prose">

@@ -1,0 +1,56 @@
+.animate {
+    animation: 1s forwards;
+    animation-fill-mode: both;
+    will-change: opacity;
+    transform-origin: top left;
+
+    &.observe {
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        translate: 0 100px;
+    }
+
+    to {
+        opacity: 1;
+        translate: none;
+    }
+}
+
+.fade-in-up {
+    animation-name: fadeInUp;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        scale: .7 .7;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.scale-in {
+    animation-name: scaleIn;
+}

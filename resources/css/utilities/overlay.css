@@ -1,0 +1,15 @@
+.canvas {
+    @apply relative;
+}
+
+.canvas > *, .overlay {
+    @apply absolute w-full h-full inset-0;
+}
+
+.grid-overlay {
+    grid-template: "overlay";
+
+    & > * {
+        grid-area: overlay;
+    }
+}

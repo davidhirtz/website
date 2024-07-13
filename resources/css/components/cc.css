@@ -70,14 +70,14 @@
         background: #ffffff05;
     }
 
-    @media (hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
         &:hover:not(:disabled):after {
             opacity: 1;
         }
     }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .cc-hover:hover {
         background: #ffffff30;
     }

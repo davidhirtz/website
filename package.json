@@ -9,6 +9,8 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "autoprefixer": "^10.4.19",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-import": "^16.1.0",
     "postcss-nesting": "^12.1.5",
     "postcss-sort-media-queries": "^5.2.0",
     "skeleton-router": "^3.2.0",
