@@ -29,7 +29,7 @@
     background-size: 100%;
     transition: transform .3s;
 
-    [open] & {
+    .group.active & {
         transform: rotate(90deg);
     }
 }

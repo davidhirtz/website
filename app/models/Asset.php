@@ -22,12 +22,9 @@ class Asset extends \davidhirtz\yii2\cms\models\Asset
         return [
             'status',
             'type',
-            'style',
             'content',
             'alt_text',
             'link',
-            'animation',
-            'animation_delay',
         ];
     }
 }

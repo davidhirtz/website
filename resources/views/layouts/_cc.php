@@ -22,51 +22,51 @@
                 <div class="text-right">
                     <button class="text-sm toggle" data-target=".cc-content">zurück</button>
                 </div>
-                <details class="pt-5">
-                    <summary class="flex justify-between">
-                        <div class="flex items-center cursor-pointer">
+                <div class="group pt-5">
+                    <div class="flex justify-between">
+                        <div class="flex items-center cursor-pointer toggle" data-target-closest=".group">
                             <div class="cc-arrow h-5 mr-1 aspect-square"></div>
                             <div class="leading-none text-sm">Technisch notwendige Cookies</div>
                         </div>
                         <label class="cc-label">
                             <input type="checkbox" class="cc-checkbox h-5 border border-white w-full relative" disabled data-consent="none" checked>
                         </label>
-                    </summary>
-                    <div class="p-3 pl-0 text-xs">
+                    </div>
+                    <div class="p-3 pl-0 text-xs block-group-active">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore
                         </p>
                     </div>
-                </details>
-                <details class="pt-3 mt-3 border-t border-white">
-                    <summary class="flex justify-between">
-                        <div class="flex items-center cursor-pointer">
+                </div>
+                <div class="group pt-3 mt-3 border-t border-white">
+                    <div class="flex justify-between">
+                        <div class="flex items-center cursor-pointer toggle" data-target-closest=".group">
                             <div class="cc-arrow h-5 mr-1 aspect-square"></div>
                             <div class="leading-none text-sm">Inhalte von Drittanbietern</div>
                         </div>
                         <label class="cc-label">
                             <input type="checkbox" class="cc-checkbox h-5 border border-white w-full cc-hover relative" data-consent="external">
                         </label>
-                    </summary>
-                    <div class="p-3 pl-0 text-xs">
+                    </div>
+                    <div class="p-3 pl-0 text-xs block-group-active">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore
                         </p>
                     </div>
-                </details>
-                <details class="pt-3 mt-3 border-t border-white">
-                    <summary class="flex justify-between">
-                        <div class="flex items-center cursor-pointer">
+                </div>
+                <div class="group pt-3 mt-3 border-t border-white">
+                    <div class="flex justify-between">
+                        <div class="flex items-center cursor-pointer toggle" data-target-closest=".group">
                             <div class="cc-arrow h-5 mr-1 aspect-square"></div>
                             <div class="leading-none text-sm">Statistiken</div>
                         </div>
                         <label class="cc-label">
                             <input type="checkbox" class="cc-checkbox h-5 border border-white w-full cc-hover relative" data-consent="analytics">
                         </label>
-                    </summary>
-                    <div class="p-3 pl-0 text-xs">
+                    </div>
+                    <div class="p-3 pl-0 text-xs block-group-active">
                         <p>
                             Statistik-Cookies helfen Webseiten-Besitzern zu verstehen, wie Besucher mit Webseiten
                             interagieren, indem Informationen anonym gesammelt und gemeldet werden.
@@ -78,7 +78,7 @@
                             <a href="/datenschutz">Datenschutzerklärung</a> hier.
                         </p>
                     </div>
-                </details>
+                </div>
             </div>
             <div class="border border-white mt-5 rounded-lg flex">
                 <button class="p-3 w-full grow text-center text-xs cc-hover cc-confirm">
