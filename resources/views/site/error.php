@@ -13,8 +13,8 @@ use davidhirtz\yii2\skeleton\web\ErrorAction;
 use davidhirtz\yii2\skeleton\web\View;
 
 ?>
-<div class="wrap">
-    <div class="section box">
+<div class="wrap mx-auto">
+    <div class="section p-vsm">
         <div class="prose">
            <?= $this->render('@skeleton/views/error', [
                 'email' => $email,
