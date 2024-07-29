@@ -79,9 +79,7 @@ Directories `runtime`, `web/assets` and `web/uploads` need write permissions for
 
 You can enable development mode by setting an environment variable `YII_ENV` to "dev" or "local". The latter is excluded from version control.
 
-CSS and Javascript assets are processed with [esbuild](https://esbuild.github.io/) and need to be recompiled after a change. 
-Make sure you have [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed, run `npm install` to install the development dependencies, 
-then run `npm run build`.
+CSS and Javascript assets are processed with [Vite](https://vitejs.dev/) and need to be recompiled after a change. Run `npm install` to install the development dependencies, `rmp run dev` to start the Vite development server or `npm run build` to compile the assets for production.
 
 
 Structure
