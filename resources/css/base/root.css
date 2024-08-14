@@ -1,42 +1,32 @@
 :root {
-    --wrap: 32rem;
+    --vss: 0.75rem; /* 12px */
+    --vsm: 1.25rem; /* 20px */
+    --vsl: 2.5rem; /* 40px */
 
-    --box-x: 1.25rem;
-    --box-y: 1.875rem;
-
-    --h1: 1.875rem;
-    --h2: 1.625rem;
-    --h3: 1.375rem;
-    --h4: 1.25rem;
+    --h1: 1.875rem; /* 30px */
+    --h2: 1.625rem; /* 26px */
+    --h3: 1.375rem; /* 22px */
+    --h4: 1.25rem; /* 20px */
 
     @screen xs {
-        --box-x: 1.875rem;
     }
 
     @screen sm {
-        --wrap: 45rem;
     }
 
     @screen md {
-        --wrap: 60rem;
-        --box-y: 2.5rem;
-
-        --h1: 2.25rem;
-        --h2: 2rem;
-        --h3: 1.75rem;
-        --h4: 1.5rem;
-
+        --h1: 2.25rem; /* 36px */
+        --h2: 2rem; /* 32px */
+        --h3: 1.75rem; /* 28px */
+        --h4: 1.5rem; /* 24px */
     }
 
     @screen lg {
-        --wrap: 70rem;
-        --box-y: 3.75rem;
-        --h1: 2.5rem;
-        --h2: 2.25rem;
-        --h3: 2rem;
+        --h1: 2.5rem; /* 40px */
+        --h2: 2.25rem; /* 36px */
+        --h3: 2rem; /* 32px */
     }
 
     @screen xl {
-        --wrap: 82.5rem;
     }
 }

@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 // noinspection JSUnusedGlobalSymbols
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -8,9 +10,18 @@ export default {
         './resources/js/*.ts',
         './resources/views/**/*.php',
     ],
+    corePlugins: {
+        backgroundOpacity: false,
+        textOpacity: false,
+    },
     future: {
         hoverOnlyWhenSupported: true,
     },
+    plugins: [
+        plugin(function ({addVariant}) {
+            addVariant('nf', '&:not(:first-child)');
+        })
+    ],
     theme: {
         extend: {
             aspectRatio: {
@@ -18,15 +29,17 @@ export default {
             colors: {
             },
             spacing: {
-                'box-x': 'var(--box-x)',
-                'box-y': 'var(--box-y)',
+                vsx: 'var(--vsx)',
+                vss: 'var(--vss)',
+                vsm: 'var(--vsm)',
+                vsl: 'var(--vsl)',
             },
             transitionDuration: {
                 DEFAULT: '.3s',
             },
         },
-        fontFamily: {
-        },
+        // fontFamily: {
+        // },
         screens: {
             xs: '22rem', // 352px
             sm: '48rem', // 768px
