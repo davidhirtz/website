@@ -8,7 +8,7 @@
   "require": {
     "davidhirtz/yii2-anakin": "^2.1",
     "davidhirtz/yii2-cms": "^2.1",
-    "davidhirtz/yii2-vite": "^0.3"
+    "davidhirtz/yii2-vite": "^0.4"
   },
   "require-dev": {
     "codeception/codeception": "^5.0",
