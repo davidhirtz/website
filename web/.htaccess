@@ -1,11 +1,6 @@
 Options +FollowSymLinks
 IndexIgnore */*
 
-# Set max upload limit
-<IfModule mod_php5.c>
-	php_value upload_max_filesize 6M
-</IfModule>
-
 # Gzip
 <ifModule mod_gzip.c>
 	mod_gzip_on Yes
@@ -21,7 +16,7 @@ IndexIgnore */*
 # Set cache control header for static files.
 # If this throws a 500 server error, make sure the headers module is enabled
 # or try to run "sudo a2enmod headers" as root to start it.
-<filesMatch "\.(css|jpg|png|gif|js|svg|webp|woff2?)$">
+<filesMatch "\.(css|jpg|otf|png|gif|js|svg|webp|woff2?)$">
 	Header set Cache-Control "max-age=31536000, public"
 </filesMatch>
 
@@ -29,7 +24,7 @@ IndexIgnore */*
 RewriteEngine on
 
 # Redirect
-RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} !^(draft|stage|www)\. [NC]
 RewriteCond %{HTTP_HOST} !\.localhost$ [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
