@@ -47,17 +47,15 @@ return [
             Entry::class => \app\models\Entry::class,
             EntryActiveForm::class => \app\modules\admin\widgets\forms\EntryActiveForm::class,
             EntryGridView::class => \app\modules\admin\widgets\grids\EntryGridView::class,
-            Section::class => \app\models\Section::class,
-            SectionActiveForm::class => \app\modules\admin\widgets\forms\SectionActiveForm::class,
-
-            MetaTags::class => [
-                'transformationName' => 'md',
-            ],
-
             HtmlValidator::class => [
                 'allowedHtmlTags' => ['h1', 'h2', 'h3'],
                 'allowedClasses' => ['btn'],
             ],
+            MetaTags::class => [
+                'transformationName' => 'md',
+            ],
+            Section::class => \app\models\Section::class,
+            SectionActiveForm::class => \app\modules\admin\widgets\forms\SectionActiveForm::class,
         ],
     ],
     'modules' => [
