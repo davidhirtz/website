@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\modules\admin\widgets\grids;
 
 use davidhirtz\yii2\cms\modules\admin\widgets\grids\columns\MenuColumn;

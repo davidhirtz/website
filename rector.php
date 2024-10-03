@@ -10,12 +10,10 @@ use Rector\TypeDeclaration\Rector\ClassMethod\AddParamTypeFromPropertyTypeRector
 use Rector\TypeDeclaration\Rector\ClassMethod\AddReturnTypeDeclarationBasedOnParentClassMethodRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddReturnTypeDeclarationRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
-use Rector\TypeDeclaration\Rector\ClassMethod\BoolReturnTypeFromBooleanConstReturnsRector;
-use Rector\TypeDeclaration\Rector\ClassMethod\NumericReturnTypeFromStrictScalarReturnsRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNativeCallRector;
-use Rector\TypeDeclaration\Rector\ClassMethod\StringReturnTypeFromStrictScalarReturnsRector;
 use Rector\TypeDeclaration\Rector\Property\AddPropertyTypeDeclarationRector;
 use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromAssignsRector;
+use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -28,12 +26,10 @@ return static function (RectorConfig $rectorConfig): void {
         AddReturnTypeDeclarationBasedOnParentClassMethodRector::class,
         AddReturnTypeDeclarationRector::class,
         AddVoidReturnTypeWhereNoReturnRector::class,
-        BoolReturnTypeFromBooleanConstReturnsRector::class,
-        NumericReturnTypeFromStrictScalarReturnsRector::class,
+        DeclareStrictTypesRector::class,
         InlineConstructorDefaultToPropertyRector::class,
         ReturnTypeFromStrictNativeCallRector::class,
         StringClassNameToClassConstantRector::class,
-        StringReturnTypeFromStrictScalarReturnsRector::class,
         TypedPropertyFromAssignsRector::class,
     ]);
 

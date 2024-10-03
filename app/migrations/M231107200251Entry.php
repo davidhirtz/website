@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\migrations;
 
 use davidhirtz\yii2\cms\migrations\traits\FooterColumnTrait;

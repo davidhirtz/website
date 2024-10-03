@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\helpers;
 
 use app\models\Entry;

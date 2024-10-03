@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\modules\admin\widgets\forms;
 
 use davidhirtz\yii2\skeleton\widgets\forms\DynamicRangeDropdown;
