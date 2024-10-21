@@ -1,0 +1,33 @@
+name: Deploy on srv01.anakin.anakin.cloud
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] != '' }}
+
+    steps:
+      - name: Display Branch Name
+        run: echo ${{ github.head_ref || github.ref_name }}
+
+      - name: Display Deploy Path
+        run: echo ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] }}
+
+      - name: Deploy on Server
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: srv01.anakin.anakin.cloud
+          username: anakin
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script_stop: true
+          script: |
+            cd ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] }}
+            php yii maintenance/enable
+            git pull
+            composer install --optimize-autoloader --no-dev
+            php yii maintenance/disable
