@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
+use Rector\CodingStyle\Rector\FuncCall\ArraySpreadInsteadOfArrayMergeRector;
 use Rector\Config\RectorConfig;
 use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
 use Rector\Set\ValueObject\LevelSetList;
@@ -26,6 +27,7 @@ return static function (RectorConfig $rectorConfig): void {
         AddReturnTypeDeclarationBasedOnParentClassMethodRector::class,
         AddReturnTypeDeclarationRector::class,
         AddVoidReturnTypeWhereNoReturnRector::class,
+        ArraySpreadInsteadOfArrayMergeRector::class,
         DeclareStrictTypesRector::class,
         InlineConstructorDefaultToPropertyRector::class,
         ReturnTypeFromStrictNativeCallRector::class,
