@@ -42,7 +42,7 @@ export default defineConfig(({}) => ({
                         './resources/js/**/*.ts',
                         './resources/views/**/*.php',
                     ],
-                    defaultExtractor: (content: string) => content.match(/[\w\-:.\/\[#%\]]+(?<!:)/g) || [],
+                    defaultExtractor: (content: string) => content.match(/[\w\-:.!\/\[#%\]]+(?<!:)/g) || [],
                     variables: true,
                 }),
                 autoprefixer(),
