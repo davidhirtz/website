@@ -1,19 +1,25 @@
-@import "base/fonts.css";
-@import "base/root.css";
+@layer theme, base, components, utilities;
 
-@import "tailwindcss/base";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
-@import "base/html.css";
-@import "base/theme.css";
-@import "base/typography.css";
-@import "base/header.css";
-@import "base/main.css";
+@import './base/fonts.css' layer(base);
+@import "./base/preflight.css" layer(base);
+@import './base/theme.css' layer(theme);
 
-@import "tailwindcss/components";
+@import './base/html.css' layer(base);
+@import './base/typography.css' layer(base);
+@import './base/header.css' layer(base);
+@import './base/main.css' layer(base);
 
-@import "components/cc.css";
+/*@import './components/cc.css' layer(components);*/
 
-@import "utilities/animations.css";
-@import "utilities/active-block.css";
-@import "utilities/overlay.css";
-@import "tailwindcss/utilities";
+@import './utilities/animations.css' layer(components);
+/*@import './utilities/active-block.css' layer(components);*/
+@import './utilities/overlay.css' layer(components);
+
+@source '../../app/models/*.php';
+@source '../../app/helpers/*.php';
+@source '../../app/widgets/*.php';
+@source '../js/*.ts';
+@source '../views/**/*.php';

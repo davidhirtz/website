@@ -1,0 +1,88 @@
+@theme {
+    --breakpoint-xs: 22rem; /* 352px */
+    --breakpoint-sm: 48rem; /* 768px */
+    --breakpoint-md: 64rem; /* 1024px */
+    --breakpoint-lg: 80rem; /* 1280px */
+    --breakpoint-xl: 100rem; /* 1600px */
+
+    --color-*: initial;
+    --color-black: #000;
+    --color-white: #fff;
+    --container-*: initial;
+
+    --font-*: initial;
+    --font-weight-*: initial;
+    --default-font-feature-settings: initial;
+    --default-font-variation-settings: initial;
+    --default-font-family: "Helvetica Neue", "sans-serif";
+    --default-mono-font-family: initial;
+    --default-mono-font-feature-settings: initial;
+    --default-mono-font-variation-settings: initial;
+
+    --spacing-vss: 0.75rem; /* 12px */
+    --spacing-vsm: 1.25rem; /* 20px */
+    --spacing-vsl: 2.5rem; /* 40px */
+
+    --leading-*: initial;
+
+    --tracking-*: initial;
+    --tracking-wide: 0.02em;
+    --tracking-wider: 0.03em;
+
+    --animate-*: initial;
+    --radius-*: initial;
+    --blur-*: initial;
+    --perspective-*: initial;
+    --shadow-*: initial;
+    --drop-shadow-*: initial;
+    --inset-shadow-*: initial;
+    --default-transition-duration: 0.2s;
+
+    --ease-*: initial;
+    --tw-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --text-*: initial;
+    --text-xs: 0.75em; /* 12px */
+    --text-sm: 0.875em; /* 14px */
+    --text-base: 1em;
+
+    --text-h1: 2.5em; /* 40px */
+    --text-h2: 2.25em; /* 36px */
+    --text-h3: 1.875em; /* 30px */
+    --text-h4: 1em; /* 16px */
+}
+
+:root {
+    @media (min-width: theme(--breakpoint-xs)) {
+    }
+
+    @media (min-width: theme(--breakpoint-sm)) {
+    }
+
+    @media (min-width: theme(--breakpoint-md)) {
+        --spacing-vsm: 1.875rem; /* 30px */
+
+        --text-h1: 3.125rem; /* 50px */
+        --text-h2: 2.75em; /* 44px */
+        --text-h3: 2.125em; /* 34px */
+        --text-h4: 1.125em; /* 18px */
+    }
+
+    @media (min-width: theme(--breakpoint-lg)) {
+        --spacing-vsl: 3.125rem; /* 50px */
+
+        --text-h1: 3.75em; /* 60px */
+        --text-h2: 3.25em; /* 52px */
+        --text-h3: 2.5em; /* 40px */
+        --text-h4: 1.25em; /* 20px */
+    }
+
+    @media (min-width: theme(--breakpoint-xl)) {
+        --spacing-vsl: 3.75rem; /* 60px */
+
+        --text-h1: 4.375em; /* 70px */
+        --text-h2: 3.75em; /* 60px */
+        --text-h3: 2.75em; /* 44px */
+        --text-h4: 1.5em; /* 24px */
+    }
+}

@@ -3,10 +3,6 @@
     outline-offset: .5rem;
 }
 
-html {
-    @apply tracking-wide;
-}
-
 section {
     @apply relative;
 }
