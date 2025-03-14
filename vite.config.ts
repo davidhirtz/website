@@ -1,5 +1,7 @@
 import {defineConfig} from 'vite'
 import tailwindcss from "@tailwindcss/vite";
+// @ts-ignore-next-line
+import sortMediaQueries from 'postcss-sort-media-queries'
 
 export default defineConfig(({}) => ({
     build: {
@@ -19,7 +21,16 @@ export default defineConfig(({}) => ({
             preserveEntrySignatures: 'strict',
         },
     },
+    css: {
+        postcss: {
+            plugins: [
+                sortMediaQueries({
+                    onlyTopLevel: true,
+                }),
+            ],
+        },
+    },
     plugins: [
         tailwindcss(),
-    ],
+    ]
 }));

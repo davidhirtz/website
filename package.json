@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
+    "postcss-sort-media-queries": "^5.2.0",
     "skeleton-router": "^3.3.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7",
