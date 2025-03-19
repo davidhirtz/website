@@ -10,10 +10,10 @@ use Yii;
  * @property-read Entry $entry {@see static::getEntry()}
  * @property-read Entry[] $entries {@see static::getEntries()}
  */
-class Section extends \davidhirtz\yii2\cms\models\Section
+final class Section extends \davidhirtz\yii2\cms\models\Section
 {
-    final public const TYPE_COLUMN = self::TYPE_DEFAULT;
-    final public const TYPE_FULL_WIDTH = 2;
+    public const TYPE_COLUMN = self::TYPE_DEFAULT;
+    public const TYPE_FULL_WIDTH = 2;
 
     public static function getTypes(): array
     {

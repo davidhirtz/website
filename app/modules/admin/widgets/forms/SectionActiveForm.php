@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace app\modules\admin\widgets\forms;
 
-use davidhirtz\yii2\skeleton\widgets\forms\DynamicRangeDropdown;
+use app\models\Section;
 
+/**
+ * @property Section $model
+ */
 class SectionActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\SectionActiveForm
 {
     public function init(): void

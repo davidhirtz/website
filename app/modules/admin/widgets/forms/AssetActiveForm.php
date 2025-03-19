@@ -11,9 +11,6 @@ use app\models\Asset;
  */
 class AssetActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\AssetActiveForm
 {
-    /**
-     * @see self::animationField()
-     */
     public function init(): void
     {
         $this->fields = $this->model->getVisibleAttributes();
