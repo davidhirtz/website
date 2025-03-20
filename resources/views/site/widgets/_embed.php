@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @var string $link
  */
@@ -28,4 +31,4 @@ use yii\helpers\Html;
     </div>
 </div>
 
-<iframe class="video-iframe overlay" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe class="video-iframe overlay" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
