@@ -33,15 +33,15 @@ class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
         ]);
     }
 
-    public function init(): void
+    public function beforeAction($action): bool
     {
-        if (!Yii::$app->getRequest()->getIsConsoleRequest()) {
-            Yii::$app->getErrorHandler()->errorAction = 'site/error';
-            Yii::$app->getRequest()->enableCsrfValidation = false;
-        }
+        Yii::$app->getErrorHandler()->errorAction = 'site/error';
+
+        $this->request->enableCsrfValidation = false;
+        $this->request->enableCsrfCookie = false;
 
         $this->spacelessOutput = true;
 
-        parent::init();
+        return parent::beforeAction($action);
     }
 }
