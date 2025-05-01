@@ -18,8 +18,8 @@
 
 @import "tailwindcss/utilities.css";
 
-@source "../../app/models/*.php";
-@source "../../app/helpers/*.php";
-@source "../../app/widgets/*.php";
-@source "../js/*.ts";
-@source "../views/**/*.php";
+@source not inline("filter");
+
+@source not "../../config/";
+@source not "../../messages/";
+@source not "../../web/";
