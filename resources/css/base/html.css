@@ -4,7 +4,7 @@
 }
 
 section {
-    @apply relative;
+    position: relative;
 }
 
 picture > img {

@@ -1,3 +1,0 @@
-.block-active:not(.active), .group:not(.active) .block-group-active {
-    display: none;
-}

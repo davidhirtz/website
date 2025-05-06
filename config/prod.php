@@ -54,6 +54,7 @@ return [
             HtmlValidator::class => [
                 'allowedHtmlTags' => ['h1', 'h2', 'h3'],
                 'allowedClasses' => ['btn'],
+                'removeUnnecessarySpanTags' => true,
             ],
             MetaTags::class => [
                 'transformationName' => 'md',
