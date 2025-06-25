@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
+use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
@@ -13,17 +13,13 @@ return function (ECSConfig $ecsConfig): void {
         __DIR__ . '/tests',
     ]);
 
-    $ecsConfig->skip([
-        __DIR__ . '/tests/_output',
-        __DIR__ . '/tests/support',
+    $ecsConfig->sets([
+        SetList::COMMON,
+        SetList::STRICT,
+        SetList::PSR_12,
     ]);
 
-    $ecsConfig->rule(NoUnusedImportsFixer::class); // @phpstan-ignore-line
-
-    $ecsConfig->sets([
-        SetList::DOCBLOCK,
-        SetList::NAMESPACES,
-        SetList::COMMENTS,
-        SetList::PSR_12,
+    $ecsConfig->skip([
+        NotOperatorWithSuccessorSpaceFixer::class
     ]);
 };
