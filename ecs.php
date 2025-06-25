@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
@@ -21,5 +22,9 @@ return function (ECSConfig $ecsConfig): void {
 
     $ecsConfig->skip([
         NotOperatorWithSuccessorSpaceFixer::class
+    ]);
+
+    $ecsConfig->ruleWithConfiguration(ClassAttributesSeparationFixer::class, [
+        'elements' => ['method' => 'one'],
     ]);
 };
