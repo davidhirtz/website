@@ -4,35 +4,28 @@ declare(strict_types=1);
 
 namespace app\widgets;
 
+use app\helpers\Html;
 use app\models\Asset;
 use app\models\Section;
 
 /**
  * @template-extends \davidhirtz\yii2\cms\widgets\Gallery<Asset>
  */
-class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
+final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
 {
-    public Section $section;
-
+    public ?Section $section = null;
     public array $canvasOptions = [];
-    public ?int $layout = null;
+
+    private static int $count = 0;
 
     public function init(): void
     {
-        $this->assets ??= $this->section->getVisibleAssets();
+        $this->assets ??= $this->section?->getVisibleAssets() ?? [];
 
         $this->viewports = [
             'sm:hidden' => [Asset::TYPE_DEFAULT, Asset::TYPE_VIEWPORT_MOBILE],
             'hidden sm:block' => [Asset::TYPE_DEFAULT, Asset::TYPE_VIEWPORT_DESKTOP]
         ];
-
-        $this->canvasOptions['pictureOptions']['imgOptions']['loading'] ??= $this->section->position > 3
-            ? 'lazy'
-            : 'eager';
-
-        if ($this->section->position < 3) {
-            $this->canvasOptions['pictureOptions']['imgOptions']['fetchpriority'] = 'high';
-        }
 
         parent::init();
     }
@@ -46,31 +39,25 @@ class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
 
     protected function renderAssetsInternal(array $assets): string
     {
-        if ($content = $this->returnSingleAsset($assets)) {
-            return $content;
-        }
+        $content = array_reduce(
+            $assets,
+            fn($carry, $asset) => $carry . $this->renderCanvas($asset, $this->canvasOptions),
+            ''
+        );
 
-        $content = '';
-
-        foreach ($assets as $asset) {
-            $content .= $this->renderCanvas($asset, $this->canvasOptions);
-        }
-
-        return $content;
-    }
-
-    /**
-     * @param Asset[] $assets
-     */
-    private function returnSingleAsset(array $assets): string
-    {
-        return count($assets) == 1
-            ? $this->renderCanvas(current($assets), $this->canvasOptions)
-            : '';
+        return $this->options ? Html::tag('div', $content, $this->options) : $content;
     }
 
     protected function renderCanvas(Asset $asset, array $options): string
     {
+        $options['pictureOptions']['imgOptions']['loading'] ??= self::$count > 3 ? 'lazy' : false;
+
+        if (self::$count > 3 && self::$count < 5) {
+            $options['pictureOptions']['imgOptions']['fetchpriority'] ??= 'high';
+        }
+
+        self::$count++;
+
         return Canvas::widget([
             ...$options,
             'asset' => $asset,
