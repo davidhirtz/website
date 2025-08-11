@@ -7,7 +7,7 @@ This website is based on the [Yii 2](http://www.yiiframework.com/) framework and
 Requirements
 ------------
 
-This project requires PHP 8.1 or higher, MySQL and ImageMagick. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
+This project requires PHP 8.3 or higher, MySQL and ImageMagick. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
 
 
 Installation
