@@ -15,9 +15,12 @@ return function (ECSConfig $ecsConfig): void {
     ]);
 
     $ecsConfig->sets([
-        SetList::COMMON,
-        SetList::STRICT,
+        SetList::CLEAN_CODE,
+        SetList::COMMENTS,
+        SetList::DOCBLOCK,
+        SetList::NAMESPACES,
         SetList::PSR_12,
+        SetList::STRICT,
     ]);
 
     $ecsConfig->skip([
