@@ -1,8 +1,4 @@
-.canvas {
-    position: relative;
-}
-
-.canvas > *, .overlay {
+.canvas > * {
     position: absolute;
     top: 0;
     left: 0;
@@ -10,10 +6,10 @@
     height: 100%;
 }
 
-.grid-overlay {
-    grid-template: "overlay";
+.grid-stacked {
+    grid-template: "a";
 
     & > * {
-        grid-area: overlay;
+        grid-area: a;
     }
 }

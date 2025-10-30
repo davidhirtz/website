@@ -1,59 +1,14 @@
-#cc {
-    max-width: 26rem;
-    z-index: 99;
-}
-
-.cc-wrap {
-    max-height: 80svh;
-}
-
-.cc-content {
-    background: #000;
-    color: #fff;
-
-    a {
-        border-bottom: 1px solid #fff;
-    }
-}
-
-.cc-wrap {
-    max-height: 80svh;
-}
-
-.cc-secondary {
-    color: #e0e0e0;
-}
-
-.cc-arrow {
-    background: url(/images/cc/arrow.svg) no-repeat;
-    background-size: 100%;
-    transition: transform .3s;
-
-    .group.active & {
-        transform: rotate(90deg);
-    }
-}
-
-.cc-label {
-    flex: 0 0 40px;
-}
-
 .cc-checkbox {
-    appearance: none;
-    border-radius: 10px;
-    outline: none;
+    padding: 0.125rem;
     transition: background-color .3s;
 
     &:after {
-        position: absolute;
-        left: 2px;
-        top: 2px;
-        width: 14px;
-        height: 14px;
-        background: #fff;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        background: currentColor;
         border-radius: 50%;
-        opacity: .3;
-        transition: all .3s;
+        opacity: .5;
+        transition: margin .3s;
         content: '';
     }
 
@@ -62,23 +17,13 @@
     }
 
     &:checked:after {
-        left: 22px;
+        margin-left: 1.25rem;
         opacity: 1;
-    }
-
-    &:focus:not(.disabled) {
-        background: #ffffff05;
     }
 
     @media (hover: hover) and (pointer: fine) {
         &:hover:not(:disabled):after {
             opacity: 1;
         }
-    }
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .cc-hover:hover {
-        background: #ffffff30;
     }
 }

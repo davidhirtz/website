@@ -10,15 +10,19 @@
 @import './base/header.css';
 @import './base/main.css';
 
-/*@import './components/cc.css';*/
+@import './components/cc.css';
 
 @import './utilities/animations.css';
 @import './utilities/overlay.css';
 
 @import "tailwindcss/utilities.css";
 
+@custom-variant active (&.active);
+
 @source not inline("filter");
 
-@source not "../../config/";
-@source not "../../messages/";
-@source not "../../web/";
+@source "../../app/helpers/*.php";
+@source "../../app/models/*.php";
+@source "../../app/widgets/*.php";
+@source "../js/*.ts";
+@source "../views/**/*.php";

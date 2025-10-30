@@ -34,8 +34,7 @@ const observer = new IntersectionObserver(function (e) {
 
 
 export default () => {
-    setTimeout(() =>
-            document.querySelectorAll(`.${observeCssClass}`).forEach($el => observer.observe($el)),
-        0
-    );
+    setTimeout(() => {
+        document.querySelectorAll(`.${observeCssClass}`).forEach($el => observer.observe($el));
+    });
 }

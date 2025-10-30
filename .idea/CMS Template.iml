@@ -50,7 +50,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tinymce/tinymce" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-authclient" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-bootstrap4" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
@@ -116,6 +115,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/davidhirtz/yii2-anakin" />
       <excludeFolder url="file://$MODULE_DIR$/web/dist" />
       <excludeFolder url="file://$MODULE_DIR$/web/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/runtime" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/php-shellcommand" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

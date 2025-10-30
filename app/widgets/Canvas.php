@@ -10,8 +10,10 @@ use app\models\Asset;
 /**
  * @property Asset $asset
  */
-class Canvas extends \davidhirtz\yii2\cms\widgets\Canvas
+final class Canvas extends \davidhirtz\yii2\cms\widgets\Canvas
 {
+    public array $wrapperOptions = ['class' => 'canvas relative'];
+
     public function init(): void
     {
         if ($cssClass = $this->asset->getCssClass()) {

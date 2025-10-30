@@ -8,6 +8,7 @@ declare(strict_types=1);
  */
 
 use app\helpers\Html;
+use app\widgets\NavItems;
 use davidhirtz\yii2\skeleton\web\View;
 use davidhirtz\yii2\skeleton\widgets\AdminButton;
 use yii\helpers\Url;
@@ -29,11 +30,55 @@ Yii::$app->get('vite')->register('/resources/js/app.ts');
         <link rel="manifest" href="/manifest.json">
         <?php $this->head(); ?>
     </head>
-    <body>
+    <body class="flex flex-col min-h-svh">
     <?php $this->beginBody(); ?>
-    <main>
+    <header>
+        <nav class="w-full p-sm">
+            <ul class="grid gap-2">
+                <?php foreach (NavItems::getMainMenuItems() as $entry) {
+                    ?>
+                    <li>
+                        <?= Html::link($entry); ?>
+                        <?php if ($children = NavItems::getSubmenuItems($entry)) {
+                            ?>
+                            <ul class="grid gap-2 pr-4">
+                                <?php foreach ($children as $child) {
+                                    ?>
+                                    <li>
+                                        <?= Html::link($child); ?>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                            <?php
+                        } ?>
+                    </li>
+                    <?php
+                } ?>
+            </ul>
+        </nav>
+    </header>
+    <main class="grow p-sm">
         <?= $content; ?>
     </main>
+    </main>
+    <footer class="p-sm">
+        <nav>
+            <ul class="flex flex-wrap gap-2">
+                <?php foreach (NavItems::getFooterItems() as $entry) {
+                    ?>
+                    <li>
+                        <?= Html::link($entry); ?>
+                    </li>
+                    <?php
+                } ?>
+                <li class="has-hidden:hidden">
+                    <cc-reset class="cursor-pointer"><?= Yii::t('app', 'Cookies') ?></cc-reset>
+                </li>
+            </ul>
+        </nav>
+    </footer>
     <?= $this->render('_cc'); ?>
     <?php if (Yii::$app->getUser()->can('entryUpdate')) {
         echo AdminButton::widget();
