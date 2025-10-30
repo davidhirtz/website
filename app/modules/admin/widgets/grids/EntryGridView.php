@@ -8,6 +8,7 @@ use davidhirtz\yii2\cms\modules\admin\widgets\grids\columns\MenuColumn;
 
 class EntryGridView extends \davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView
 {
+    #[\Override]
     public function init(): void
     {
         $this->columns = [

@@ -4,18 +4,13 @@ export default (render: ($container: HTMLElement) => void) => {
     const cache: Map<string, string> = new Map();
     const positions: Map<string, { x: number, y: number }> = new Map();
 
-    const fetchContent = (useCache: boolean = true) => {
+    const loadPage = (useCache: boolean = true) => {
         if (useCache && cache.has(location.href)) {
             renderContent();
             return;
         }
 
-        void fetch(location.href, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-Ajax-Request': 'route',
-            },
-        }).then(async response => {
+        fetchUrl(location.href).then(async response => {
             if (response.status >= 300 && response.status < 400) {
                 const redirect = response.headers.get('X-Redirect');
 
@@ -24,20 +19,52 @@ export default (render: ($container: HTMLElement) => void) => {
                         location.replace(redirect);
                     } else {
                         history.replaceState(null, document.title, redirect);
-                        fetchContent(false);
+                        loadPage(false);
                     }
                 }
             } else {
-                cache.set(location.href, await response.text());
-
-                if (cache.size > 10) {
-                    const firstKey = cache.keys().next().value!;
-                    cache.delete(firstKey);
-                }
-
+                await cacheResponse(location.href, response);
                 renderContent();
             }
         });
+    }
+
+    const preloadOnHover = ($el: HTMLElement) => {
+        $el.querySelectorAll('a').forEach($link => {
+            if (isInvalidLinkTag($link)) {
+                return;
+            }
+
+            const url = new URL($link.href);
+
+            $link.addEventListener('mouseenter', () => {
+                if (!isSamePage(url) && !cache.has(url.href)) {
+                    hoverTimeoutId = setTimeout(() => {
+                        fetchUrl(url.href).then(response => void cacheResponse(url.href, response));
+                    }, 200);
+                }
+            });
+
+            $link.addEventListener('mouseleave', () => clearTimeout(hoverTimeoutId));
+        });
+    }
+
+    const fetchUrl = (url: string) => {
+        return fetch(url, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-Ajax-Request': 'route',
+            },
+        });
+    }
+
+    const cacheResponse = async (url: string, response: Response) => {
+        cache.set(url, await response.text());
+
+        if (cache.size > 10) {
+            const firstKey = cache.keys().next().value!;
+            cache.delete(firstKey);
+        }
     }
 
     const renderContent = () => {
@@ -58,6 +85,7 @@ export default (render: ($container: HTMLElement) => void) => {
 
         normalizeScriptTags($el);
         render($el);
+        preloadOnHover($container);
 
         const hasPrevPos = isPopState && positions.has(location.href);
         const position = hasPrevPos ? positions.get(location.href)! : {x: 0, y: 0};
@@ -92,12 +120,28 @@ export default (render: ($container: HTMLElement) => void) => {
         }
     }
 
+    const isInvalidLinkTag = ($link: HTMLAnchorElement) => {
+        const url = $link.href ? new URL($link.href) : false;
+        const target = $link.getAttribute('target') || '_self';
+
+        return !url
+            || $link.hasAttribute('download')
+            || $link.hasAttribute('data-refresh')
+            || target !== '_self'
+            || url.host !== location.host
+    }
+
+    const isSamePage = (url: URL) => {
+        return url.pathname === location.pathname && url.search === location.search;
+    }
+
     let isPopState: boolean = false;
     let referrer: string = location.href;
+    let hoverTimeoutId: number;
 
     window.addEventListener('popstate', (e: PopStateEvent) => {
         isPopState = true;
-        fetchContent();
+        loadPage();
 
         e.preventDefault();
     });
@@ -107,31 +151,27 @@ export default (render: ($container: HTMLElement) => void) => {
 
         while ($el) {
             if ($el.matches('a')) {
-                const $link = ($el as HTMLLinkElement);
-                const url = $link.href ? new URL($link.href) : false;
-                const target = $link.getAttribute('target') || '_self';
+                const $link = ($el as HTMLAnchorElement);
 
                 if (
                     e.defaultPrevented
                     || e.ctrlKey
                     || e.metaKey
                     || e.shiftKey
-                    || !url
-                    || $link.hasAttribute('download')
-                    || $link.hasAttribute('data-refresh')
-                    || target !== '_self'
-                    || url.host !== location.host
+                    || isInvalidLinkTag($link)
                 ) {
                     return;
                 }
 
                 e.preventDefault();
 
-                if (url.pathname !== location.pathname || url.search !== location.search) {
-                    history.pushState(null, $link.title || document.title, $link.href);
-                    fetchContent();
-                } else {
+                const url = new URL($link.href);
+
+                if (isSamePage(url)) {
                     scrollToPath(url);
+                } else {
+                    history.pushState(null, $link.title || document.title, $link.href);
+                    loadPage();
                 }
 
                 return;
@@ -142,4 +182,5 @@ export default (render: ($container: HTMLElement) => void) => {
     });
 
     render($container);
+    preloadOnHover(document.body);
 };

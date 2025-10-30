@@ -14,6 +14,7 @@ final class Canvas extends \davidhirtz\yii2\cms\widgets\Canvas
 {
     public array $wrapperOptions = ['class' => 'canvas relative'];
 
+    #[\Override]
     public function init(): void
     {
         if ($cssClass = $this->asset->getCssClass()) {

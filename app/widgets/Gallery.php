@@ -18,6 +18,7 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
 
     private static int $count = 0;
 
+    #[\Override]
     public function init(): void
     {
         $this->assets ??= $this->section?->getVisibleAssets() ?? [];
@@ -30,6 +31,7 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
         parent::init();
     }
 
+    #[\Override]
     public function run(): string
     {
         return $this->assets
@@ -37,11 +39,12 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
             : '';
     }
 
+    #[\Override]
     protected function renderAssetsInternal(array $assets): string
     {
         $content = array_reduce(
             $assets,
-            fn($carry, $asset) => $carry . $this->renderCanvas($asset, $this->canvasOptions),
+            fn ($carry, $asset) => $carry . $this->renderCanvas($asset, $this->canvasOptions),
             ''
         );
 

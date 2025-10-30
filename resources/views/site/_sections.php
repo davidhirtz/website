@@ -9,25 +9,20 @@ declare(strict_types=1);
  * @var Section[] $sections
  */
 
+use app\helpers\Html;
 use app\models\Section;
 use app\widgets\Gallery;
 use davidhirtz\yii2\cms\widgets\AdminLink;
 use davidhirtz\yii2\skeleton\web\View;
 
 ?>
-<div class="wrap flex flex-wrap justify-center">
+<div class="flex flex-wrap justify-center">
     <?php
     foreach ($sections as $section) {
         ?>
         <section class="<?= $section->getCssClass(); ?>" id="<?= $section->getHtmlId(); ?>">
             <?= Gallery::widget(['section' => $section]); ?>
-            <?php if ($content = $section->getVisibleAttribute('content')) {
-                ?>
-                <div class="prose animate observe" data-animation="fade-in">
-                    <?= $content; ?>
-                </div>
-                <?php
-            } ?>
+            <?= Html::prose($section); ?>
             <?= AdminLink::tag($section); ?>
         </section>
         <?php

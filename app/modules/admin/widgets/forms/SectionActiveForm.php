@@ -11,6 +11,7 @@ use app\models\Section;
  */
 class SectionActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\SectionActiveForm
 {
+    #[\Override]
     public function init(): void
     {
         $this->fields ??= [

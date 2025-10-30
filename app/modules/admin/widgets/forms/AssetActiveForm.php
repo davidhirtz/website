@@ -11,6 +11,7 @@ use app\models\Asset;
  */
 class AssetActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\AssetActiveForm
 {
+    #[\Override]
     public function init(): void
     {
         $this->fields = $this->model->getVisibleAttributes();

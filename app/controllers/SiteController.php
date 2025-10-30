@@ -7,12 +7,14 @@ namespace app\controllers;
 use davidhirtz\yii2\skeleton\controllers\traits\AjaxRouteTrait;
 use davidhirtz\yii2\skeleton\filters\PageCache;
 use davidhirtz\yii2\skeleton\web\ErrorAction;
+use Override;
 use Yii;
 
 class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
 {
     use AjaxRouteTrait;
 
+    #[Override]
     public function actions(): array
     {
         return [
@@ -23,16 +25,22 @@ class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
         ];
     }
 
+    #[Override]
     public function behaviors(): array
     {
-        return array_merge(parent::behaviors(), [
+        return [
+            ...parent::behaviors(),
             'PageCache' => [
                 'class' => PageCache::class,
-                'params' => ['slug'],
+                'params' => [
+                    'page',
+                    'slug',
+                ],
             ],
-        ]);
+        ];
     }
 
+    #[Override]
     public function beforeAction($action): bool
     {
         Yii::$app->getErrorHandler()->errorAction = 'site/error';

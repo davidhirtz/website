@@ -16,6 +16,7 @@ class EntryActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\E
     use MenuFieldTrait;
     use FooterFieldTrait;
 
+    #[\Override]
     public function init(): void
     {
         $this->fields = [
