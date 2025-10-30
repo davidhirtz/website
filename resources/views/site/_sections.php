@@ -19,11 +19,11 @@ use davidhirtz\yii2\skeleton\web\View;
     <?php
     foreach ($sections as $section) {
         ?>
-        <section class="<?= $section->getCssClass(); ?> animate" id="<?= $section->getHtmlId(); ?>" data-animation="fade-in">
+        <section class="<?= $section->getCssClass(); ?>" id="<?= $section->getHtmlId(); ?>">
             <?= Gallery::widget(['section' => $section]); ?>
             <?php if ($content = $section->getVisibleAttribute('content')) {
                 ?>
-                <div class="prose">
+                <div class="prose animate observe" data-animation="fade-in">
                     <?= $content; ?>
                 </div>
                 <?php
