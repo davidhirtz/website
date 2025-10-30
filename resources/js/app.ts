@@ -4,6 +4,7 @@ import observe from "./app/observer.ts";
 import render from "./app/router.ts";
 
 import "../css/app.css";
+import nav from "./app/nav.ts";
 
 export default (cookieDomain: string, tagId: string) => {
     if (cookieDomain) {
@@ -19,7 +20,9 @@ export default (cookieDomain: string, tagId: string) => {
     }
 
     render(($container) => {
-        console.log('App initialized', $container);
+        console.log($container);
+
+        nav();
         observe();
     });
 };

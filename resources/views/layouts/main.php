@@ -11,9 +11,18 @@ use app\helpers\Html;
 use app\widgets\NavItems;
 use davidhirtz\yii2\skeleton\web\View;
 use davidhirtz\yii2\skeleton\widgets\AdminButton;
+use yii\helpers\Json;
 use yii\helpers\Url;
 
-Yii::$app->get('vite')->register('/resources/js/app.ts');
+$url = Yii::$app->get('vite')->getScriptUrl('/resources/js/app.ts');
+
+$arguments = implode(',', [
+    Json::htmlEncode(Yii::$app->params['cookieDomain'] ?? null),
+    Json::htmlEncode(Yii::$app->params['gtagId'] ?? null),
+]);
+
+$js = "import i from \"$url\"; i($arguments);";
+$this->registerJs($js, $this::POS_MODULE, 'main');
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -38,14 +47,18 @@ Yii::$app->get('vite')->register('/resources/js/app.ts');
                 <?php foreach (NavItems::getMainMenuItems() as $entry) {
                     ?>
                     <li>
-                        <?= Html::link($entry); ?>
+                        <?= Html::link($entry, [
+                            'class' => 'nav-link active:underline',
+                        ]); ?>
                         <?php if ($children = NavItems::getSubmenuItems($entry)) {
                             ?>
-                            <ul class="grid gap-2 pr-4">
+                            <ul class="grid gap-2 p-4">
                                 <?php foreach ($children as $child) {
                                     ?>
                                     <li>
-                                        <?= Html::link($child); ?>
+                                        <?= Html::link($child, [
+                                            'class' => 'nav-link active:underline',
+                                        ]); ?>
                                     </li>
                                     <?php
                                 }
@@ -62,14 +75,15 @@ Yii::$app->get('vite')->register('/resources/js/app.ts');
     <main class="grow p-sm">
         <?= $content; ?>
     </main>
-    </main>
     <footer class="p-sm">
         <nav>
             <ul class="flex flex-wrap gap-2">
                 <?php foreach (NavItems::getFooterItems() as $entry) {
                     ?>
                     <li>
-                        <?= Html::link($entry); ?>
+                        <?= Html::link($entry, [
+                            'class' => 'nav-link active:underline',
+                        ]); ?>
                     </li>
                     <?php
                 } ?>
