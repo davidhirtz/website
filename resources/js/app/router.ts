@@ -1,14 +1,16 @@
-export default (render: ($container: HTMLElement) => void) => {
+export default (parseContent: ($container: HTMLElement) => void) => {
     const $container = document.querySelector('main') as HTMLElement;
 
     const cache: Map<string, string> = new Map();
-    const positions: Map<string, { x: number, y: number }> = new Map();
+    const scrollPositions: Map<string, { x: number, y: number }> = new Map();
 
     const loadPage = (useCache: boolean = true) => {
         if (useCache && cache.has(location.href)) {
             renderContent();
             return;
         }
+
+        fetching = true;
 
         fetchUrl(location.href).then(async response => {
             if (response.status >= 300 && response.status < 400) {
@@ -26,10 +28,12 @@ export default (render: ($container: HTMLElement) => void) => {
                 await cacheResponse(location.href, response);
                 renderContent();
             }
+
+            fetching = false;
         });
     }
 
-    const preloadOnHover = ($el: HTMLElement) => {
+    const attachPreloadOnHoverEvents = ($el: HTMLElement) => {
         $el.querySelectorAll('a').forEach($link => {
             if (isInvalidLinkTag($link)) {
                 return;
@@ -37,14 +41,23 @@ export default (render: ($container: HTMLElement) => void) => {
 
             const url = new URL($link.href);
 
-            $link.addEventListener('mouseenter', () => {
+            const onHover = () => {
                 if (!isSamePage(url) && !cache.has(url.href)) {
                     hoverTimeoutId = setTimeout(() => {
-                        fetchUrl(url.href).then(response => void cacheResponse(url.href, response));
+                        if (!fetching) {
+                            fetchUrl(url.href).then(response => {
+                                if (response.ok) {
+                                    void cacheResponse(url.href, response);
+                                } else {
+                                    $link.removeEventListener('mouseenter', onHover);
+                                }
+                            });
+                        }
                     }, 200);
                 }
-            });
+            }
 
+            $link.addEventListener('mouseenter', onHover);
             $link.addEventListener('mouseleave', () => clearTimeout(hoverTimeoutId));
         });
     }
@@ -76,7 +89,7 @@ export default (render: ($container: HTMLElement) => void) => {
             return;
         }
 
-        positions.set(referrer, {
+        scrollPositions.set(referrer, {
             x: window.scrollX,
             y: window.scrollY,
         });
@@ -84,11 +97,11 @@ export default (render: ($container: HTMLElement) => void) => {
         $el.innerHTML = html;
 
         normalizeScriptTags($el);
-        render($el);
-        preloadOnHover($container);
+        parseContent($el);
+        attachPreloadOnHoverEvents($container);
 
-        const hasPrevPos = isPopState && positions.has(location.href);
-        const position = hasPrevPos ? positions.get(location.href)! : {x: 0, y: 0};
+        const hasPrevPos = isPopState && scrollPositions.has(location.href);
+        const position = hasPrevPos ? scrollPositions.get(location.href)! : {x: 0, y: 0};
 
         window.scrollTo(position.x, position.y);
         scrollToPath(location);
@@ -138,6 +151,7 @@ export default (render: ($container: HTMLElement) => void) => {
     let isPopState: boolean = false;
     let referrer: string = location.href;
     let hoverTimeoutId: number;
+    let fetching: boolean = false;
 
     window.addEventListener('popstate', (e: PopStateEvent) => {
         isPopState = true;
@@ -181,6 +195,6 @@ export default (render: ($container: HTMLElement) => void) => {
         }
     });
 
-    render($container);
-    preloadOnHover(document.body);
+    parseContent($container);
+    attachPreloadOnHoverEvents(document.body);
 };
