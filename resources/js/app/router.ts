@@ -34,6 +34,10 @@ export default (parseContent: ($container: HTMLElement) => void) => {
     }
 
     const attachPreloadOnHoverEvents = ($el: HTMLElement) => {
+        if (window.matchMedia('(hover:none)').matches) {
+            return;
+        }
+
         $el.querySelectorAll('a').forEach($link => {
             if (isInvalidLinkTag($link)) {
                 return;
