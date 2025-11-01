@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace app\modules\admin\widgets\grids;
 
 use davidhirtz\yii2\cms\modules\admin\widgets\grids\columns\MenuColumn;
+use Override;
 
-class EntryGridView extends \davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView
+final class EntryGridView extends \davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView
 {
-    #[\Override]
+    #[Override]
     public function init(): void
     {
         $this->columns = [

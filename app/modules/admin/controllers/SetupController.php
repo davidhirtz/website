@@ -11,7 +11,7 @@ use Yii;
  * Setup default entries via the backend.
  * @noinspection PhpUnused
  */
-class SetupController extends \davidhirtz\yii2\cms\modules\admin\controllers\SetupController
+final class SetupController extends \davidhirtz\yii2\cms\modules\admin\controllers\SetupController
 {
     use ModuleTrait;
 
@@ -25,7 +25,7 @@ class SetupController extends \davidhirtz\yii2\cms\modules\admin\controllers\Set
         return [
             [
                 'name' => 'Home',
-                'slug' => static::getModule()->entryIndexSlug,
+                'slug' => self::getModule()->entryIndexSlug,
                 'title' => Yii::$app->name,
             ],
         ];

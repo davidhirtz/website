@@ -7,16 +7,17 @@ namespace app\modules\admin\widgets\forms;
 use app\models\Entry;
 use davidhirtz\yii2\cms\modules\admin\widgets\forms\traits\FooterFieldTrait;
 use davidhirtz\yii2\cms\modules\admin\widgets\forms\traits\MenuFieldTrait;
+use Override;
 
 /**
  * @property Entry $model
  */
-class EntryActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm
+final class EntryActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm
 {
     use MenuFieldTrait;
     use FooterFieldTrait;
 
-    #[\Override]
+    #[Override]
     public function init(): void
     {
         $this->fields = [

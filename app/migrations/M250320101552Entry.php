@@ -13,7 +13,7 @@ use yii\db\Migration;
  * @noinspection PhpUnused
  */
 
-class M250320101552Entry extends Migration
+final class M250320101552Entry extends Migration
 {
     use MigrationTrait;
     use MenuColumnTrait;

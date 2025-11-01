@@ -10,7 +10,7 @@ use davidhirtz\yii2\skeleton\web\ErrorAction;
 use Override;
 use Yii;
 
-class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
+final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
 {
     use AjaxRouteTrait;
 

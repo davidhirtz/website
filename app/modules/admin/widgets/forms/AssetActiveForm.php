@@ -9,7 +9,7 @@ use app\models\Asset;
 /**
  * @property Asset $model
  */
-class AssetActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\AssetActiveForm
+final class AssetActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\AssetActiveForm
 {
     #[\Override]
     public function init(): void

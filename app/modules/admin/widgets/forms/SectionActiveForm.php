@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace app\modules\admin\widgets\forms;
 
 use app\models\Section;
+use Override;
 
 /**
  * @property Section $model
  */
-class SectionActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\SectionActiveForm
+final class SectionActiveForm extends \davidhirtz\yii2\cms\modules\admin\widgets\forms\SectionActiveForm
 {
-    #[\Override]
+    #[Override]
     public function init(): void
     {
         $this->fields ??= [
