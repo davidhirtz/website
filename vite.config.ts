@@ -18,6 +18,7 @@ export default defineConfig(({}) => ({
             input: {
                 'app': './resources/js/app.ts',
             },
+            preserveEntrySignatures: 'strict',
         },
     },
     css: {

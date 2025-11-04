@@ -65,13 +65,13 @@ return [
     ],
     'modules' => [
         'cms' => [
-            'enableNestedEntries' => true,
-            'enableSectionEntries' => true,
             'controllerMap' => [
                 'site' => [
                     'class' => SiteController::class,
                 ],
             ],
+            'enableNestedEntries' => true,
+            'enableSectionEntries' => true,
         ],
         'media' => [
             'breakpoints' => [
