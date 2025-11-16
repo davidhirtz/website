@@ -29,7 +29,7 @@ $this->registerJs($js, $this::POS_MODULE, 'main');
     <html lang="<?= $this->getHtmlLangAttribute(); ?>">
     <head>
         <meta charset="<?= Yii::$app->charset; ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
         <?= Html::csrfMetaTags(); ?>
         <title><?= Html::encode($this->getDocumentTitle()); ?></title>
         <link rel="canonical" href="<?= Url::current([], true); ?>">
