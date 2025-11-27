@@ -62,7 +62,7 @@ $this->registerJs($js, $this::POS_MODULE, 'main');
                                     </li>
                                     <?php
                                 }
-                            ?>
+                                ?>
                             </ul>
                             <?php
                         } ?>
