@@ -6,6 +6,7 @@ namespace app\widgets;
 
 use app\helpers\Html;
 use app\models\Asset;
+use Override;
 
 /**
  * @property Asset $asset
@@ -14,7 +15,7 @@ final class Canvas extends \davidhirtz\yii2\cms\widgets\Canvas
 {
     public array $wrapperOptions = ['class' => 'canvas relative'];
 
-    #[\Override]
+    #[Override]
     public function init(): void
     {
         if ($cssClass = $this->asset->getCssClass()) {

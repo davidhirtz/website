@@ -55,7 +55,7 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
     {
         $options['pictureOptions']['imgOptions']['loading'] ??= self::$count > 3 ? 'lazy' : false;
 
-        if (self::$count > 3 && self::$count < 5) {
+        if (self::$count < 3) {
             $options['pictureOptions']['imgOptions']['fetchpriority'] ??= 'high';
         }
 
