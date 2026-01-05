@@ -7,6 +7,7 @@ namespace app\widgets;
 use app\helpers\Html;
 use app\models\Asset;
 use app\models\Section;
+use Override;
 
 /**
  * @template-extends \davidhirtz\yii2\cms\widgets\Gallery<Asset>
@@ -18,7 +19,7 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
 
     private static int $count = 0;
 
-    #[\Override]
+    #[Override]
     public function init(): void
     {
         $this->assets ??= $this->section?->getVisibleAssets() ?? [];
@@ -31,7 +32,7 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
         parent::init();
     }
 
-    #[\Override]
+    #[Override]
     public function run(): string
     {
         return $this->assets
@@ -39,7 +40,7 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
             : '';
     }
 
-    #[\Override]
+    #[Override]
     protected function renderAssetsInternal(array $assets): string
     {
         $content = array_reduce(
