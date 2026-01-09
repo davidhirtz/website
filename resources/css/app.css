@@ -1,19 +1,19 @@
-@import './base/fonts.css';
+@import "./base/fonts.css";
 
 @import "tailwindcss/theme.css";
-@import './base/theme.css';
+@import "./base/theme.css";
 
 @import "./base/preflight.css";
 
-@import './base/html.css';
-@import './base/typography.css';
-@import './base/header.css';
-@import './base/main.css';
+@import "./base/html.css";
+@import "./base/typography.css";
+@import "./base/header.css";
+@import "./base/main.css";
 
-@import './components/cc.css';
+@import "./components/cc.css";
 
-@import './utilities/animations.css';
-@import './utilities/overlay.css';
+@import "./utilities/animations.css";
+@import "./utilities/overlay.css";
 
 @import "tailwindcss/utilities.css";
 
