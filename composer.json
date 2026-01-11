@@ -6,6 +6,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
+    "php": "^8.3",
     "davidhirtz/yii2-anakin": "^2.1",
     "davidhirtz/yii2-cms": "^2.4",
     "davidhirtz/yii2-vite": "^0.4"
@@ -36,9 +37,6 @@
   "config": {
     "allow-plugins": {
       "yiisoft/yii2-composer": true
-    },
-    "platform": {
-      "php": "8.3"
     }
   },
   "repositories": [

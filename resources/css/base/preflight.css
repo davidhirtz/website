@@ -16,6 +16,11 @@
     border: 0 solid; /* 3 */
 }
 
+*:focus-visible{
+    outline: 0.125rem solid currentColor;
+    outline-offset: 0.25rem;
+}
+
 /*
   1. Use a consistent sensible line-height in all browsers.
   2. Prevent adjustments of font size after orientation changes in iOS.
