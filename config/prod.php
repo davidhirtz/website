@@ -11,7 +11,6 @@ use davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm;
 use davidhirtz\yii2\cms\modules\admin\widgets\forms\SectionActiveForm;
 use davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView;
 use davidhirtz\yii2\cms\widgets\Canvas;
-use davidhirtz\yii2\cms\widgets\MetaTags;
 use davidhirtz\yii2\skeleton\assets\AdminAsset;
 use davidhirtz\yii2\skeleton\validators\HtmlValidator;
 use davidhirtz\yii2\vite\components\Vite;
@@ -55,9 +54,6 @@ return [
                 'allowedHtmlTags' => ['h1', 'h2', 'h3'],
                 'allowedClasses' => ['btn'],
                 'removeUnnecessarySpanTags' => true,
-            ],
-            MetaTags::class => [
-                'transformationName' => 'md',
             ],
             Section::class => \app\models\Section::class,
             SectionActiveForm::class => \app\modules\admin\widgets\forms\SectionActiveForm::class,
