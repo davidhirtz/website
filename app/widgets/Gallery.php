@@ -17,8 +17,6 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
     public ?Section $section = null;
     public array $canvasOptions = [];
 
-    private static int $count = 0;
-
     #[Override]
     public function init(): void
     {
@@ -54,14 +52,6 @@ final class Gallery extends \davidhirtz\yii2\cms\widgets\Gallery
 
     protected function renderCanvas(Asset $asset, array $options): string
     {
-        $options['pictureOptions']['imgOptions']['loading'] ??= self::$count > 3 ? 'lazy' : false;
-
-        if (self::$count < 3) {
-            $options['pictureOptions']['imgOptions']['fetchpriority'] ??= 'high';
-        }
-
-        self::$count++;
-
         return Canvas::widget([
             ...$options,
             'asset' => $asset,
