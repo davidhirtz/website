@@ -13,11 +13,6 @@ parameters:
 
     paths:
         - app
-        - tests
-
-    excludePaths:
-        - tests/_output/*
-        - tests/support/*
 
     scanFiles:
         - vendor/davidhirtz/yii2-skeleton/Yii.php

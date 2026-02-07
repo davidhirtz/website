@@ -14,7 +14,7 @@ use Override;
 final class Canvas extends \davidhirtz\yii2\cms\widgets\Canvas
 {
     public array $wrapperOptions = ['class' => 'canvas relative'];
-    private static int $counter = 0;
+    private static int $count = 0;
 
     #[Override]
     public function init(): void
@@ -23,11 +23,13 @@ final class Canvas extends \davidhirtz\yii2\cms\widgets\Canvas
             Html::addCssClass($this->wrapperOptions, $cssClass);
         }
 
-        $this->pictureOptions['imgOptions']['loading'] ??= self::$counter++ > 3 ? 'lazy' : 'eager';
+        $this->pictureOptions['imgOptions']['loading'] ??= self::$count > 3 ? 'lazy' : false;
 
-        if (self::$counter < 3) {
+        if (self::$count < 3) {
             $this->pictureOptions['imgOptions']['fetchpriority'] ??= 'high';
         }
+
+        self::$count++;
 
         parent::init();
     }

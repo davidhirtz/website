@@ -11,7 +11,6 @@ return function (ECSConfig $ecsConfig): void {
     $ecsConfig->paths([
         __DIR__ . '/app',
         __DIR__ . '/resources/views',
-        __DIR__ . '/tests',
     ]);
 
     $ecsConfig->sets([
