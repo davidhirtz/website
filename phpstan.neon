@@ -1,7 +1,4 @@
 parameters:
-    bootstrapFiles:
-        - tests/bootstrap.php
-
     dynamicConstantNames:
         - YII_DEBUG
         - YII_ENV

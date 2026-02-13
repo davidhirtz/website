@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace app\models;
 
+use Override;
 use Yii;
 
 /**
@@ -15,6 +16,7 @@ final class Section extends \davidhirtz\yii2\cms\models\Section
     public const int TYPE_COLUMN = self::TYPE_DEFAULT;
     public const int TYPE_FULL_WIDTH = 2;
 
+    #[Override]
     public static function getTypes(): array
     {
         return [

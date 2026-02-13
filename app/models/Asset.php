@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace app\models;
 
 use davidhirtz\yii2\media\models\traits\MetaImageTrait;
+use Override;
 
 final class Asset extends \davidhirtz\yii2\cms\models\Asset
 {
@@ -30,8 +31,9 @@ final class Asset extends \davidhirtz\yii2\cms\models\Asset
         ];
     }
 
+    #[Override]
     public function isAttributeVisible(string $attribute): bool
     {
-        return !in_array($attribute, $this->getVisibleAttributes());
+        return !in_array($attribute, $this->getVisibleAttributes(), true);
     }
 }

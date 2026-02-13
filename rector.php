@@ -37,5 +37,4 @@ return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/app',
         __DIR__ . '/resources/views',
-        __DIR__ . '/tests',
     ]);

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace app\controllers;
 
+use davidhirtz\yii2\cms\Module;
 use davidhirtz\yii2\skeleton\controllers\traits\AjaxRouteTrait;
 use davidhirtz\yii2\skeleton\filters\PageCache;
 use davidhirtz\yii2\skeleton\web\ErrorAction;
 use Override;
 use Yii;
+use yii\base\Action;
 
 final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
 {
