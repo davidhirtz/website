@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "504ad3c673326c71cf30e0e9daf1be7b",
+    "content-hash": "34de26631a28fd296d0fb851d7fd6659",
     "packages": [
         {
             "name": "bower-asset/jquery",
             "version": "3.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "fde1f76e2799dd877c176abde0ec836553246991"
             },
             "dist": {
@@ -333,16 +333,16 @@
         },
         {
             "name": "davidhirtz/yii2-skeleton",
-            "version": "2.6.6",
+            "version": "2.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-skeleton.git",
-                "reference": "40ec77b09a28489c86723e3d37abdae07ddebf2e"
+                "reference": "5cb0ca130e076aa50213debe982a53484352e1c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/40ec77b09a28489c86723e3d37abdae07ddebf2e",
-                "reference": "40ec77b09a28489c86723e3d37abdae07ddebf2e",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/5cb0ca130e076aa50213debe982a53484352e1c7",
+                "reference": "5cb0ca130e076aa50213debe982a53484352e1c7",
                 "shasum": ""
             },
             "require": {
@@ -408,9 +408,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-skeleton",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-skeleton/issues",
-                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/2.6.6"
+                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/2.6.7"
             },
-            "time": "2026-01-29T08:32:21+00:00"
+            "time": "2026-02-10T11:26:44+00:00"
         },
         {
             "name": "davidhirtz/yii2-timeago",
@@ -463,26 +463,27 @@
         },
         {
             "name": "davidhirtz/yii2-vite",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-vite.git",
-                "reference": "7ccbf1610c748c9b306003329dec61c96e6cf10d"
+                "reference": "c4ce9f39c25b9ae8c6d5581851f2904abb910ac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/7ccbf1610c748c9b306003329dec61c96e6cf10d",
-                "reference": "7ccbf1610c748c9b306003329dec61c96e6cf10d",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/c4ce9f39c25b9ae8c6d5581851f2904abb910ac6",
+                "reference": "c4ce9f39c25b9ae8c6d5581851f2904abb910ac6",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.0",
+                "php": "^8.3",
                 "yiisoft/yii2": "^2.0"
             },
             "require-dev": {
-                "rector/rector": "^1.0",
-                "symfony/var-dumper": "^6.3",
-                "symplify/easy-coding-standard": "^12.0"
+                "rector/rector": "^2.0",
+                "symfony/var-dumper": "^7.4",
+                "symplify/easy-coding-standard": "^13.0"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -504,9 +505,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-vite",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-vite/issues",
-                "source": "https://github.com/davidhirtz/yii2-vite/tree/0.4.0"
+                "source": "https://github.com/davidhirtz/yii2-vite/tree/0.5.0"
             },
-            "time": "2024-07-29T20:59:47+00:00"
+            "time": "2026-02-17T07:15:38+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -2860,16 +2861,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "7.9.1",
+            "version": "7.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "3d6219296c9a92c87337bb38fb502a469ac1167f"
+                "reference": "f05e38fecf76287442dd3301786955a83bbe954f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/3d6219296c9a92c87337bb38fb502a469ac1167f",
-                "reference": "3d6219296c9a92c87337bb38fb502a469ac1167f",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/f05e38fecf76287442dd3301786955a83bbe954f",
+                "reference": "f05e38fecf76287442dd3301786955a83bbe954f",
                 "shasum": ""
             },
             "type": "component",
@@ -2913,9 +2914,9 @@
                 "wysiwyg"
             ],
             "support": {
-                "source": "https://github.com/tinymce/tinymce-dist/tree/7.9.1"
+                "source": "https://github.com/tinymce/tinymce-dist/tree/7.9.2"
             },
-            "time": "2025-05-29T02:22:36+00:00"
+            "time": "2026-02-11T03:44:54+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -3562,11 +3563,11 @@
     "packages-dev": [
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.38",
+            "version": "2.1.39",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/dfaf1f530e1663aa167bc3e52197adb221582629",
-                "reference": "dfaf1f530e1663aa167bc3e52197adb221582629",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c6f73a2af4cbcd99c931d0fb8f08548cc0fa8224",
+                "reference": "c6f73a2af4cbcd99c931d0fb8f08548cc0fa8224",
                 "shasum": ""
             },
             "require": {
@@ -3611,7 +3612,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-01-30T17:12:46+00:00"
+            "time": "2026-02-11T14:48:56+00:00"
         },
         {
             "name": "rector/rector",

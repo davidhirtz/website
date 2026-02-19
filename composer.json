@@ -7,7 +7,7 @@
     "php": "^8.3",
     "davidhirtz/yii2-anakin": "^2.1",
     "davidhirtz/yii2-cms": "^2.4",
-    "davidhirtz/yii2-vite": "^0.4"
+    "davidhirtz/yii2-vite": "^0.5"
   },
   "require-dev": {
     "rector/rector": "^2.0",

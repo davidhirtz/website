@@ -32,39 +32,42 @@ export default (parseContent: ($container: HTMLElement) => void) => {
             fetching = false;
         });
     }
-
     const attachPreloadOnHoverEvents = ($el: HTMLElement) => {
         if (window.matchMedia('(hover:none)').matches) {
             return;
         }
 
-        $el.querySelectorAll('a').forEach($link => {
-            if (isInvalidLinkTag($link)) {
+        $el.addEventListener('mouseover', (e: MouseEvent) => {
+            const $link = (e.target as HTMLElement).closest('a');
+
+            if (!$link || isInvalidLinkTag($link)) {
                 return;
             }
 
             const url = new URL($link.href);
 
-            const onHover = () => {
-                if (!isSamePage(url) && !cache.has(url.href)) {
-                    hoverTimeoutId = setTimeout(() => {
-                        if (!fetching) {
-                            fetchUrl(url.href).then(response => {
-                                if (response.ok) {
-                                    void cacheResponse(url.href, response);
-                                } else {
-                                    $link.removeEventListener('mouseenter', onHover);
-                                }
-                            });
-                        }
-                    }, 200);
-                }
-            }
+            if (!isSamePage(url) && !cache.has(url.href)) {
+                clearTimeout(hoverTimeoutId);
 
-            $link.addEventListener('mouseenter', onHover);
-            $link.addEventListener('mouseleave', () => clearTimeout(hoverTimeoutId));
+                hoverTimeoutId = setTimeout(() => {
+                    if (!fetching) {
+                        fetchUrl(url.href).then(response => {
+                            if (!response.ok) {
+                                $link.setAttribute('data-refresh', '');
+                            } else {
+                                void cacheResponse(url.href, response);
+                            }
+                        });
+                    }
+                }, 200);
+            }
+        });
+
+        $el.addEventListener('mouseout', () => {
+            clearTimeout(hoverTimeoutId);
         });
     }
+
 
     const fetchUrl = (url: string) => {
         return fetch(url, {
@@ -83,7 +86,6 @@ export default (parseContent: ($container: HTMLElement) => void) => {
             cache.delete(firstKey);
         }
     }
-
     const renderContent = () => {
         const html = cache.get(location.href);
         const $el = $container;
@@ -102,7 +104,6 @@ export default (parseContent: ($container: HTMLElement) => void) => {
 
         normalizeScriptTags($el);
         parseContent($el);
-        attachPreloadOnHoverEvents($container);
 
         const hasPrevPos = isPopState && scrollPositions.has(location.href);
         const position = hasPrevPos ? scrollPositions.get(location.href)! : {x: 0, y: 0};
@@ -113,6 +114,7 @@ export default (parseContent: ($container: HTMLElement) => void) => {
         referrer = location.href;
         isPopState = false;
     }
+
 
     const normalizeScriptTags = ($el: HTMLElement) => {
 
