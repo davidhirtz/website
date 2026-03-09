@@ -16,14 +16,12 @@ use davidhirtz\yii2\skeleton\web\ErrorAction;
 use davidhirtz\yii2\skeleton\web\View;
 
 ?>
-<div class="wrap mx-auto">
-    <div class="section p-vsm">
-        <div class="prose">
-           <?= $this->render('@skeleton/views/error', [
-                'email' => $email,
-                'exception' => $exception,
-                'message' => $message,
-                'name' => $name,
-           ]); ?>
+<section class="p-md">
+    <div class="prose">
+        <?= $this->render('@skeleton/views/error', [
+            'email' => $email,
+            'exception' => $exception,
+            'message' => $message,
+            'name' => $name,
+        ]); ?>
     </div>
-</div>

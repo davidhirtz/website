@@ -17,8 +17,7 @@ use davidhirtz\yii2\skeleton\web\View;
 
 ?>
 <div class="flex flex-wrap justify-center">
-    <?php
-    foreach ($sections as $section) {
+    <?php foreach ($sections as $section) {
         ?>
         <section class="<?= $section->getCssClass(); ?>" id="<?= $section->getHtmlId(); ?>">
             <?= Gallery::widget(['section' => $section]); ?>

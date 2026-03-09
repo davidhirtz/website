@@ -11,18 +11,8 @@ use app\helpers\Html;
 use app\widgets\NavItems;
 use davidhirtz\yii2\skeleton\web\View;
 use davidhirtz\yii2\skeleton\widgets\AdminButton;
-use yii\helpers\Json;
 use yii\helpers\Url;
 
-$url = Yii::$app->get('vite')->getScriptUrl('/resources/js/app.ts');
-
-$arguments = implode(',', [
-    Json::htmlEncode(Yii::$app->params['cookieDomain'] ?? null),
-    Json::htmlEncode(Yii::$app->params['gtagId'] ?? null),
-]);
-
-$js = "import i from \"$url\"; i($arguments);";
-$this->registerJs($js, $this::POS_MODULE, 'main');
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -62,7 +52,7 @@ $this->registerJs($js, $this::POS_MODULE, 'main');
                                     </li>
                                     <?php
                                 }
-                            ?>
+                                ?>
                             </ul>
                             <?php
                         } ?>
