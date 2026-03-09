@@ -1,8 +1,8 @@
 .animate {
-    animation: 1s forwards;
+    /* Don't use "animation" short-hand here as Vite will remove the value on build */
+    animation-duration: 1s;
     animation-fill-mode: both;
     will-change: opacity;
-    transform-origin: top left;
 
     &.observe {
         visibility: hidden;
