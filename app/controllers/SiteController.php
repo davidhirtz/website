@@ -45,11 +45,8 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
     #[Override]
     public function init(): void
     {
+        $this->getView()->on(View::EVENT_BEFORE_RENDER, $this->onBeforeRender(...));
         parent::init();
-
-        if (!$this->request->getIsAjaxRoute()) {
-            $this->getView()->on(View::EVENT_BEFORE_RENDER, $this->onBeforeRender(...));
-        }
     }
 
     #[Override]
@@ -67,6 +64,10 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
 
     private function onBeforeRender(): void
     {
+        if ($this->request->getIsAjaxRoute()) {
+            return;
+        }
+
         $url = Yii::$app->get('vite')->getScriptUrl('/resources/js/app.ts');
 
         $arguments = implode(',', array_map(Json::htmlEncode(...), [

@@ -30,7 +30,7 @@ $categories = [
                     <cc-button class="grid items-center bg-black p-2 w-full text-white/80 hover:bg-white hover:text-black transition-colors cursor-pointer" data-categories="required" role="button">
                         <?= Yii::t('app', 'Essential only') ?>
                     </cc-button>
-                    <cc-button class="grid items-center bg-black p-2 w-full font-bold hover:bg-white hover:text-black transition-colors cursor-pointer" tabindex="2" role="button">
+                    <cc-button class="grid items-center bg-black p-2 w-full font-bold hover:bg-white hover:text-black transition-colors cursor-pointer" role="button">
                         <?= Yii::t('app', 'Allow all') ?>
                     </cc-button>
                 </div>

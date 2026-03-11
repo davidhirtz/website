@@ -25,7 +25,6 @@ final class Section extends \davidhirtz\yii2\cms\models\Section
                 'cssClass' => 'relative grid gap-sm w-full sm:w-1/2',
                 'hiddenFields' => [],
                 'sizes' => '(max-width:767px) 100vw, 50vw',
-                'transformations' => [],
             ],
             self::TYPE_FULL_WIDTH => [
                 'name' => Yii::t('app', 'Full width'),
