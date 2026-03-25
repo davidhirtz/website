@@ -25,7 +25,7 @@ use yii\helpers\Html;
                 ]); ?>
             </p>
             <p>
-                <button class="btn video cc-button" data-consent="marketing" data-iframe-src="<?= $link; ?>"><?= Yii::t('app', 'Accept cookies') ?></button>
+                <cc-button class="btn video cc-button" data-categories="required,marketing" data-iframe-src="<?= $link; ?>" role="button"><?= Yii::t('app', 'Accept cookies') ?></cc-button>
             </p>
         </div>
     </div>
