@@ -7,10 +7,8 @@ namespace app\controllers;
 use davidhirtz\yii2\skeleton\controllers\traits\AjaxRouteTrait;
 use davidhirtz\yii2\skeleton\filters\PageCache;
 use davidhirtz\yii2\skeleton\web\ErrorAction;
-use davidhirtz\yii2\skeleton\web\View;
 use Override;
 use Yii;
-use yii\helpers\Json;
 
 final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
 {
@@ -43,13 +41,6 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
     }
 
     #[Override]
-    public function init(): void
-    {
-        $this->getView()->on(View::EVENT_BEFORE_RENDER, $this->onBeforeRender(...));
-        parent::init();
-    }
-
-    #[Override]
     public function beforeAction($action): bool
     {
         Yii::$app->getErrorHandler()->errorAction = 'site/error';
@@ -62,19 +53,17 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
         return parent::beforeAction($action);
     }
 
-    private function onBeforeRender(): void
+    public function renderContent($content): string
     {
         if ($this->request->getIsAjaxRoute()) {
-            return;
+            return $this->renderAjaxRouteContent($content);
         }
 
-        $url = Yii::$app->get('vite')->getScriptUrl('/resources/js/app.ts');
-
-        $arguments = implode(',', array_map(Json::htmlEncode(...), [
+        $this->getView()->registerJsModule(Yii::$app->get('vite')->getScriptUrl('/resources/js/app.ts'), [
             Yii::$app->params['cookieDomain'] ?? null,
             Yii::$app->params['gtagId'] ?? null,
-        ]));
+        ]);
 
-        $this->getView()->registerJs("import i from \"$url\"; i($arguments);", View::POS_MODULE, 'main');
+        return parent::renderContent($content);
     }
 }
