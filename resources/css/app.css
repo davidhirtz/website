@@ -17,6 +17,14 @@
 
 @custom-variant active (&.active);
 
+@custom-variant menu {
+    @media (width < 1024px) {
+        .has-menu & {
+            @slot;
+        }
+    }
+}
+
 @source not inline("filter");
 
 @source "../../app/helpers/*.php";

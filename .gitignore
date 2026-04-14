@@ -1,9 +1,5 @@
-# PHP
-/packages
+# Dependencies
 /vendor
-composer.phar
-
-# NPM
 /node_modules
 
 # Application
