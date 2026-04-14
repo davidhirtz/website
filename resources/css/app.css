@@ -9,6 +9,7 @@
 @import "./base/typography.css";
 
 @import "./components/cc.css";
+@import "./components/embed.css";
 
 @import "./utilities/animations.css";
 @import "./utilities/overlay.css";

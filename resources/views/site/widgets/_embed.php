@@ -3,32 +3,30 @@
 declare(strict_types=1);
 
 /**
- * @var string $link
+ * @var Asset $asset
  */
 
+use app\models\Asset;
 use yii\helpers\Html;
 
 ?>
-<button class="video overlay" data-iframe-src="<?= $link; ?>">
-    <span class="video-btn"></span>
+<button class="embed:hidden group place-content-center cursor-pointer" data-embed-src="<?= $asset->getFormattedEmbedUrl(); ?>">
+    <span class="embed-play absolute w-12 aspect-square rounded-full bg-white group-hover:bg-brand"></span>
 </button>
-<div class="video-cc align-center hidden">
-    <div class="video-cc-text box text-center small">
-        <div class="text">
-            <p class="strong"><?= Yii::t('app', 'External content') ?></p>
-            <p>
-                <?= Yii::t('app', 'Please accept cookies to load this external video. More information can be found in our {policy}.', [
-                    'policy' => Html::a(Yii::t('app', 'privacy policy'), '/privacy', [
-                        'target' => '_blank',
-                        'rel' => 'nofollow',
-                    ]),
-                ]); ?>
-            </p>
-            <p>
-                <cc-button class="btn video cc-button" data-categories="required,marketing" data-iframe-src="<?= $link; ?>" role="button"><?= Yii::t('app', 'Accept cookies') ?></cc-button>
-            </p>
-        </div>
+<div data-embed-cc class="embed:block hidden place-content-center align-center p-4">
+    <div class="text-center small prose">
+        <p class="font-bold"><?= Yii::t('app', 'External content') ?></p>
+        <p>
+            <?= Yii::t('app', 'Please accept cookies to load this external video. More information can be found in our {policy}.', [
+                'policy' => Html::a(Yii::t('app', 'privacy policy'), '/privacy', [
+                    'target' => '_blank',
+                    'rel' => 'nofollow',
+                ]),
+            ]); ?>
+        </p>
+        <p>
+            <cc-button class="btn cursor-pointer" data-categories="required,external" role="button"><?= Yii::t('app', 'Accept cookies') ?></cc-button>
+        </p>
     </div>
 </div>
-
-<iframe class="video-iframe overlay" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe allow="autoplay; encrypted-media" allowfullscreen hidden></iframe>

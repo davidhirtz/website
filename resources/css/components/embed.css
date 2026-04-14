@@ -1,0 +1,18 @@
+.embed-play {
+    translate: -50% -50%;
+    background-image: url(/images/site/play.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color .3s;
+}
+
+.embedded {
+    background-color: #dedfd6;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.embedded > img {
+    opacity: 0;
+}
+
+@custom-variant embed (.embedded &);

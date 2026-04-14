@@ -14,6 +14,7 @@ export default defineConfig(({}) => ({
         },
         rollupOptions: {
             external: [
+                '/images/site/play.svg',
             ],
             input: {
                 'app': './resources/js/app.ts',

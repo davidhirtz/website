@@ -7,6 +7,7 @@ import {config, subscribe} from './app/consent';
 import "./app/components/ToggleButton.ts";
 
 import "../css/app.css";
+import embed from "./app/embed.ts";
 
 export default (cookieDomain: string, tagId: string) => {
     if (cookieDomain) {
@@ -21,7 +22,8 @@ export default (cookieDomain: string, tagId: string) => {
         });
     }
 
-    render((_$container) => {
+    render(($container) => {
+        embed($container);
         nav();
         observe();
     });
