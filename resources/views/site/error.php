@@ -25,3 +25,4 @@ use davidhirtz\yii2\skeleton\web\View;
             'name' => $name,
         ]); ?>
     </div>
+</section>
