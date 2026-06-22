@@ -53,6 +53,7 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
         return parent::beforeAction($action);
     }
 
+    #[Override]
     public function renderContent($content): string
     {
         if ($this->request->getIsAjaxRoute()) {

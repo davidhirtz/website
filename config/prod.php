@@ -30,6 +30,13 @@ return [
                 ],
             ],
         ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'forceTranslation' => true,
+                ],
+            ],
+        ],
         'sitemap' => [
             'models' => [
                 \app\models\Entry::class,

@@ -15,17 +15,17 @@ use yii\helpers\Html;
 </button>
 <div data-embed-cc class="embed:block hidden place-content-center align-center p-4">
     <div class="text-center small prose">
-        <p class="font-bold"><?= Yii::t('app', 'External content') ?></p>
+        <p class="font-bold"><?= Yii::t('app', 'EMBED_TITLE') ?></p>
         <p>
-            <?= Yii::t('app', 'Please accept cookies to load this external video. More information can be found in our {policy}.', [
-                'policy' => Html::a(Yii::t('app', 'privacy policy'), '/privacy', [
+            <?= Yii::t('app', 'EMBED_TEXT', [
+                'policy' => Html::a(Yii::t('app', 'EMBED_PRIVACY_LINK'), '/privacy', [
                     'target' => '_blank',
                     'rel' => 'nofollow',
                 ]),
             ]); ?>
         </p>
         <p>
-            <cc-button class="btn cursor-pointer" data-categories="required,external" role="button"><?= Yii::t('app', 'Accept cookies') ?></cc-button>
+            <cc-button class="btn cursor-pointer" data-categories="required,external" role="button"><?= Yii::t('app', 'EMBED_BUTTON_ACCEPT') ?></cc-button>
         </p>
     </div>
 </div>

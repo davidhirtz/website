@@ -78,7 +78,7 @@ use yii\helpers\Url;
                     <?php
                 } ?>
                 <li class="has-hidden:hidden">
-                    <cc-reset class="cursor-pointer"><?= Yii::t('app', 'Cookies') ?></cc-reset>
+                    <cc-reset class="cursor-pointer"><?= Yii::t('app', 'CC_RESET_COOKIES_BUTTON') ?></cc-reset>
                 </li>
             </ul>
         </nav>
