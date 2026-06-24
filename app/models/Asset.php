@@ -34,6 +34,6 @@ final class Asset extends \davidhirtz\yii2\cms\models\Asset
     #[Override]
     public function isAttributeVisible(string $attribute): bool
     {
-        return !in_array($attribute, $this->getVisibleAttributes(), true);
+        return in_array($attribute, $this->getVisibleAttributes(), true);
     }
 }
