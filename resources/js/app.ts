@@ -23,8 +23,9 @@ export default (cookieDomain: string, tagId: string) => {
     }
 
     render(($container) => {
-        embed($container);
         nav();
-        observe();
+
+        embed($container);
+        observe($container);
     });
 };

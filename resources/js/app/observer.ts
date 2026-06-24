@@ -1,6 +1,6 @@
-const observeCssClass = 'observe';
-
-const removeAttribute = ($el: HTMLElement, attribute: string) => $el.removeAttribute(attribute);
+let queue = 0;
+let isFirstRun = true;
+const delay = 120;
 
 const observer = new IntersectionObserver(function (e) {
     for (let i = 0; i < e.length; i++) {
@@ -8,33 +8,33 @@ const observer = new IntersectionObserver(function (e) {
         const $el = entry.target as HTMLVideoElement;
 
         if (entry.isIntersecting) {
-            const animation = $el.dataset.animation;
-            const delay = $el.dataset.animationDelay;
+            const animation = $el.dataset.animation || 'revealed';
             const src = $el.dataset.src;
 
-            if (animation) {
-                $el.classList.add(animation);
-                removeAttribute($el, 'data-animation');
+            setTimeout(() => {
+                $el.classList.add(animation)
+                queue = Math.max(queue - delay, 0);
+            }, queue);
 
-                if (delay) {
-                    $el.style.animationDelay = delay;
-                    removeAttribute($el, 'data-animation-delay');
-                }
-            }
+            queue = Math.min(queue + delay, 1000);
 
             if (src) {
                 $el.src = src;
             }
 
             observer.unobserve($el);
-            $el.classList.remove(observeCssClass);
         }
     }
 });
 
 
-export default () => {
+export default ($container: HTMLElement | Document) => {
     setTimeout(() => {
-        document.querySelectorAll(`.${observeCssClass}`).forEach($el => observer.observe($el));
+        if (isFirstRun) {
+            $container = document;
+            isFirstRun = false;
+        }
+
+        $container.querySelectorAll('.reveal>*').forEach($el => observer.observe($el));
     });
 }
