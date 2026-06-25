@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use app\controllers\SiteController;
-use app\modules\media\Module;
 use davidhirtz\yii2\cms\models\Asset;
 use davidhirtz\yii2\cms\models\Entry;
 use davidhirtz\yii2\cms\models\Section;
@@ -12,6 +11,7 @@ use davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm;
 use davidhirtz\yii2\cms\modules\admin\widgets\forms\SectionActiveForm;
 use davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView;
 use davidhirtz\yii2\cms\widgets\Canvas;
+use davidhirtz\yii2\media\Module;
 use davidhirtz\yii2\skeleton\assets\AdminAsset;
 use davidhirtz\yii2\skeleton\validators\HtmlValidator;
 use davidhirtz\yii2\vite\components\Vite;
@@ -78,7 +78,6 @@ return [
             'enableSectionEntries' => true,
         ],
         'media' => [
-            'class' => Module::class,
             'breakpoints' => [
                 'xs' => '(min-width:22rem)', // 352px
                 'sm' => '(min-width:48rem)', // 768px
@@ -91,4 +90,10 @@ return [
             ],
         ],
     ],
+    'on beforeRequest' => function () {
+        /** @var Module $module */
+        $module = Yii::$app->getModule('media');
+        $module->addTransformationsFromTypeOptions(\app\models\Entry::getTypes());
+        $module->addTransformationsFromTypeOptions(\app\models\Section::getTypes());
+    },
 ];
