@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use app\controllers\SiteController;
+use app\modules\media\Module;
 use davidhirtz\yii2\cms\models\Asset;
 use davidhirtz\yii2\cms\models\Entry;
 use davidhirtz\yii2\cms\models\Section;
@@ -77,6 +78,7 @@ return [
             'enableSectionEntries' => true,
         ],
         'media' => [
+            'class' => Module::class,
             'breakpoints' => [
                 'xs' => '(min-width:22rem)', // 352px
                 'sm' => '(min-width:48rem)', // 768px
