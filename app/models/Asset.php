@@ -7,6 +7,9 @@ namespace app\models;
 use davidhirtz\yii2\media\models\traits\MetaImageTrait;
 use Override;
 
+/**
+ * @property-read Entry|Section $parent
+ */
 final class Asset extends \davidhirtz\yii2\cms\models\Asset
 {
     use MetaImageTrait;

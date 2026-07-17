@@ -8,8 +8,9 @@ use Override;
 use Yii;
 
 /**
- * @property-read Entry $entry {@see static::getEntry()}
- * @property-read Entry[] $entries {@see static::getEntries()}
+ * @property-read Asset[] $assets
+ * @property-read Entry $entry
+ * @property-read Entry[] $entries
  */
 final class Section extends \davidhirtz\yii2\cms\models\Section
 {
