@@ -1,7 +1,6 @@
 import {defineConfig} from 'vite'
 import tailwindcss from "@tailwindcss/vite";
 import queryHash from 'vite-plugin-query-hash'
-// @ts-ignore-next-line
 import sortMediaQueries from 'postcss-sort-media-queries'
 
 export default defineConfig(({}) => ({
