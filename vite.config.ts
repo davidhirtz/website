@@ -1,5 +1,6 @@
 import {defineConfig} from 'vite'
 import tailwindcss from "@tailwindcss/vite";
+import queryHash from 'vite-plugin-query-hash'
 // @ts-ignore-next-line
 import sortMediaQueries from 'postcss-sort-media-queries'
 
@@ -14,10 +15,17 @@ export default defineConfig(({}) => ({
         },
         rollupOptions: {
             external: [
+                '/fonts/Moderat-Bold.woff2',
+                '/fonts/Moderat-Regular.woff2',
                 '/images/site/play.svg',
             ],
             input: {
                 'app': './resources/js/app.ts',
+            },
+            output: {
+                assetFileNames: '[name].[ext]',
+                chunkFileNames: '[name].js',
+                entryFileNames: '[name].js',
             },
             preserveEntrySignatures: 'strict',
         },
@@ -25,13 +33,12 @@ export default defineConfig(({}) => ({
     css: {
         postcss: {
             plugins: [
-                sortMediaQueries({
-                    onlyTopLevel: true,
-                }),
+                sortMediaQueries(),
             ],
         },
     },
     plugins: [
+        queryHash({queryParamValue: Math.floor(Date.now() / 60000).toString(36)}),
         tailwindcss(),
     ]
 }));

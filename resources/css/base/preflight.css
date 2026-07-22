@@ -16,7 +16,7 @@
     border: 0 solid; /* 3 */
 }
 
-*:focus-visible{
+*:focus-visible {
     outline: 0.125rem solid currentColor;
     outline-offset: 0.25rem;
 }
@@ -107,6 +107,10 @@ a {
     color: inherit;
     -webkit-text-decoration: inherit;
     text-decoration: inherit;
+}
+
+a, button {
+    transition: background-color .2s, border-color .2s, color .2s;
 }
 
 /*
@@ -270,6 +274,10 @@ textarea /*,
     border-radius: 0; /* 2 */
     background-color: transparent; /* 3 */
     opacity: 1; /* 4 */
+}
+
+button {
+    cursor: pointer;
 }
 
 /*
