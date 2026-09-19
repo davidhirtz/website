@@ -42,14 +42,20 @@
     "sort-packages": true
   },
   "scripts": {
+    "check": "bin/check",
     "cs-check": "php-cs-fixer check --diff",
     "cs-fix": "php-cs-fixer fix",
+    "install-hooks": "git config core.hooksPath .githooks",
     "phpstan": "phpstan --memory-limit=1G",
     "post-install-cmd": [
       "yii\\composer\\Installer::postInstall"
     ],
     "rector": "rector",
     "test": "phpunit"
+  },
+  "scripts-descriptions": {
+    "check": "Runs the code style, static analysis and test checks a push is gated on",
+    "install-hooks": "Points git at the committed .githooks directory, enabling the pre-push check"
   },
   "extra": {
     "yii\\composer\\Installer::postInstall": {

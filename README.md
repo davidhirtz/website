@@ -72,6 +72,25 @@ return [
 The migrations seed a tenant for the installation. Visit `/admin/cms/setup` once as an administrator afterwards to create the index entry.
 
 
+### Registry
+
+The installation reports itself to the version registry: `php yii registry/push` posts what the system *Application* tab shows — name, version, commit, the installed extensions, PHP, database, Yii and the migration state — to `params.registryUrl`, authenticated with `params.registryKey`. `php yii registry/show` prints the same report without sending it.
+
+```bash
+php yii params/create registryUrl https://registry.davidhirtz.com/registry/push
+php yii params/create registryKey <the key>
+```
+
+Leaving both parameters unset is not an error, and neither is a registry that is down or a key that was revoked: the command warns and exits 0, which is why the deploy carries it as the last step inside the maintenance window. `--strict` turns both into a failure instead. A console application knows no URL of its own, so the deploy passes `--url`; without it the installation reports itself as an unnamed local one.
+
+The deploy is keyed by branch on a repository variable, and a branch without one is skipped:
+
+| Variable                | What it does                                                                        |
+|-------------------------|-------------------------------------------------------------------------------------|
+| `DEPLOY_PATH_<branch>`  | the directory on the server the deploy runs in; unset, nothing deploys                |
+| `REGISTRY_URL_<branch>` | the installation's own URL, passed to `registry/push`; unset, nothing is reported     |
+
+
 ### Permissions
 
 Directories `runtime`, `web/assets` and `web/uploads` need write permissions for web and console user. These permissions are automatically set when running `composer install`.
@@ -90,7 +109,17 @@ CSS and JavaScript assets are processed with [Vite](https://vitejs.dev/) and nee
 
 ### Checks
 
-Code style, static analysis and the test suite are the three gates a change has to pass.
+Code style, static analysis and the test suite are the three gates a change has to pass. `bin/check` runs all of them against the working tree and is also what the committed `.githooks/pre-push` runs, so the check you run by hand and the one that guards a push cannot drift apart.
+
+```bash
+composer check
+```
+
+It reports and never rewrites: a style failure asks for `composer cs-fix` rather than fixing the tree under a commit that is already made. `composer install-hooks` points `core.hooksPath` at `.githooks` and is needed once per clone — a hook under `.git/hooks` is not committed. `git push --no-verify` skips the gate deliberately.
+
+A push to a branch with a deploy path deploys it and nothing on the way there runs these checks, so this hook is the only gate between a broken commit and the server.
+
+The individual commands, for when only one of them is wanted:
 
 ```bash
 composer cs-fix
@@ -98,7 +127,7 @@ composer phpstan
 composer test
 ```
 
-The tests run against their own database, `cms_template_test` by default, configured by `config/test.php` and overridable through `MYSQL_DSN`, `MYSQL_USER` and `MYSQL_PASSWORD`. Create it once and migrate it, again after every new migration:
+The tests run against their own database, `cms_template_test` by default, configured by `config/test.php` and overridable through `MYSQL_DSN`, `MYSQL_USER` and `MYSQL_PASSWORD`. Create it once; `bin/check` migrates it on every run, so a new migration needs no separate step.
 
 ```bash
 YII_ENV=test php yii migrate --interactive=0

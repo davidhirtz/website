@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Runs before every `git push`: what reaches the remote — and, on a branch with a deploy path, the server —
+# has already passed the checks. Push anyway with `git push --no-verify` when the branch is deliberately
+# unfinished.
+#
+# Enabled by `composer install-hooks`, which points `core.hooksPath` at this directory. A hook written into
+# `.git/hooks` is not committed and would not survive a fresh clone.
+
+exec "$(git rev-parse --show-toplevel)/bin/check"

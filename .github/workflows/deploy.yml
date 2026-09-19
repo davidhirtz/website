@@ -10,26 +10,51 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] != '' }}
 
+    # Both variables are read once here and reach the steps as environment, rather than being interpolated into
+    # a shell line apiece: a value with a space or a semicolon is then an argument rather than more script. The
+    # `if` above has to name the deploy path the long way, an expression being all a job condition can be.
+    # `REGISTRY_URL` is the installation's own URL, which a console application cannot know; without it the
+    # deploy reports nothing rather than reporting itself as an unnamed local installation.
+    env:
+      BRANCH: ${{ github.head_ref || github.ref_name }}
+      DEPLOY_PATH: ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] }}
+      REGISTRY_URL: ${{ vars[format('REGISTRY_URL_{0}', github.head_ref || github.ref_name )] }}
+
     steps:
       - name: Display Branch Name
-        run: echo ${{ github.head_ref || github.ref_name }}
+        run: echo "$BRANCH"
 
       - name: Display Deploy Path
-        run: echo ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] }}
+        run: echo "$DEPLOY_PATH"
+
+      - name: Display Registry URL
+        run: echo "${REGISTRY_URL:-(not set, the push is skipped)}"
 
       - name: Deploy on Server
-        uses: appleboy/ssh-action@v1.1.0
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: srv01.anakin.anakin.cloud
           username: anakin
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          script_stop: true
+          envs: DEPLOY_PATH,REGISTRY_URL
+          # `script_stop` was removed in v1.2.0; the action's own answer for it is `set -e` in the script, and
+          # without one a failed `git pull` or `composer install` would fall through to `maintenance/disable`
+          # and put a half-deployed site back online.
           script: |
-            cd ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] }}
+            set -e
+            cd "$DEPLOY_PATH"
             php yii maintenance/enable
             git pull
             composer install --optimize-autoloader --no-dev
             php yii migrate --interactive=0
             php yii cache/flush-all --interactive=0
+            # The last step inside the window, once the migrations and the cache flush have made the report
+            # true. `registry/push` is not `--strict`, so a registry that is down warns and exits 0 rather
+            # than stranding the site in maintenance mode over a deploy that otherwise worked. The skip is an
+            # `if` block rather than `[ -n "$REGISTRY_URL" ] && ...` for the same reason: the latter exits
+            # non-zero on an unset variable, which `set -e` would treat as a failed deploy.
+            if [ -n "$REGISTRY_URL" ]; then
+              php yii registry/push --url="$REGISTRY_URL"
+            fi
             php yii maintenance/disable
