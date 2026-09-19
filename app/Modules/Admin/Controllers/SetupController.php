@@ -2,24 +2,34 @@
 
 declare(strict_types=1);
 
-namespace app\modules\admin\controllers;
+namespace App\Modules\Admin\Controllers;
 
-use davidhirtz\yii2\cms\modules\ModuleTrait;
+use Hirtz\Cms\Modules\ModuleTrait;
+use Override;
 use Yii;
 
 /**
- * Setup default entries via the backend.
+ * Sets up the default entries through the admin, reachable at `/admin/cms/setup` once the module maps it.
+ *
  * @noinspection PhpUnused
  */
-final class SetupController extends \davidhirtz\yii2\cms\modules\admin\controllers\SetupController
+final class SetupController extends \Hirtz\Cms\Modules\Admin\Controllers\SetupController
 {
     use ModuleTrait;
 
+    /**
+     * @return list<array<string, mixed>>
+     */
+    #[Override]
     public function getCategoryAttributes(): array
     {
         return [];
     }
 
+    /**
+     * @return list<array<string, mixed>>
+     */
+    #[Override]
     public function getEntryAttributes(): array
     {
         return [

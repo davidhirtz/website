@@ -2,18 +2,23 @@
 
 declare(strict_types=1);
 
-namespace app\controllers;
+namespace App\Controllers;
 
-use davidhirtz\yii2\skeleton\controllers\traits\AjaxRouteTrait;
-use davidhirtz\yii2\skeleton\filters\PageCache;
-use davidhirtz\yii2\skeleton\web\ErrorAction;
+use davidhirtz\yii2\vite\components\Vite;
+use Hirtz\Skeleton\Controllers\Traits\AjaxRouteTrait;
+use Hirtz\Skeleton\Filters\PageCache;
+use Hirtz\Skeleton\Web\Application;
+use Hirtz\Skeleton\Web\ErrorAction;
 use Override;
 use Yii;
 
-final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteController
+final class SiteController extends \Hirtz\Cms\Controllers\SiteController
 {
     use AjaxRouteTrait;
 
+    /**
+     * @return array<string, mixed>
+     */
     #[Override]
     public function actions(): array
     {
@@ -25,6 +30,9 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     #[Override]
     public function behaviors(): array
     {
@@ -43,7 +51,7 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
     #[Override]
     public function beforeAction($action): bool
     {
-        Yii::$app->getErrorHandler()->errorAction = 'site/error';
+        Application::current()->getErrorHandler()->errorAction = 'site/error';
 
         $this->request->enableCsrfValidation = false;
         $this->request->enableCsrfCookie = false;
@@ -53,6 +61,9 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
         return parent::beforeAction($action);
     }
 
+    /**
+     * @param string $content
+     */
     #[Override]
     public function renderContent($content): string
     {
@@ -60,7 +71,10 @@ final class SiteController extends \davidhirtz\yii2\cms\controllers\SiteControll
             return $this->renderAjaxRouteContent($content);
         }
 
-        $this->getView()->registerJsModule(Yii::$app->get('vite')->getScriptUrl('/resources/js/app.ts'), [
+        /** @var Vite $vite */
+        $vite = Yii::$app->get('vite');
+
+        $this->getView()->registerJsModule($vite->getScriptUrl('/resources/js/app.ts'), [
             Yii::$app->params['cookieDomain'] ?? null,
             Yii::$app->params['gtagId'] ?? null,
         ]);

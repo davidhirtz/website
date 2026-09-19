@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace app\helpers;
+namespace App\Helpers;
 
-use app\models\Asset;
-use app\models\Entry;
-use app\models\Section;
+use Hirtz\Cms\Models\Entry;
+use Hirtz\Skeleton\Models\Interfaces\VisibleAttributeInterface;
 use yii\helpers\ArrayHelper;
 
-final class Html extends \davidhirtz\yii2\media\helpers\Html
+final class Html extends \Hirtz\Media\Helpers\Html
 {
+    /**
+     * @param array<string, mixed> $options
+     */
     public static function link(Entry $model, array $options = []): string
     {
         $text = ArrayHelper::remove($options, 'text', $model->getI18nAttribute('name'));
@@ -25,11 +27,17 @@ final class Html extends \davidhirtz\yii2\media\helpers\Html
         return nl2br($text, false);
     }
 
-    public static function prose(Asset|Entry|Section $model, array $options = []): string
+    /**
+     * The content is a custom attribute a type may hide and a model may not declare at all, so it is read through
+     * `getVisibleAttribute()` rather than as a property.
+     *
+     * @param array<string, mixed> $options
+     */
+    public static function prose(VisibleAttributeInterface $model, array $options = []): string
     {
-        $content = $model->getI18nAttribute('content');
+        $content = $model->getVisibleAttribute('content');
 
-        if (!$content) {
+        if (!is_string($content) || $content === '') {
             return '';
         }
 
@@ -39,6 +47,11 @@ final class Html extends \davidhirtz\yii2\media\helpers\Html
         return self::tag('div', $content, $options);
     }
 
+    /**
+     * The by-ref parameter cannot be narrower than what `addCssClass()` writes back into the caller's variable.
+     *
+     * @param array<array-key, mixed> $options
+     */
     private static function addDefaultAnimation(array &$options): void
     {
         if (!array_key_exists('data-animation', $options)) {
