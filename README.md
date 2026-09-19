@@ -7,7 +7,7 @@ This website is based on the [Yii 2](http://www.yiiframework.com/) framework and
 Requirements
 ------------
 
-This project requires PHP 8.3 or higher, MySQL and ImageMagick. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
+This project requires PHP 8.3 or higher, MySQL or MariaDB and ImageMagick. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
 
 
 Installation
@@ -58,7 +58,7 @@ return [
 ### Database
 
 Apply the database migrations by running the command `php yii migrate`. This will also set up the database configuration before applying the migrations.
-The database credentials are saved to `config/db.php`. Migrations will automatically be checked when running `composer install`.
+The database credentials are saved to `config/db.php`.
 
 ```php
 <?php
@@ -69,6 +69,8 @@ return [
 ];
 ```
 
+The migrations seed a tenant for the installation. Visit `/admin/cms/setup` once as an administrator afterwards to create the index entry.
+
 
 ### Permissions
 
@@ -77,20 +79,50 @@ Directories `runtime`, `web/assets` and `web/uploads` need write permissions for
 
 ### Development
 
-You can enable development mode by setting an environment variable `YII_ENV` to "dev" or "local". The latter is excluded from version control.
+The environment is selected by the `YII_ENV` environment variable and decides which `config/<env>.php` is loaded. It defaults to `prod`; `dev` and the gitignored `local` enable debugging.
 
-CSS and JavaScript assets are processed with [Vite](https://vitejs.dev/) and need to be recompiled after a change. Run `npm install` to install the development dependencies, `rmp run dev` to start the Vite development server or `npm run build` to compile the assets for production.
+```bash
+YII_ENV=dev php yii <command>
+```
+
+CSS and JavaScript assets are processed with [Vite](https://vitejs.dev/) and need to be recompiled after a change. Run `npm install` to install the development dependencies, `npm run dev` to start the Vite development server or `npm run build` to compile the assets for production.
+
+
+### Checks
+
+Code style, static analysis and the test suite are the three gates a change has to pass.
+
+```bash
+composer cs-fix
+composer phpstan
+composer test
+```
+
+The tests run against their own database, `cms_template_test` by default, configured by `config/test.php` and overridable through `MYSQL_DSN`, `MYSQL_USER` and `MYSQL_PASSWORD`. Create it once and migrate it, again after every new migration:
+
+```bash
+YII_ENV=test php yii migrate --interactive=0
+```
+
+
+### Translations
+
+Messages are addressed by `UPPER_SNAKE_CASE` key, never by English text, and the key and category must be string literals in the `Yii::t()` call itself — anything reached through a variable or a ternary is invisible to the extractor and is deleted from every language file on the next run.
+
+```bash
+php yii message messages/config.php
+```
 
 
 Structure
 -------------------
 
-      app/                the PSR-4 application root, containing custom application models, components, controllers, views and widgets
+      app/                the PSR-4 application root, containing custom application models, components, controllers and widgets
       config/             application and database configurations
       messages/           translation files for multilingual pages
       node_modules/       3rd-party NPM libraries (development only)
       resources/          uncompiled CSS and Javascript files and the view templates
       runtime/            cache and log files generated during runtime
-      tests/              various tests for the application
+      tests/              tests for the application
       vendor/             dependent 3rd-party packages
       web/                the webroot, containing the entry script, published resources and uploads
