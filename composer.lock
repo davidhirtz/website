@@ -278,12 +278,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-skeleton.git",
-                "reference": "129c0aa66b3a96a4ad2fac01cd625b67bb59c32b"
+                "reference": "488b8ae7e67c67b85c6e879427f076fc9ea5280b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/129c0aa66b3a96a4ad2fac01cd625b67bb59c32b",
-                "reference": "129c0aa66b3a96a4ad2fac01cd625b67bb59c32b",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/488b8ae7e67c67b85c6e879427f076fc9ea5280b",
+                "reference": "488b8ae7e67c67b85c6e879427f076fc9ea5280b",
                 "shasum": ""
             },
             "require": {
@@ -349,7 +349,7 @@
                 "issues": "https://github.com/davidhirtz/yii2-skeleton/issues",
                 "source": "https://github.com/davidhirtz/yii2-skeleton/tree/main"
             },
-            "time": "2026-09-19T07:35:43+00:00"
+            "time": "2026-09-19T08:54:56+00:00"
         },
         {
             "name": "davidhirtz/yii2-tenant",
