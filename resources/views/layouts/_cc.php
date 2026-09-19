@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use app\helpers\Html;
+use App\Helpers\Html;
 
 $categories = [
     'external' => [

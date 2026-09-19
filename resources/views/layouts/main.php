@@ -7,10 +7,12 @@ declare(strict_types=1);
  * @var string $content
  */
 
-use app\helpers\Html;
-use app\widgets\NavItems;
-use davidhirtz\yii2\skeleton\web\View;
-use davidhirtz\yii2\skeleton\widgets\AdminButton;
+use App\Helpers\Html;
+use App\Models\Menus\SiteMenu;
+use Hirtz\Cms\Models\Collections\MenuCollection;
+use Hirtz\Cms\Models\Entry;
+use Hirtz\Skeleton\Web\View;
+use Hirtz\Skeleton\Widgets\Buttons\AdminButton;
 use yii\helpers\Url;
 
 ?>
@@ -34,13 +36,13 @@ use yii\helpers\Url;
     <header>
         <nav class="w-full p-sm">
             <ul class="grid gap-2">
-                <?php foreach (NavItems::getMainMenuItems() as $entry) {
+                <?php foreach (MenuCollection::getRootItems(SiteMenu::Main) as $entry) {
                     ?>
                     <li>
                         <?= Html::link($entry, [
                             'class' => 'nav-link active:underline',
                         ]); ?>
-                        <?php if ($children = NavItems::getSubmenuItems($entry)) {
+                        <?php if ($children = MenuCollection::getSubmenuItems($entry, SiteMenu::Main)) {
                             ?>
                             <ul class="grid gap-2 p-4">
                                 <?php foreach ($children as $child) {
@@ -52,7 +54,7 @@ use yii\helpers\Url;
                                     </li>
                                     <?php
                                 }
-                                ?>
+                            ?>
                             </ul>
                             <?php
                         } ?>
@@ -68,7 +70,7 @@ use yii\helpers\Url;
     <footer class="p-sm">
         <nav>
             <ul class="flex flex-wrap gap-2">
-                <?php foreach (NavItems::getFooterItems() as $entry) {
+                <?php foreach (MenuCollection::getItems(SiteMenu::Footer) as $entry) {
                     ?>
                     <li>
                         <?= Html::link($entry, [
@@ -84,9 +86,7 @@ use yii\helpers\Url;
         </nav>
     </footer>
     <?= $this->render('_cc'); ?>
-    <?php if (Yii::$app->getUser()->can('entryUpdate')) {
-        echo AdminButton::widget();
-    } ?>
+    <?= AdminButton::make()->roles([Entry::AUTH_ENTRY]); ?>
     <?php $this->endBody(); ?>
     </body>
     </html>

@@ -12,13 +12,13 @@ declare(strict_types=1);
  * @var string $name
  */
 
-use davidhirtz\yii2\skeleton\web\ErrorAction;
-use davidhirtz\yii2\skeleton\web\View;
+use Hirtz\Skeleton\Web\ErrorAction;
+use Hirtz\Skeleton\Web\View;
 
 ?>
 <section class="p-md">
     <div class="prose">
-        <?= $this->render('@skeleton/views/error', [
+        <?= $this->render('@skeleton/../resources/views/error', [
             'email' => $email,
             'exception' => $exception,
             'message' => $message,

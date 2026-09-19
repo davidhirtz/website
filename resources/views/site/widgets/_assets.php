@@ -3,19 +3,18 @@
 declare(strict_types=1);
 
 /**
+ * @see Gallery
+ *
  * @var View $this
  * @var Asset[] $assets
  */
 
-use app\models\Asset;
-use davidhirtz\yii2\cms\widgets\Canvas;
-use davidhirtz\yii2\skeleton\web\View;
+use Hirtz\Cms\Widgets\Artwork;
+use Hirtz\Cms\Widgets\Gallery;
+use Hirtz\Media\Models\Asset;
+use Hirtz\Skeleton\Web\View;
 
 foreach ($assets as $asset) {
-    ?>
-    <div>
-        <?= Canvas::widget(['asset' => $asset]) ?>
-    </div>
-    <?php
+    echo Artwork::make()
+        ->asset($asset);
 }
-?>

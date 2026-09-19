@@ -3,10 +3,15 @@
 declare(strict_types=1);
 
 /**
+ * @see Artwork::renderEmbed()
+ *
+ * @var View $this
  * @var Asset $asset
  */
 
-use app\models\Asset;
+use Hirtz\Cms\Widgets\Artwork;
+use Hirtz\Media\Models\Asset;
+use Hirtz\Skeleton\Web\View;
 use yii\helpers\Html;
 
 ?>

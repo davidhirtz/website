@@ -2,29 +2,26 @@
 
 declare(strict_types=1);
 
+/**
+ * Configuration for `./yii message messages/config.php`. It spreads the skeleton's for the translator list, the
+ * format and the file header, and narrows the source to this project's own files: the `app` category is the
+ * project's alone.
+ */
 return [
-    'except' => [
-        '/config',
-        '/messages',
-        '/node_modules',
-        '/runtime',
-        '/tests',
-        '/vendor',
-        '/web',
-    ],
-    'format' => 'php',
-    'languages' => ['de', 'en-US'],
-    'messagePath' => __DIR__,
-    'ignoreCategories' => [
-        'cms',
-        'hotspot',
-        'media',
-        'skeleton',
-        'yii',
-    ],
-    'overwrite' => true,
-    'only' => ['*.php'],
-    'removeUnused' => true,
-    'sort' => true,
+    ...require Yii::getAlias('@skeleton/../messages/config.php'),
     'sourcePath' => dirname(__DIR__),
+    'messagePath' => __DIR__,
+    'categories' => ['app'],
+    'languages' => ['de', 'en-US'],
+    'only' => ['*.php'],
+    // `config` is *not* excluded: `modules.cms.menus` declares its names through `Yii::t()`, and `removeUnused`
+    // would drop every key the scan cannot see.
+    'except' => [
+        'messages',
+        'node_modules',
+        'runtime',
+        'tests',
+        'vendor',
+        'web',
+    ],
 ];
