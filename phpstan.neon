@@ -1,28 +1,12 @@
+# The level, the dynamic constants and the skeleton's `Yii.php` come from `davidhirtz/yii2-dev`; the paths to
+# analyse are what differs between installations.
+
+includes:
+    - vendor/davidhirtz/yii2-dev/config/phpstan-app.neon
+
 parameters:
-    dynamicConstantNames:
-        - YII_DEBUG
-        - YII_ENV
-        - YII_ENV_DEV
-        - YII_ENV_PROD
-        - YII_ENV_TEST
-
-    level: 7
-
     paths:
         - app
         - config
         - resources/views
         - tests
-
-    scanFiles:
-        - vendor/davidhirtz/yii2-skeleton/Yii.php
-        - vendor/yiisoft/yii2/BaseYii.php
-
-    stubFiles:
-        - vendor/davidhirtz/yii2-skeleton/stubs/yii.stub
-
-    earlyTerminatingMethodCalls:
-        yii\base\Application:
-            - end
-        yii\base\ErrorHandler:
-            - convertExceptionToError

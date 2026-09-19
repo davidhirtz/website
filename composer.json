@@ -12,15 +12,7 @@
     "davidhirtz/yii2-vite": "^0.5"
   },
   "require-dev": {
-    "components/jquery": "^3.7",
-    "friendsofphp/php-cs-fixer": "^3.91",
-    "phpstan/phpstan": "^2.1",
-    "phpunit/phpunit": "^12.5",
-    "rector/rector": "^2.2",
-    "symfony/browser-kit": "^7.4",
-    "symfony/css-selector": "^7.4",
-    "symfony/var-dumper": "^7.4",
-    "yiisoft/yii2-debug": "^2.1"
+    "davidhirtz/yii2-dev": "main-dev"
   },
   "autoload": {
     "psr-4": {
@@ -42,7 +34,7 @@
     "sort-packages": true
   },
   "scripts": {
-    "check": "bin/check",
+    "check": "vendor/bin/check",
     "cs-check": "php-cs-fixer check --diff",
     "cs-fix": "php-cs-fixer fix",
     "install-hooks": "git config core.hooksPath .githooks",

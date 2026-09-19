@@ -109,7 +109,9 @@ CSS and JavaScript assets are processed with [Vite](https://vitejs.dev/) and nee
 
 ### Checks
 
-Code style, static analysis and the test suite are the three gates a change has to pass. `bin/check` runs all of them against the working tree and is also what the committed `.githooks/pre-push` runs, so the check you run by hand and the one that guards a push cannot drift apart.
+Code style, static analysis and the test suite are the three gates a change has to pass. `vendor/bin/check` runs all of them against the working tree and is also what the committed `.githooks/pre-push` runs, so the check you run by hand and the one that guards a push cannot drift apart.
+
+The script and the tool configurations behind it come from [yii2-dev](https://github.com/davidhirtz/yii2-dev), the one `require-dev` entry this project has, so they cannot drift between projects either: a change to the gates arrives with a `composer update` rather than being copied by hand. `.php-cs-fixer.php`, `rector.php` and `phpstan.neon` are left here holding only the directories to look at, which is the one thing that differs per project.
 
 ```bash
 composer check
@@ -127,7 +129,7 @@ composer phpstan
 composer test
 ```
 
-The tests run against their own database, `cms_template_test` by default, configured by `config/test.php` and overridable through `MYSQL_DSN`, `MYSQL_USER` and `MYSQL_PASSWORD`. Create it once; `bin/check` migrates it on every run, so a new migration needs no separate step.
+The tests run against their own database, `cms_template_test` by default, configured by `config/test.php` and overridable through `MYSQL_DSN`, `MYSQL_USER` and `MYSQL_PASSWORD`. Create it once; `check` migrates it on every run, so a new migration needs no separate step.
 
 ```bash
 YII_ENV=test php yii migrate --interactive=0

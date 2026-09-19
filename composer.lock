@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d861e88b8c6ef5897a042ca229682b4d",
+    "content-hash": "0406702c30049185a9ec53d932101d75",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -3735,6 +3735,55 @@
                 }
             ],
             "time": "2024-05-06T16:37:16+00:00"
+        },
+        {
+            "name": "davidhirtz/yii2-dev",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davidhirtz/yii2-dev.git",
+                "reference": "ccb15a48897e9289417f066c015a60948e6b1ed1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-dev/zipball/ccb15a48897e9289417f066c015a60948e6b1ed1",
+                "reference": "ccb15a48897e9289417f066c015a60948e6b1ed1",
+                "shasum": ""
+            },
+            "require": {
+                "components/jquery": "^3.7",
+                "friendsofphp/php-cs-fixer": "^3.91",
+                "php": "^8.3",
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^12.5",
+                "rector/rector": "^2.2",
+                "symfony/browser-kit": "^7.4",
+                "symfony/css-selector": "^7.4",
+                "symfony/var-dumper": "^7.4",
+                "yiisoft/yii2-debug": "^2.1"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/check"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "David Hirtz",
+                    "homepage": "https://www.davidhirtz.com/"
+                }
+            ],
+            "description": "The shared development toolchain: the check script, the tool configurations and the tools themselves",
+            "homepage": "https://www.github.com/davidhirtz/yii2-dev",
+            "support": {
+                "issues": "https://github.com/davidhirtz/yii2-dev/issues",
+                "source": "https://github.com/davidhirtz/yii2-dev/tree/main"
+            },
+            "time": "2026-09-19T09:17:26+00:00"
         },
         {
             "name": "ergebnis/agent-detector",
@@ -7594,7 +7643,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "davidhirtz/yii2-anakin": 20,
-        "davidhirtz/yii2-cms": 20
+        "davidhirtz/yii2-cms": 20,
+        "davidhirtz/yii2-dev": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

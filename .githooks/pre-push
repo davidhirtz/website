@@ -6,5 +6,8 @@
 #
 # Enabled by `composer install-hooks`, which points `core.hooksPath` at this directory. A hook written into
 # `.git/hooks` is not committed and would not survive a fresh clone.
+#
+# The check itself comes from `davidhirtz/yii2-dev` and is the same file `composer check` runs, so what is
+# run by hand and what guards a push cannot drift apart — across projects as well as within one.
 
-exec "$(git rev-parse --show-toplevel)/bin/check"
+exec "$(git rev-parse --show-toplevel)/vendor/bin/check"
