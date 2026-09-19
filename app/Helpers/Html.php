@@ -48,15 +48,10 @@ final class Html extends \Hirtz\Media\Helpers\Html
     }
 
     /**
-     * The by-ref parameter cannot be narrower than what `addCssClass()` writes back into the caller's variable.
-     *
      * @param array<array-key, mixed> $options
      */
     private static function addDefaultAnimation(array &$options): void
     {
-        if (!array_key_exists('data-animation', $options)) {
-            self::addCssClass($options, 'animate observe');
-            $options['data-animation'] = 'fade-in';
-        }
+        self::addCssClass($options, 'reveal');
     }
 }

@@ -14,9 +14,9 @@ if (YII_DEBUG) {
     error_reporting(E_ALL);
 }
 
-// Before the autoloader on purpose: the pre-rendered maintenance page needs neither it nor the database, which is
-// what lets a deployment hold the site down across a Composer install and a migration.
-if (file_exists($maintenance = __DIR__ . '/../runtime/maintenance.php')) {
+$maintenance = __DIR__ . '/../runtime/maintenance.php';
+
+if (file_exists($maintenance)) {
     require $maintenance;
 }
 

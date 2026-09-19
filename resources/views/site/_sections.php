@@ -18,14 +18,11 @@ use Hirtz\Cms\Widgets\SectionStack;
 use Hirtz\Skeleton\Web\View;
 use Hirtz\Skeleton\Widgets\AdminLink;
 
-// `relative` is the positioned ancestor the `AdminLink` overlay fills; the flex row around the sections comes
-// from `SectionType::wrapper()`.
 foreach ($sections as $section) {
-    // A section carrying a block has no content of its own; the block is what it renders.
     $record = $section->getVisibleBlock() ?? $section;
     ?>
     <section class="relative <?= $section->getCssClass(); ?>" id="<?= $section->getHtmlId(); ?>">
-        <?php if ($assets = $section->getVisibleAssets()) {
+        <?php if ($assets = $record->getVisibleAssets()) {
             echo Gallery::make()->assets($assets);
         } ?>
         <?= Html::prose($record); ?>
