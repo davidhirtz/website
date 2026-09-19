@@ -6,16 +6,20 @@ parameters:
         - YII_ENV_PROD
         - YII_ENV_TEST
 
-    level: 5
+    level: 7
 
     paths:
         - app
+        - config
+        - resources/views
+        - tests
 
     scanFiles:
         - vendor/davidhirtz/yii2-skeleton/Yii.php
+        - vendor/yiisoft/yii2/BaseYii.php
 
     stubFiles:
-        - vendor/davidhirtz/yii2-skeleton/stubs/yii/BaseYii.stub
+        - vendor/davidhirtz/yii2-skeleton/stubs/yii.stub
 
     earlyTerminatingMethodCalls:
         yii\base\Application:

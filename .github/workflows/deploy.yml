@@ -30,5 +30,6 @@ jobs:
             php yii maintenance/enable
             git pull
             composer install --optimize-autoloader --no-dev
+            php yii migrate --interactive=0
             php yii cache/flush-all --interactive=0
             php yii maintenance/disable

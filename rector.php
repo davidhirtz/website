@@ -38,4 +38,5 @@ return RectorConfig::configure()
         __DIR__ . '/app',
         __DIR__ . '/config',
         __DIR__ . '/resources/views',
+        __DIR__ . '/tests',
     ]);
