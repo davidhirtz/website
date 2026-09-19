@@ -2,35 +2,24 @@
 
 declare(strict_types=1);
 
-use app\controllers\SiteController;
-use davidhirtz\yii2\cms\models\Asset;
-use davidhirtz\yii2\cms\models\Entry;
-use davidhirtz\yii2\cms\models\Section;
-use davidhirtz\yii2\cms\modules\admin\widgets\forms\AssetActiveForm;
-use davidhirtz\yii2\cms\modules\admin\widgets\forms\EntryActiveForm;
-use davidhirtz\yii2\cms\modules\admin\widgets\forms\SectionActiveForm;
-use davidhirtz\yii2\cms\modules\admin\widgets\grids\EntryGridView;
-use davidhirtz\yii2\cms\widgets\Canvas;
-use davidhirtz\yii2\media\Module;
-use davidhirtz\yii2\skeleton\assets\AdminAsset;
-use davidhirtz\yii2\skeleton\validators\HtmlValidator;
+use App\Controllers\SiteController;
+use App\Models\Menus\SiteMenu;
+use App\Modules\Admin\Controllers\SetupController;
 use davidhirtz\yii2\vite\components\Vite;
+use Hirtz\Cms\Models\Entry;
+use Hirtz\Cms\Models\EntryAsset;
+use Hirtz\Cms\Models\Menus\Menu;
+use Hirtz\Cms\Models\Section;
+use Hirtz\Cms\Models\SectionAsset;
+use Hirtz\Cms\Modules\Admin\Widgets\Forms\EntryActiveForm;
+use Hirtz\Cms\Modules\Admin\Widgets\Forms\SectionActiveForm;
+use Hirtz\Cms\Modules\Admin\Widgets\Grids\EntryGridView;
+use Hirtz\Cms\Sitemap\EntrySitemap;
+use Hirtz\Skeleton\Validators\HtmlValidator;
 
 return [
     'name' => 'CMS Template',
     'components' => [
-        'assetManager' => [
-            'bundles' => [
-                AdminAsset::class => [
-                    'faviconOptions' => [
-                        'href' => '/images/favicons/favicon.svg',
-                        'sizes' => 'any',
-                        'type' => 'image/svg+xml',
-                        'rel' => 'icon',
-                    ],
-                ],
-            ],
-        ],
         'i18n' => [
             'translations' => [
                 'app' => [
@@ -39,8 +28,8 @@ return [
             ],
         ],
         'sitemap' => [
-            'models' => [
-                \app\models\Entry::class,
+            'sitemaps' => [
+                EntrySitemap::class,
             ],
         ],
 //        'urlManager' => [
@@ -52,22 +41,31 @@ return [
     ],
     'container' => [
         'definitions' => [
-            Asset::class => \app\models\Asset::class,
-            AssetActiveForm::class => \app\modules\admin\widgets\forms\AssetActiveForm::class,
-            Canvas::class => \app\widgets\Canvas::class,
-            Entry::class => \app\models\Entry::class,
-            EntryActiveForm::class => \app\modules\admin\widgets\forms\EntryActiveForm::class,
-            EntryGridView::class => \app\modules\admin\widgets\grids\EntryGridView::class,
+            Entry::class => App\Models\Entry::class,
+            EntryActiveForm::class => App\Modules\Admin\Widgets\Forms\EntryActiveForm::class,
+            EntryAsset::class => App\Models\EntryAsset::class,
+            EntryGridView::class => App\Modules\Admin\Widgets\Grids\EntryGridView::class,
             HtmlValidator::class => [
                 'allowedHtmlTags' => ['h1', 'h2', 'h3'],
-                'allowedClasses' => ['btn'],
+                'allowedClasses' => ['a' => ['btn']],
                 'removeUnnecessarySpanTags' => true,
             ],
-            Section::class => \app\models\Section::class,
-            SectionActiveForm::class => \app\modules\admin\widgets\forms\SectionActiveForm::class,
+            Section::class => App\Models\Section::class,
+            SectionActiveForm::class => App\Modules\Admin\Widgets\Forms\SectionActiveForm::class,
+            SectionAsset::class => App\Models\SectionAsset::class,
         ],
     ],
     'modules' => [
+        'admin' => [
+            'modules' => [
+                'cms' => [
+                    // `Cms\...\SetupController` is abstract, so the project's subclass is what the route resolves to.
+                    'controllerMap' => [
+                        'setup' => SetupController::class,
+                    ],
+                ],
+            ],
+        ],
         'cms' => [
             'controllerMap' => [
                 'site' => [
@@ -76,24 +74,32 @@ return [
             ],
             'enableNestedEntries' => true,
             'enableSectionEntries' => true,
+            // A closure, because a menu's name is a `Yii::t()` result and this file is read before the application
+            // has an `i18n` component. The values are what `Cms\Migrations\M260915200000MenuIds` writes when it
+            // migrates a v2 `show_in_menu` / `show_in_footer` pair, so renaming them silently empties both menus.
+            'menus' => fn (): array => [
+                Menu::make(SiteMenu::Main)
+                    ->name(Yii::t('app', 'MENU_MAIN')),
+                Menu::make(SiteMenu::Footer)
+                    ->name(Yii::t('app', 'MENU_FOOTER')),
+            ],
+            // The frontend views live in `resources/views`, not in the bundle, so `site/view`, `site/_sections`
+            // and `layouts/main` are the project's own.
+            'viewPath' => '@views',
         ],
         'media' => [
+            // Pixel widths rather than media queries, so `Helpers\Size::breakpoint()` can build the `max-width`
+            // condition a `sizes` attribute needs. They mirror the Tailwind breakpoints of `resources/css`.
             'breakpoints' => [
-                'xs' => '(min-width:22rem)', // 352px
-                'sm' => '(min-width:48rem)', // 768px
-                'md' => '(min-width:64rem)', // 1024px
-                'lg' => '(min-width:80rem)', // 1280px
-                'xl' => '(min-width:100rem)', // 1600px
+                'xs' => 352, // 22rem
+                'sm' => 768, // 48rem
+                'md' => 1024, // 64rem
+                'lg' => 1280, // 80rem
+                'xl' => 1600, // 100rem
             ],
             'transformations' => [
                 // TODO: Add your transformations here.
             ],
         ],
     ],
-    'on beforeRequest' => function () {
-        /** @var Module $module */
-        $module = Yii::$app->getModule('media');
-        $module->addTransformationsFromTypeOptions(\app\models\Entry::getTypes());
-        $module->addTransformationsFromTypeOptions(\app\models\Section::getTypes());
-    },
 ];
