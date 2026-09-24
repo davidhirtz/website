@@ -13,4 +13,5 @@ defined('YII_DEBUG') or define('YII_DEBUG', $env !== 'prod');
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/vendor/yiisoft/yii2/Yii.php';
 
-exit((int)(new Application(require __DIR__ . "/config/$env.php"))->run());
+// named here, not taken from the working directory, which is wherever a cron job or deploy step runs from
+exit((int)(new Application(['basePath' => __DIR__, ...require __DIR__ . "/config/$env.php"]))->run());

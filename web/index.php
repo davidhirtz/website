@@ -23,4 +23,6 @@ if (file_exists($maintenance)) {
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
 
-(new Application(require __DIR__ . "/../config/$env.php"))->run();
+// named here, where it is known: the application would otherwise derive it from the request, and PHP's built-in
+// server names the requested file; a config's own `basePath` wins
+(new Application(['basePath' => dirname(__DIR__), ...require __DIR__ . "/../config/$env.php"]))->run();
