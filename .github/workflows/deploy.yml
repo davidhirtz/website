@@ -44,7 +44,9 @@ jobs:
           script: |
             set -e
             cd "$DEPLOY_PATH"
-            php yii maintenance/enable
+            # A deploy that failed after `git pull` leaves new code on the old vendor directory, where `yii` itself
+            # cannot boot. The site is already in maintenance then, so a rerun carries on rather than stopping here.
+            php yii maintenance/enable || test -f runtime/maintenance.php
             git pull
             composer install --optimize-autoloader --no-dev
             php yii migrate --interactive=0
