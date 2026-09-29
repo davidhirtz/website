@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Hirtz\Media\Models\Asset;
 use Hirtz\Skeleton\Models\CustomAttributes\CustomAttribute;
 use Override;
 
@@ -21,8 +22,9 @@ final class EntryAsset extends \Hirtz\Cms\Models\EntryAsset
     {
         $names = ['alt_text', 'link'];
 
+        // The cms parent narrows its list to what a page image needs and drops `link`, so this filters media's.
         return array_values(array_filter(
-            parent::getDefaultCustomAttributes(),
+            Asset::getDefaultCustomAttributes(),
             static fn (CustomAttribute $definition): bool => in_array($definition->name, $names, true),
         ));
     }
