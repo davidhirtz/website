@@ -7,12 +7,13 @@
   "prefer-stable": true,
   "require": {
     "php": "^8.3",
-    "davidhirtz/yii2-anakin": "main-dev",
-    "davidhirtz/yii2-cms": "main-dev",
+    "davidhirtz/yii2-anakin": "^3.1.1",
+    "davidhirtz/yii2-cms": "^3.6",
+    "davidhirtz/yii2-skeleton": "^3.6",
     "davidhirtz/yii2-vite": "^0.5"
   },
   "require-dev": {
-    "davidhirtz/yii2-dev": "main-dev"
+    "davidhirtz/yii2-dev": "^3.0.2"
   },
   "autoload": {
     "psr-4": {
