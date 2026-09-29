@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Modules\Admin\Controllers;
 
 use App\Models\Entry;
-use App\Models\Section;
 use App\Tests\TestCase;
+use App\Tests\Traits\EntryTrait;
 use Hirtz\Skeleton\Test\Traits\UserFixtureTrait;
 use Yii;
 use yii\web\Response;
@@ -17,6 +17,7 @@ use yii\web\Response;
  */
 final class CmsControllerTest extends TestCase
 {
+    use EntryTrait;
     use UserFixtureTrait;
 
     public function testTheEntryIndexRendersTheProjectGrid(): void
@@ -69,27 +70,5 @@ final class CmsControllerTest extends TestCase
     private function login(): void
     {
         $this->getWebUser()->setIdentity($this->getUserFromFixture('owner'));
-    }
-
-    private function createEntry(string $name = 'Homepage'): Entry
-    {
-        $entry = Entry::create();
-        $entry->name = $name;
-        $entry->slug = (string)Entry::getModule()->entryIndexSlug;
-
-        self::assertTrue($entry->insert(), implode(' ', $entry->getFirstErrors()));
-
-        return $entry;
-    }
-
-    private function createSection(Entry $entry): Section
-    {
-        $section = Section::instantiateByType(Section::TYPE_FULL_WIDTH);
-        $section->name = 'Intro';
-        $section->populateEntryRelation($entry);
-
-        self::assertTrue($section->insert(), implode(' ', $section->getFirstErrors()));
-
-        return $section;
     }
 }
