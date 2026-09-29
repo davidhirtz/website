@@ -8,7 +8,7 @@ return [
     'CC_BUTTON_ALLOW_ALL' => 'Alle erlauben',
     'CC_BUTTON_ALLOW_SELECTION' => 'Auswahl erlauben',
     'CC_BUTTON_BACK' => 'zurück',
-    'CC_BUTTON_CUSTOMZIE' => 'Anpassen',
+    'CC_BUTTON_CUSTOMIZE' => 'Anpassen',
     'CC_BUTTON_REQUIRED' => 'Nur notwendige',
     'CC_CATEGORY_ANALYTICS_TEXT' => 'Cookies von Google Analytics sammeln Informationen über die Nutzung der Webseite, um die Leistung und Benutzererfahrung zu verbessern. Die Daten werden anonym gesammelt und nur für statistische Analysen verwendet. Dennoch können diese Cookies Informationen darüber enthalten, wie Besucher auf die Website gelangt sind, welche Seiten sie besucht haben, wie lange sie auf der Website geblieben sind und ob sie auf Links geklickt haben.',
     'CC_CATEGORY_ANALYTICS_TITLE' => 'Statistiken',

@@ -8,7 +8,7 @@ return [
     'CC_BUTTON_ALLOW_ALL' => 'Allow all',
     'CC_BUTTON_ALLOW_SELECTION' => 'Allow selection',
     'CC_BUTTON_BACK' => 'back',
-    'CC_BUTTON_CUSTOMZIE' => 'Customize',
+    'CC_BUTTON_CUSTOMIZE' => 'Customize',
     'CC_BUTTON_REQUIRED' => 'Necessary only',
     'CC_CATEGORY_ANALYTICS_TEXT' => 'Performance cookies help us learn how you use our website to help improve its performance and design. These cookies provide us with aggregated statistical information such as number of page visits, page load speeds, how long a user spends on a particular page, and the types of browsers or devices used to access our site.',
     'CC_CATEGORY_ANALYTICS_TITLE' => 'Analytics',

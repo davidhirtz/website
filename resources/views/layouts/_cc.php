@@ -27,7 +27,7 @@ $categories = [
                     </div>
                 </div>
                 <div class="grid xs:grid-cols-3 gap-px">
-                    <x-toggle class="btn" data-target-id="cc-tab" role="button"><?= Yii::t('app', 'CC_BUTTON_CUSTOMZIE') ?></x-toggle>
+                    <x-toggle class="btn" data-target-id="cc-tab" role="button"><?= Yii::t('app', 'CC_BUTTON_CUSTOMIZE') ?></x-toggle>
                     <cc-button class="btn" data-categories="required" role="button"><?= Yii::t('app', 'CC_BUTTON_REQUIRED') ?></cc-button>
                     <cc-button class="btn" role="button"><?= Yii::t('app', 'CC_BUTTON_ALLOW_ALL') ?></cc-button>
                 </div>
