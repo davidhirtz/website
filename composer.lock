@@ -72,20 +72,20 @@
         },
         {
             "name": "davidhirtz/yii2-anakin",
-            "version": "3.1.1",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-anakin.git",
-                "reference": "62189b471e3f0e82c7d930f5f5da74dc8620aa9a"
+                "reference": "782252ef0a5ae1b2212a57b1d51320f32643926d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-anakin/zipball/62189b471e3f0e82c7d930f5f5da74dc8620aa9a",
-                "reference": "62189b471e3f0e82c7d930f5f5da74dc8620aa9a",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-anakin/zipball/782252ef0a5ae1b2212a57b1d51320f32643926d",
+                "reference": "782252ef0a5ae1b2212a57b1d51320f32643926d",
                 "shasum": ""
             },
             "require": {
-                "davidhirtz/yii2-skeleton": "^3.0",
+                "davidhirtz/yii2-skeleton": "^3.8",
                 "php": "^8.3"
             },
             "require-dev": {
@@ -120,27 +120,27 @@
             "homepage": "https://www.anakin.co/",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-anakin/issues",
-                "source": "https://github.com/davidhirtz/yii2-anakin/tree/3.1.1"
+                "source": "https://github.com/davidhirtz/yii2-anakin/tree/3.2.0"
             },
-            "time": "2026-09-25T09:44:11+00:00"
+            "time": "2026-09-30T11:47:09+00:00"
         },
         {
             "name": "davidhirtz/yii2-cms",
-            "version": "3.6.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-cms.git",
-                "reference": "25f423ad4416e87c68cf7a6b2cebd78f7c507354"
+                "reference": "302c16d77c8a569c62e2b779965317358a3a5f8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/25f423ad4416e87c68cf7a6b2cebd78f7c507354",
-                "reference": "25f423ad4416e87c68cf7a6b2cebd78f7c507354",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/302c16d77c8a569c62e2b779965317358a3a5f8c",
+                "reference": "302c16d77c8a569c62e2b779965317358a3a5f8c",
                 "shasum": ""
             },
             "require": {
                 "davidhirtz/yii2-media": "^3.3",
-                "davidhirtz/yii2-skeleton": "^3.6",
+                "davidhirtz/yii2-skeleton": "^3.8",
                 "davidhirtz/yii2-tenant": "^3.0",
                 "php": "^8.3"
             },
@@ -176,71 +176,26 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-cms",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-cms/issues",
-                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.6.0"
+                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.8.0"
             },
-            "time": "2026-09-29T07:53:45+00:00"
-        },
-        {
-            "name": "davidhirtz/yii2-datetime-behavior",
-            "version": "v1.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/davidhirtz/yii2-datetime-behavior.git",
-                "reference": "d6ab696f713af624b2fe7604942ab5f53083ce09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-datetime-behavior/zipball/d6ab696f713af624b2fe7604942ab5f53083ce09",
-                "reference": "d6ab696f713af624b2fe7604942ab5f53083ce09",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "davidhirtz\\yii2\\datetime\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "David Hirtz",
-                    "email": "hello@davidhirtz.com"
-                }
-            ],
-            "description": "Initiates database date columns as DateTime PHP classes.",
-            "keywords": [
-                "datetime",
-                "extension",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/davidhirtz/yii2-datetime-behavior/issues",
-                "source": "https://github.com/davidhirtz/yii2-datetime-behavior/tree/v1.1.6"
-            },
-            "time": "2022-08-07T09:03:06+00:00"
+            "time": "2026-09-30T11:42:24+00:00"
         },
         {
             "name": "davidhirtz/yii2-media",
-            "version": "3.5.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-media.git",
-                "reference": "e8a7a5304be1f66c6a423ed004c198f8dc80d4c7"
+                "reference": "6c55abb2dbfd205819266e3fc29a332be572785e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-media/zipball/e8a7a5304be1f66c6a423ed004c198f8dc80d4c7",
-                "reference": "e8a7a5304be1f66c6a423ed004c198f8dc80d4c7",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-media/zipball/6c55abb2dbfd205819266e3fc29a332be572785e",
+                "reference": "6c55abb2dbfd205819266e3fc29a332be572785e",
                 "shasum": ""
             },
             "require": {
-                "davidhirtz/yii2-skeleton": "^3.6",
+                "davidhirtz/yii2-skeleton": "^3.8",
                 "ext-exif": "*",
                 "ext-imagick": "*",
                 "intervention/image": "^4.3",
@@ -278,26 +233,25 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-media",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-media/issues",
-                "source": "https://github.com/davidhirtz/yii2-media/tree/3.5.0"
+                "source": "https://github.com/davidhirtz/yii2-media/tree/3.7.0"
             },
-            "time": "2026-09-29T07:49:50+00:00"
+            "time": "2026-09-30T11:31:50+00:00"
         },
         {
             "name": "davidhirtz/yii2-skeleton",
-            "version": "3.6.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-skeleton.git",
-                "reference": "cf7056e9a6c5633f85cf5952af9d43a6b7614676"
+                "reference": "5c729cecdaee34527a3ca4d2ea466c97e0a945a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/cf7056e9a6c5633f85cf5952af9d43a6b7614676",
-                "reference": "cf7056e9a6c5633f85cf5952af9d43a6b7614676",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/5c729cecdaee34527a3ca4d2ea466c97e0a945a7",
+                "reference": "5c729cecdaee34527a3ca4d2ea466c97e0a945a7",
                 "shasum": ""
             },
             "require": {
-                "davidhirtz/yii2-datetime-behavior": "^1.1",
                 "ext-intl": "*",
                 "ext-json": "*",
                 "ext-openssl": "*",
@@ -359,26 +313,26 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-skeleton",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-skeleton/issues",
-                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.6.0"
+                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.8.0"
             },
-            "time": "2026-09-29T07:47:41+00:00"
+            "time": "2026-09-30T11:29:47+00:00"
         },
         {
             "name": "davidhirtz/yii2-tenant",
-            "version": "3.1.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-tenant.git",
-                "reference": "e4c5b4f0dd0980719bbbcc816ceba181c129b0a5"
+                "reference": "9d98b1c7f47f20236b436afa5f4a5afea6d57dd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-tenant/zipball/e4c5b4f0dd0980719bbbcc816ceba181c129b0a5",
-                "reference": "e4c5b4f0dd0980719bbbcc816ceba181c129b0a5",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-tenant/zipball/9d98b1c7f47f20236b436afa5f4a5afea6d57dd5",
+                "reference": "9d98b1c7f47f20236b436afa5f4a5afea6d57dd5",
                 "shasum": ""
             },
             "require": {
-                "davidhirtz/yii2-skeleton": "^3.5",
+                "davidhirtz/yii2-skeleton": "^3.8",
                 "php": "^8.3"
             },
             "require-dev": {
@@ -413,9 +367,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-tenant",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-tenant/issues",
-                "source": "https://github.com/davidhirtz/yii2-tenant/tree/3.1.0"
+                "source": "https://github.com/davidhirtz/yii2-tenant/tree/3.3.0"
             },
-            "time": "2026-09-28T16:23:06+00:00"
+            "time": "2026-09-30T11:33:33+00:00"
         },
         {
             "name": "davidhirtz/yii2-vite",
@@ -2556,16 +2510,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.42.0",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "51b5ff5ba85452b31ec6f55490b08148612339d9"
+                "reference": "533d68cf99c8f8ee2e8893c59ed59192e92cfd74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/51b5ff5ba85452b31ec6f55490b08148612339d9",
-                "reference": "51b5ff5ba85452b31ec6f55490b08148612339d9",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/533d68cf99c8f8ee2e8893c59ed59192e92cfd74",
+                "reference": "533d68cf99c8f8ee2e8893c59ed59192e92cfd74",
                 "shasum": ""
             },
             "require": {
@@ -2619,7 +2573,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.42.0"
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -2639,20 +2593,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T10:51:20+00:00"
+            "time": "2026-09-23T14:40:04+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.42.0",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-                "reference": "aa20edea75bd9c48cfecc8360922e5a6e5c44502"
+                "reference": "ebd57ccc7edb93d632e184efbe7693d2517bab3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/aa20edea75bd9c48cfecc8360922e5a6e5c44502",
-                "reference": "aa20edea75bd9c48cfecc8360922e5a6e5c44502",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/ebd57ccc7edb93d632e184efbe7693d2517bab3b",
+                "reference": "ebd57ccc7edb93d632e184efbe7693d2517bab3b",
                 "shasum": ""
             },
             "require": {
@@ -2704,7 +2658,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.42.0"
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -2724,20 +2678,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-07T06:33:24+00:00"
+            "time": "2026-09-23T22:02:09+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.38.2",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6"
+                "reference": "4d5d331bf731e0aedbc6b2f5e61135b7b7996a72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
-                "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/4d5d331bf731e0aedbc6b2f5e61135b7b7996a72",
+                "reference": "4d5d331bf731e0aedbc6b2f5e61135b7b7996a72",
                 "shasum": ""
             },
             "require": {
@@ -2789,7 +2743,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.38.2"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -2809,20 +2763,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-27T06:59:30+00:00"
+            "time": "2026-09-24T15:19:04+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.37.0",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "dfb55726c3a76ea3b6459fcfda1ec2d80a682411"
+                "reference": "9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
-                "reference": "dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74",
+                "reference": "9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74",
                 "shasum": ""
             },
             "require": {
@@ -2873,7 +2827,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.37.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -2893,7 +2847,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-10T16:19:22+00:00"
+            "time": "2026-09-25T15:50:05+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -3684,16 +3638,16 @@
         },
         {
             "name": "fidry/cpu-core-counter",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theofidry/cpu-core-counter.git",
-                "reference": "7cbeb03e286fa81b2bbe0e6bd6b8a27c71a3144d"
+                "reference": "d384a7d0d6e67aa497327260ca95023e92dc2032"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theofidry/cpu-core-counter/zipball/7cbeb03e286fa81b2bbe0e6bd6b8a27c71a3144d",
-                "reference": "7cbeb03e286fa81b2bbe0e6bd6b8a27c71a3144d",
+                "url": "https://api.github.com/repos/theofidry/cpu-core-counter/zipball/d384a7d0d6e67aa497327260ca95023e92dc2032",
+                "reference": "d384a7d0d6e67aa497327260ca95023e92dc2032",
                 "shasum": ""
             },
             "require": {
@@ -3734,7 +3688,7 @@
             ],
             "support": {
                 "issues": "https://github.com/theofidry/cpu-core-counter/issues",
-                "source": "https://github.com/theofidry/cpu-core-counter/tree/1.4.0"
+                "source": "https://github.com/theofidry/cpu-core-counter/tree/1.4.1"
             },
             "funding": [
                 {
@@ -3742,7 +3696,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-27T17:40:20+00:00"
+            "time": "2026-09-29T22:11:39+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -4561,16 +4515,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.36",
+            "version": "12.5.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ddb775588a0ea447d1c9b190c0f29c174ce81d65"
+                "reference": "684340c1590e5f3f3b859f5e80619725d88b63ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ddb775588a0ea447d1c9b190c0f29c174ce81d65",
-                "reference": "ddb775588a0ea447d1c9b190c0f29c174ce81d65",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/684340c1590e5f3f3b859f5e80619725d88b63ba",
+                "reference": "684340c1590e5f3f3b859f5e80619725d88b63ba",
                 "shasum": ""
             },
             "require": {
@@ -4639,7 +4593,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.36"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.37"
             },
             "funding": [
                 {
@@ -4647,7 +4601,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-09-25T08:47:40+00:00"
+            "time": "2026-09-29T12:08:54+00:00"
         },
         {
             "name": "react/cache",
@@ -6280,16 +6234,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v7.4.19",
+            "version": "v7.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "3a1973458b153f566a8d7499bc06ece323d60063"
+                "reference": "d7bca2fe05241dc7732d0c8b6d551b879f5d0a7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/3a1973458b153f566a8d7499bc06ece323d60063",
-                "reference": "3a1973458b153f566a8d7499bc06ece323d60063",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d7bca2fe05241dc7732d0c8b6d551b879f5d0a7d",
+                "reference": "d7bca2fe05241dc7732d0c8b6d551b879f5d0a7d",
                 "shasum": ""
             },
             "require": {
@@ -6354,7 +6308,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.4.19"
+                "source": "https://github.com/symfony/console/tree/v7.4.20"
             },
             "funding": [
                 {
@@ -6374,7 +6328,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-13T10:38:41+00:00"
+            "time": "2026-09-18T15:55:00+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -6589,16 +6543,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v7.4.19",
+            "version": "v7.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "1b900bc6ae5ba60c5eee69c11ba44566190576fe"
+                "reference": "2dd31e5208db7a0fda7bfc998ad727b79c2e4d1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/1b900bc6ae5ba60c5eee69c11ba44566190576fe",
-                "reference": "1b900bc6ae5ba60c5eee69c11ba44566190576fe",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/2dd31e5208db7a0fda7bfc998ad727b79c2e4d1e",
+                "reference": "2dd31e5208db7a0fda7bfc998ad727b79c2e4d1e",
                 "shasum": ""
             },
             "require": {
@@ -6633,7 +6587,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v7.4.19"
+                "source": "https://github.com/symfony/finder/tree/v7.4.20"
             },
             "funding": [
                 {
@@ -6653,7 +6607,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-10T19:14:10+00:00"
+            "time": "2026-09-26T06:31:10+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -6740,16 +6694,16 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.41.0",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "bb899c1db0aa8127dc3afe8cda4a67eb24915f8d"
+                "reference": "5cac8f4db97208823aa353f59a01faad2da52c75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/bb899c1db0aa8127dc3afe8cda4a67eb24915f8d",
-                "reference": "bb899c1db0aa8127dc3afe8cda4a67eb24915f8d",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/5cac8f4db97208823aa353f59a01faad2da52c75",
+                "reference": "5cac8f4db97208823aa353f59a01faad2da52c75",
                 "shasum": ""
             },
             "require": {
@@ -6798,7 +6752,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.41.0"
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -6818,7 +6772,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-28T08:25:59+00:00"
+            "time": "2026-09-25T15:46:47+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
@@ -6902,16 +6856,16 @@
         },
         {
             "name": "symfony/polyfill-php84",
-            "version": "v1.38.1",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php84.git",
-                "reference": "f4e1dfaee5b74aba5964fe1fd4dfc7ba5e3085fa"
+                "reference": "22c6548499cbe5c5bb072fc0c42312dff062a015"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php84/zipball/f4e1dfaee5b74aba5964fe1fd4dfc7ba5e3085fa",
-                "reference": "f4e1dfaee5b74aba5964fe1fd4dfc7ba5e3085fa",
+                "url": "https://api.github.com/repos/symfony/polyfill-php84/zipball/22c6548499cbe5c5bb072fc0c42312dff062a015",
+                "reference": "22c6548499cbe5c5bb072fc0c42312dff062a015",
                 "shasum": ""
             },
             "require": {
@@ -6958,7 +6912,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php84/tree/v1.38.1"
+                "source": "https://github.com/symfony/polyfill-php84/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -6978,7 +6932,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-26T12:51:13+00:00"
+            "time": "2026-09-23T22:01:09+00:00"
         },
         {
             "name": "symfony/process",
