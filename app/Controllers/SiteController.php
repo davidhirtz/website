@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use davidhirtz\yii2\vite\components\Vite;
 use Hirtz\Skeleton\Controllers\Traits\AjaxRouteTrait;
 use Hirtz\Tenant\Filters\PageCache;
 use Hirtz\Skeleton\Web\Application;
 use Hirtz\Skeleton\Web\ErrorAction;
+use Hirtz\Vite\Vite;
 use Override;
 use Yii;
 
@@ -71,10 +71,7 @@ final class SiteController extends \Hirtz\Cms\Controllers\SiteController
             return $this->renderAjaxRouteContent($content);
         }
 
-        /** @var Vite $vite */
-        $vite = Yii::$app->get('vite');
-
-        $this->getView()->registerJsModule($vite->getScriptUrl('/resources/js/app.ts'), [
+        Vite::current()->registerJsModule('/resources/js/app.ts', [
             Yii::$app->params['cookieDomain'] ?? null,
             Yii::$app->params['gtagId'] ?? null,
         ]);
