@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb6eec11867bcef23cb51bb0ab1900b7",
+    "content-hash": "74b7ba485985dc975b6ea5e1b08bbfa1",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -373,32 +373,36 @@
         },
         {
             "name": "davidhirtz/yii2-vite",
-            "version": "0.5.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-vite.git",
-                "reference": "c4ce9f39c25b9ae8c6d5581851f2904abb910ac6"
+                "reference": "9f0fa1c922eda0876b37800a5bf0b67266e89844"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/c4ce9f39c25b9ae8c6d5581851f2904abb910ac6",
-                "reference": "c4ce9f39c25b9ae8c6d5581851f2904abb910ac6",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/9f0fa1c922eda0876b37800a5bf0b67266e89844",
+                "reference": "9f0fa1c922eda0876b37800a5bf0b67266e89844",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^7.0",
-                "php": "^8.3",
-                "yiisoft/yii2": "^2.0"
+                "davidhirtz/yii2-skeleton": "^3.8",
+                "php": "^8.3"
             },
             "require-dev": {
-                "rector/rector": "^2.0",
-                "symfony/var-dumper": "^7.4",
-                "symplify/easy-coding-standard": "^13.0"
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^12.5"
             },
             "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "Hirtz\\Vite\\Bootstrap",
+                "branch-alias": {
+                    "dev-main": "3.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "davidhirtz\\yii2\\vite\\": "src"
+                    "Hirtz\\Vite\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -415,9 +419,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-vite",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-vite/issues",
-                "source": "https://github.com/davidhirtz/yii2-vite/tree/0.5.0"
+                "source": "https://github.com/davidhirtz/yii2-vite/tree/3.1.0"
             },
-            "time": "2026-02-17T07:15:38+00:00"
+            "time": "2026-09-30T11:40:22+00:00"
         },
         {
             "name": "doctrine/lexer",

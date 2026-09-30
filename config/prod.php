@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Controllers\SiteController;
 use App\Models\Menus\SiteMenu;
 use App\Modules\Admin\Controllers\SetupController;
-use davidhirtz\yii2\vite\components\Vite;
 use Hirtz\Cms\Models\Entry;
 use Hirtz\Cms\Models\EntryAsset;
 use Hirtz\Cms\Models\Menus\Menu;
@@ -35,9 +34,6 @@ return [
 //        'urlManager' => [
 //            'rules' => [],
 //        ],
-        'vite' => [
-            'class' => Vite::class,
-        ],
     ],
     'container' => [
         'definitions' => [
