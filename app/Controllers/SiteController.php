@@ -6,7 +6,7 @@ namespace App\Controllers;
 
 use davidhirtz\yii2\vite\components\Vite;
 use Hirtz\Skeleton\Controllers\Traits\AjaxRouteTrait;
-use Hirtz\Skeleton\Filters\PageCache;
+use Hirtz\Tenant\Filters\PageCache;
 use Hirtz\Skeleton\Web\Application;
 use Hirtz\Skeleton\Web\ErrorAction;
 use Override;
