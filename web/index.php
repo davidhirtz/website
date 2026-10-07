@@ -8,6 +8,7 @@ $env = getenv('YII_ENV') ?: 'prod';
 
 defined('YII_ENV') or define('YII_ENV', $env);
 defined('YII_DEBUG') or define('YII_DEBUG', $env !== 'prod');
+defined('YII_ENV_DEV') or define('YII_ENV_DEV', in_array($env, ['dev', 'local'], true));
 
 if (YII_DEBUG) {
     ini_set('display_errors', 'On');

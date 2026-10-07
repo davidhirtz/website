@@ -9,8 +9,6 @@ return ArrayHelper::merge(require __DIR__ . '/prod.php', [
         'mailer' => [
             'useFileTransport' => true,
         ],
-        // The dev server is plain http, and a `Secure` cookie planted by an https visit to the same host name
-        // would otherwise block every later `Set-Cookie` under that name.
         'session' => [
             'cookieSecure' => false,
         ],
