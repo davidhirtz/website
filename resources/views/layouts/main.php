@@ -13,7 +13,6 @@ use Hirtz\Cms\Models\Collections\MenuCollection;
 use Hirtz\Cms\Models\Entry;
 use Hirtz\Skeleton\Web\View;
 use Hirtz\Skeleton\Widgets\Buttons\AdminButton;
-use yii\helpers\Url;
 
 ?>
 <?php $this->beginPage() ?>
@@ -24,7 +23,6 @@ use yii\helpers\Url;
         <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
         <?= Html::csrfMetaTags(); ?>
         <title><?= Html::encode($this->getDocumentTitle()); ?></title>
-        <link rel="canonical" href="<?= Url::current([], true); ?>">
         <link rel="icon" sizes="any" type="image/svg+xml" href="/images/favicons/favicon.svg">
         <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
