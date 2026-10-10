@@ -18,7 +18,6 @@ defineComponent('cc-modal', class extends HTMLElement {
                 .map(($input) => $input.dataset.categories!));
         }
 
-        // The settings link opens the form itself, with the current choice ticked
         document.addEventListener(OPEN_EVENT, () => {
             inputs.forEach(($input) => $input.checked = $input.disabled || categories.has($input.dataset.categories!));
 

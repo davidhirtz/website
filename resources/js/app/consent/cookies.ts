@@ -25,10 +25,7 @@ export const matchesCookie = (name: string, pattern: string): boolean => {
     return new RegExp(`^${regex}$`).test(name);
 }
 
-/**
- * A script such as Google Analytics writes its cookies to the topmost domain it can, so each cookie is expired
- * host-only and on every parent domain of the current host.
- */
+// Google Analytics writes to the topmost domain it can, so every parent domain is tried
 export const deleteCookies = (patterns: string[]) => {
     const parts = location.hostname.split('.');
     const domains = [''];
@@ -62,10 +59,6 @@ export const writeConsentCookie = (id: string, categories: Set<string>) => {
     setCookie([config.version, id, [...categories].join(',')].join(separator), config.expires || getDefaultExpires());
 }
 
-/**
- * Lists the cookies no service declares, so a tag added to a Tag Manager container or an updated script cannot
- * slip past the cookie list unnoticed. Cookies set by an iframe's own domain are invisible here.
- */
 export const warnUndeclaredCookies = () => {
     const undeclared = getCookieNames()
         .filter((name) => !config.declared.some((pattern) => matchesCookie(name, pattern)));

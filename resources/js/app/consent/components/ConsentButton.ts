@@ -3,10 +3,6 @@ import defineComponent from '../../shared/DefineCustomElement';
 
 const split = (value: string) => value.split(',');
 
-/**
- * `data-categories` sets the choice, `data-add-categories` adds to it (an embed asking for its own category), and
- * neither allows every category of the banner.
- */
 defineComponent('cc-button', class extends HTMLElement {
     // noinspection JSUnusedGlobalSymbols
     connectedCallback() {

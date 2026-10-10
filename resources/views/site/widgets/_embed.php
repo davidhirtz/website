@@ -9,9 +9,9 @@ declare(strict_types=1);
  * @var Asset $asset
  */
 
-use App\Consent\Consent;
 use Hirtz\Cms\Widgets\Artwork;
 use Hirtz\Media\Models\Asset;
+use Hirtz\Skeleton\Consent\ConsentManager;
 use Hirtz\Skeleton\Web\View;
 use yii\helpers\Html;
 
@@ -25,7 +25,7 @@ use yii\helpers\Html;
             <p class="font-bold"><?= Yii::t('app', 'EMBED_TITLE') ?></p>
             <p>
                 <?= Yii::t('app', 'EMBED_TEXT', [
-                    'policy' => Html::a(Yii::t('app', 'EMBED_PRIVACY_LINK'), Consent::PRIVACY_URL, [
+                    'policy' => Html::a(Yii::t('app', 'EMBED_PRIVACY_LINK'), ConsentManager::current()->privacyUrl, [
                         'target' => '_blank',
                         'rel' => 'nofollow',
                     ]),

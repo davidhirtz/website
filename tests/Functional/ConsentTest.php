@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional;
 
-use App\Consent\Consent;
 use App\Tests\TestCase;
 use App\Tests\Traits\EntryTrait;
+use Hirtz\Skeleton\Consent\ConsentManager;
 use Hirtz\Skeleton\Modules\Admin\Module;
 use Hirtz\Skeleton\Test\Traits\FunctionalTestTrait;
 use Yii;
@@ -25,8 +25,8 @@ final class ConsentTest extends TestCase
         self::assertSelectorExists('cc-modal input[data-categories="external"]');
         self::assertAnySelectorTextSame('cc-modal code', '_cc');
         self::assertAnySelectorTextSame('cc-modal dd', 'YouTube');
-        self::assertSelectorExists('cc-modal a[href="' . Consent::PRIVACY_URL . '"]');
-        self::assertSelectorExists('cc-modal a[href="' . Consent::IMPRINT_URL . '"]');
+        self::assertSelectorExists('cc-modal a[href="/privacy"]');
+        self::assertSelectorExists('cc-modal a[href="/imprint"]');
         self::assertSelectorExists('footer cc-settings');
     }
 
@@ -52,9 +52,9 @@ final class ConsentTest extends TestCase
 
     public function testTheScriptIsHandedTheVersionAndTheLogUrl(): void
     {
-        $config = Consent::getClientConfig();
+        $config = ConsentManager::current()->getClientConfig();
 
-        self::assertSame(Consent::VERSION, $config['version']);
+        self::assertMatchesRegularExpression('/^1-[0-9a-f]{8}$/', $config['version']);
         self::assertSame('/application-consent', $config['logUrl']);
         self::assertSame([], $config['cookies']['external']);
         self::assertContains('_cc', $config['declared']);
@@ -63,6 +63,6 @@ final class ConsentTest extends TestCase
         self::assertInstanceOf(Module::class, $module);
         $module->enableConsentLog = false;
 
-        self::assertNull(Consent::getClientConfig()['logUrl']);
+        self::assertNull(ConsentManager::current()->getClientConfig()['logUrl']);
     }
 }

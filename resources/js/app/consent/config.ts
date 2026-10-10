@@ -4,9 +4,8 @@ export type ConsentConfig = {
     expires?: string;
     version: string;
     logUrl?: string | null;
-    // First-party cookie names per category (`*` matches anything), deleted when the category is withdrawn
+    // `*` matches anything
     cookies: Record<string, string[]>;
-    // Every cookie the banner lists, warned about otherwise when `debug` is set
     declared: string[];
     debug?: boolean;
 }

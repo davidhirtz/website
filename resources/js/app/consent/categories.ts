@@ -8,10 +8,7 @@ export type Categories = Set<string>;
 export let categories: Categories = new Set();
 export let consentId: string | null = null;
 
-/**
- * Replaces the visitor's choice. A category taken back has its cookies deleted and reloads the page, as the
- * scripts it loaded cannot be unloaded.
- */
+// A withdrawn category reloads the page, as the scripts it loaded cannot be unloaded
 export const setCategories = (selected: string[], fromCookie: boolean = false, id: string | null = null) => {
     const previous = categories;
 

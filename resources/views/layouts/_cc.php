@@ -6,13 +6,15 @@ declare(strict_types=1);
  * @var View $this
  */
 
-use App\Consent\Consent;
 use App\Helpers\Html;
+use Hirtz\Skeleton\Consent\ConsentManager;
 use Hirtz\Skeleton\Web\View;
 
+$consent = ConsentManager::current();
+
 $links = Yii::t('app', 'CC_LINKS', [
-    'privacy' => Html::a(Yii::t('app', 'CC_PRIVACY_LINK'), Consent::PRIVACY_URL, ['class' => 'underline']),
-    'imprint' => Html::a(Yii::t('app', 'CC_IMPRINT_LINK'), Consent::IMPRINT_URL, ['class' => 'underline']),
+    'privacy' => Html::a(Yii::t('app', 'CC_PRIVACY_LINK'), $consent->privacyUrl, ['class' => 'underline']),
+    'imprint' => Html::a(Yii::t('app', 'CC_IMPRINT_LINK'), $consent->imprintUrl, ['class' => 'underline']),
 ]);
 
 ?>
@@ -41,7 +43,7 @@ $links = Yii::t('app', 'CC_LINKS', [
                         <x-toggle class="cursor-pointer font-extralight text-xs tracking-widest uppercase" data-target-id="cc-tab" role="button"><?= Yii::t('app', 'CC_BUTTON_BACK') ?></x-toggle>
                     </div>
                     <div class="grid gap-4">
-                        <?php foreach (Consent::getCategories() as $i => $category) {
+                        <?php foreach ($consent->getCategories() as $i => $category) {
                             if ($i) {
                                 echo '<hr class="border-current">';
                             } ?>
@@ -51,40 +53,40 @@ $links = Yii::t('app', 'CC_LINKS', [
                                         <svg class="w-5 aspect-square group-active:rotate-90 transition-transform" viewBox="0 0 50 50">
                                             <path class="stroke-cream stroke-2" d="m16 8 16 16-16 16"/>
                                         </svg>
-                                        <div class="font-serif"><?= Html::encode($category->title); ?></div>
+                                        <div class="font-serif"><?= Html::encode($category->getTitle()); ?></div>
                                     </x-toggle>
                                     <label class="w-10">
-                                        <span class="sr-only"><?= Html::encode($category->title); ?></span>
-                                        <input type="checkbox" class="cc-checkbox flex w-full h-5 appearance-none border border-current rounded-full" data-categories="<?= $category->id ?>" name="cc-<?= $category->id ?>"<?= $category->required ? ' checked disabled' : ''; ?>>
+                                        <span class="sr-only"><?= Html::encode($category->getTitle()); ?></span>
+                                        <input type="checkbox" class="cc-checkbox flex w-full h-5 appearance-none border border-current rounded-full" data-categories="<?= $category->getId() ?>" name="cc-<?= $category->getId() ?>"<?= $category->isRequired() ? ' checked disabled' : ''; ?>>
                                     </label>
                                 </div>
                                 <div class="hidden group-active:grid gap-3 text-sm">
-                                    <p><?= Html::encode($category->description); ?></p>
-                                    <?php foreach ($category->services as $service) {
+                                    <p><?= Html::encode($category->getDescription()); ?></p>
+                                    <?php foreach ($category->getServices() as $service) {
                                         ?>
                                         <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 border-t border-current/30 pt-2 text-xs">
                                             <dt class="font-bold"><?= Yii::t('app', 'CC_SERVICE_LABEL') ?></dt>
-                                            <dd><?= Html::encode($service->name); ?></dd>
+                                            <dd><?= Html::encode($service->getName()); ?></dd>
                                             <dt class="font-bold"><?= Yii::t('app', 'CC_PROVIDER_LABEL') ?></dt>
-                                            <dd><?= Html::encode($service->provider); ?></dd>
+                                            <dd><?= Html::encode($service->getProvider()); ?></dd>
                                             <dt class="font-bold"><?= Yii::t('app', 'CC_PURPOSE_LABEL') ?></dt>
-                                            <dd><?= Html::encode($service->purpose); ?></dd>
-                                            <?php if ($service->cookies) {
+                                            <dd><?= Html::encode($service->getPurpose()); ?></dd>
+                                            <?php if ($service->getCookies()) {
                                                 ?>
                                                 <dt class="font-bold"><?= Yii::t('app', 'CC_COOKIES_LABEL') ?></dt>
                                                 <dd>
-                                                    <?php foreach ($service->cookies as $cookie) {
+                                                    <?php foreach ($service->getCookies() as $cookie) {
                                                         ?>
-                                                        <code><?= Html::encode($cookie->name); ?></code> (<?= Html::encode($cookie->duration); ?>)<br>
+                                                        <code><?= Html::encode($cookie->getName()); ?></code> (<?= Html::encode($cookie->getDurationLabel()); ?>)<br>
                                                         <?php
                                                     } ?>
                                                 </dd>
                                                 <?php
                                             } ?>
-                                            <?php if ($service->privacyUrl) {
+                                            <?php if ($service->getPrivacyUrl()) {
                                                 ?>
                                                 <dt class="font-bold"><?= Yii::t('app', 'CC_PRIVACY_LINK') ?></dt>
-                                                <dd><?= Html::a(Html::encode($service->privacyUrl), $service->privacyUrl, [
+                                                <dd><?= Html::a(Html::encode($service->getPrivacyUrl()), $service->getPrivacyUrl(), [
                                                     'class' => 'underline break-all',
                                                     'target' => '_blank',
                                                     'rel' => 'noopener',

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Consent\Consent;
+use Hirtz\Skeleton\Consent\ConsentManager;
 use Hirtz\Skeleton\Controllers\Traits\AjaxRouteTrait;
 use Hirtz\Tenant\Filters\PageCache;
 use Hirtz\Skeleton\Web\Application;
@@ -72,11 +72,13 @@ final class SiteController extends \Hirtz\Cms\Controllers\SiteController
             return $this->renderAjaxRouteContent($content);
         }
 
+        $consent = ConsentManager::current();
+
         Vite::current()->registerJsModule('/resources/js/app.ts', [
             [
                 'cookieDomain' => Yii::$app->params['cookieDomain'] ?? null,
-                'tagId' => Yii::$app->params['gtagId'] ?? null,
-                'consent' => Consent::getClientConfig(),
+                'tagId' => $consent->tagId,
+                'consent' => $consent->getClientConfig(),
             ],
         ]);
 

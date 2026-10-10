@@ -14,11 +14,24 @@ use Hirtz\Cms\Modules\Admin\Widgets\Forms\EntryActiveForm;
 use Hirtz\Cms\Modules\Admin\Widgets\Forms\SectionActiveForm;
 use Hirtz\Cms\Modules\Admin\Widgets\Grids\EntryGridView;
 use Hirtz\Cms\Sitemap\EntrySitemap;
+use Hirtz\Skeleton\Consent\Categories\AnalyticsCategory;
+use Hirtz\Skeleton\Consent\Categories\ExternalCategory;
+use Hirtz\Skeleton\Consent\Categories\RequiredCategory;
+use Hirtz\Skeleton\Consent\ConsentManager;
+use Hirtz\Skeleton\Consent\Services\YouTube;
 use Hirtz\Skeleton\Validators\HtmlValidator;
 
 return [
     'name' => 'CMS Template',
     'components' => [
+        // A closure, as the texts are translated
+        'consent' => [
+            'categories' => fn (ConsentManager $consent): array => [
+                RequiredCategory::make(),
+                AnalyticsCategory::make()->services(...$consent->getTagServices()),
+                ExternalCategory::make()->services(YouTube::make()),
+            ],
+        ],
         'i18n' => [
             'translations' => [
                 'app' => [

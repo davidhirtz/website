@@ -9,11 +9,6 @@ declare global {
 
 let isLoaded = false;
 
-/**
- * Consent Mode v2 in its basic form: nothing of Google's loads before the visitor allowed analytics, and the
- * signals tell the tags (and Google Ads, which requires them) what was allowed. `marketing` is not a category of
- * the template; a project adding one gets the ad signals for free.
- */
 const getConsentState = (categories: Categories): Gtag.ConsentParams => {
     const state = (category: string): "granted" | "denied" => categories.has(category) ? 'granted' : 'denied';
 
@@ -32,10 +27,6 @@ const loadScript = (src: string) => {
     document.head.appendChild($tag);
 }
 
-/**
- * Loads Google Tag Manager for a `GTM-` ID, the Google tag (Analytics) otherwise. A Tag Manager container sees the
- * choice as the `cc_update` event and its `cc_categories` variable.
- */
 export default (tagId: string, categories: Categories): void => {
     const consentState = getConsentState(categories);
 

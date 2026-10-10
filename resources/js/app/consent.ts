@@ -16,7 +16,7 @@ export const init = (options: Partial<ConsentConfig>) => {
         setCategories(consent.categories, true, consent.id);
     }
 
-    // A script still running when consent was withdrawn may rewrite its cookies while the page unloads
+    // A script still running at withdrawal rewrites its cookies while the page unloads
     deleteCookies(Object.entries(config.cookies)
         .filter(([category]) => !categories.has(category))
         .flatMap(([, names]) => names));
