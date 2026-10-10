@@ -9,11 +9,10 @@ export default ($container: HTMLElement) => {
 
     $container.querySelectorAll<HTMLButtonElement>('[data-embed-src]').forEach(($btn) => {
         $btn.onclick = () => {
-            const $canvas = $btn.closest('.canvas')!;
-            const $iframe = $canvas.querySelector<HTMLIFrameElement>('iframe')!;
+            const $embed = $btn.closest<HTMLElement>('[data-embed]')!;
+            const $iframe = $embed.querySelector<HTMLIFrameElement>('iframe')!;
 
-
-            $canvas.classList.add('embedded')
+            $embed.classList.add('embedded')
 
             if (reset) {
                 reset();
@@ -21,7 +20,7 @@ export default ($container: HTMLElement) => {
 
             activate = () => {
                 if (categories.has('external')) {
-                    const $cc = $canvas.querySelector<HTMLElement>('[data-embed-cc]');
+                    const $cc = $embed.querySelector<HTMLElement>('[data-embed-cc]');
 
                     if ($cc) {
                         $cc.remove();
@@ -36,7 +35,7 @@ export default ($container: HTMLElement) => {
                 if ($iframe) {
                     $iframe.src = '';
                     $iframe.hidden = true;
-                    $canvas.classList.remove('embedded');
+                    $embed.classList.remove('embedded');
                 }
             }
 

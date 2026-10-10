@@ -16,23 +16,25 @@ use Hirtz\Skeleton\Web\View;
 use yii\helpers\Html;
 
 ?>
-<button class="embed:hidden group place-content-center cursor-pointer" data-embed-src="<?= $asset->getFormattedEmbedUrl(); ?>">
-    <span class="embed-play absolute w-12 aspect-square rounded-full bg-white group-hover:bg-brand"></span>
-</button>
-<div data-embed-cc class="embed:block hidden place-content-center align-center p-4">
-    <div class="text-center small prose">
-        <p class="font-bold"><?= Yii::t('app', 'EMBED_TITLE') ?></p>
-        <p>
-            <?= Yii::t('app', 'EMBED_TEXT', [
-                'policy' => Html::a(Yii::t('app', 'EMBED_PRIVACY_LINK'), Consent::PRIVACY_URL, [
-                    'target' => '_blank',
-                    'rel' => 'nofollow',
-                ]),
-            ]); ?>
-        </p>
-        <p>
-            <cc-button class="btn cursor-pointer" data-add-categories="required,external" role="button"><?= Yii::t('app', 'EMBED_BUTTON_ACCEPT') ?></cc-button>
-        </p>
+<div class="overlay" data-embed>
+    <button class="overlay embed:hidden group cursor-pointer" data-embed-src="<?= $asset->getFormattedEmbedUrl(); ?>">
+        <span class="embed-play absolute top-1/2 left-1/2 w-12 aspect-square rounded-full bg-white group-hover:bg-brand"></span>
+    </button>
+    <div data-embed-cc class="overlay embed:block hidden place-content-center align-center p-4">
+        <div class="text-center small prose">
+            <p class="font-bold"><?= Yii::t('app', 'EMBED_TITLE') ?></p>
+            <p>
+                <?= Yii::t('app', 'EMBED_TEXT', [
+                    'policy' => Html::a(Yii::t('app', 'EMBED_PRIVACY_LINK'), Consent::PRIVACY_URL, [
+                        'target' => '_blank',
+                        'rel' => 'nofollow',
+                    ]),
+                ]); ?>
+            </p>
+            <p>
+                <cc-button class="btn cursor-pointer" data-add-categories="required,external" role="button"><?= Yii::t('app', 'EMBED_BUTTON_ACCEPT') ?></cc-button>
+            </p>
+        </div>
     </div>
+    <iframe class="overlay" allow="autoplay; encrypted-media" allowfullscreen hidden></iframe>
 </div>
-<iframe allow="autoplay; encrypted-media" allowfullscreen hidden></iframe>
