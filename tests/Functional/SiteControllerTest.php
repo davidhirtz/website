@@ -158,7 +158,7 @@ final class SiteControllerTest extends TestCase
         $this->open('/');
 
         self::assertSelectorExists('main section button[data-embed-src]');
-        self::assertSelectorExists('main section cc-button[data-categories="required,external"]');
+        self::assertSelectorExists('main section cc-button[data-add-categories="required,external"]');
         self::assertSelectorExists('main section iframe[hidden]');
     }
 

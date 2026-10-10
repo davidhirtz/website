@@ -9,6 +9,7 @@ declare(strict_types=1);
  * @var Asset $asset
  */
 
+use App\Consent\Consent;
 use Hirtz\Cms\Widgets\Artwork;
 use Hirtz\Media\Models\Asset;
 use Hirtz\Skeleton\Web\View;
@@ -23,14 +24,14 @@ use yii\helpers\Html;
         <p class="font-bold"><?= Yii::t('app', 'EMBED_TITLE') ?></p>
         <p>
             <?= Yii::t('app', 'EMBED_TEXT', [
-                'policy' => Html::a(Yii::t('app', 'EMBED_PRIVACY_LINK'), '/privacy', [
+                'policy' => Html::a(Yii::t('app', 'EMBED_PRIVACY_LINK'), Consent::PRIVACY_URL, [
                     'target' => '_blank',
                     'rel' => 'nofollow',
                 ]),
             ]); ?>
         </p>
         <p>
-            <cc-button class="btn cursor-pointer" data-categories="required,external" role="button"><?= Yii::t('app', 'EMBED_BUTTON_ACCEPT') ?></cc-button>
+            <cc-button class="btn cursor-pointer" data-add-categories="required,external" role="button"><?= Yii::t('app', 'EMBED_BUTTON_ACCEPT') ?></cc-button>
         </p>
     </div>
 </div>
