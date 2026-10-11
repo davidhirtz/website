@@ -64,6 +64,6 @@ export const warnUndeclaredCookies = () => {
         .filter((name) => !config.declared.some((pattern) => matchesCookie(name, pattern)));
 
     if (undeclared.length) {
-        console.warn('Cookies missing from App\\Consent\\Consent:', undeclared.join(', '));
+        console.warn('Cookies no service of the consent component declares:', undeclared.join(', '));
     }
 }
