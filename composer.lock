@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74b7ba485985dc975b6ea5e1b08bbfa1",
+    "content-hash": "501dd1a161bea341db2defa782560a0d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -231,21 +231,21 @@
         },
         {
             "name": "davidhirtz/yii2-cms",
-            "version": "3.12.0",
+            "version": "3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-cms.git",
-                "reference": "88a31b93981856e5dbd6d9f11b2ff7d05c2b884a"
+                "reference": "e267377bb744160cb2cda86877b7b9a15384f76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/88a31b93981856e5dbd6d9f11b2ff7d05c2b884a",
-                "reference": "88a31b93981856e5dbd6d9f11b2ff7d05c2b884a",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/e267377bb744160cb2cda86877b7b9a15384f76c",
+                "reference": "e267377bb744160cb2cda86877b7b9a15384f76c",
                 "shasum": ""
             },
             "require": {
                 "davidhirtz/yii2-media": "^3.10",
-                "davidhirtz/yii2-skeleton": "^3.14",
+                "davidhirtz/yii2-skeleton": "^3.15",
                 "davidhirtz/yii2-tenant": "^3.2",
                 "php": "^8.3"
             },
@@ -281,9 +281,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-cms",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-cms/issues",
-                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.12.0"
+                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.13.0"
             },
-            "time": "2026-10-08T08:11:45+00:00"
+            "time": "2026-10-11T08:19:56+00:00"
         },
         {
             "name": "davidhirtz/yii2-media",
@@ -345,16 +345,16 @@
         },
         {
             "name": "davidhirtz/yii2-skeleton",
-            "version": "3.14.0",
+            "version": "3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-skeleton.git",
-                "reference": "b189332c09f6a1802d11f5e2879b3b15c769691e"
+                "reference": "de29d6ed34ed9ecdb63b4d113b04e9b0202d5729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/b189332c09f6a1802d11f5e2879b3b15c769691e",
-                "reference": "b189332c09f6a1802d11f5e2879b3b15c769691e",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/de29d6ed34ed9ecdb63b4d113b04e9b0202d5729",
+                "reference": "de29d6ed34ed9ecdb63b4d113b04e9b0202d5729",
                 "shasum": ""
             },
             "require": {
@@ -424,9 +424,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-skeleton",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-skeleton/issues",
-                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.14.0"
+                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.15.0"
             },
-            "time": "2026-10-08T08:07:37+00:00"
+            "time": "2026-10-11T08:17:58+00:00"
         },
         {
             "name": "davidhirtz/yii2-tenant",
@@ -1138,16 +1138,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "4.3.4",
+            "version": "4.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "b70df03b4fcc1e4c24c9d474ac034541cbf5e2f9"
+                "reference": "765c15a8204877ae8f408f34953bf72f1b416d55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/b70df03b4fcc1e4c24c9d474ac034541cbf5e2f9",
-                "reference": "b70df03b4fcc1e4c24c9d474ac034541cbf5e2f9",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/765c15a8204877ae8f408f34953bf72f1b416d55",
+                "reference": "765c15a8204877ae8f408f34953bf72f1b416d55",
                 "shasum": ""
             },
             "require": {
@@ -1193,7 +1193,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/image/issues",
-                "source": "https://github.com/Intervention/image/tree/4.3.4"
+                "source": "https://github.com/Intervention/image/tree/4.3.5"
             },
             "funding": [
                 {
@@ -1209,7 +1209,7 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2026-10-04T09:36:33+00:00"
+            "time": "2026-10-10T05:44:05+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -2049,16 +2049,16 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "4.33.2",
+            "version": "4.34.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "8a0556ccb6cdcdce81f9af4ca8714c22cff2e003"
+                "reference": "3d8f4e56becb10ede64e2ac6f8077f6434715461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/8a0556ccb6cdcdce81f9af4ca8714c22cff2e003",
-                "reference": "8a0556ccb6cdcdce81f9af4ca8714c22cff2e003",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/3d8f4e56becb10ede64e2ac6f8077f6434715461",
+                "reference": "3d8f4e56becb10ede64e2ac6f8077f6434715461",
                 "shasum": ""
             },
             "require": {
@@ -2087,7 +2087,7 @@
                 "open-telemetry/gen-otlp-protobuf": "^1.2.1",
                 "open-telemetry/sdk": "^1.1",
                 "open-telemetry/sem-conv": "^1.27",
-                "phpstan/phpstan": "^1.3",
+                "phpstan/phpstan": "^2.2",
                 "phpunit/phpunit": "^8.5.52|^9.6.34",
                 "spiral/roadrunner-http": "^3.6",
                 "spiral/roadrunner-worker": "^3.6"
@@ -2130,7 +2130,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-php/issues",
-                "source": "https://github.com/getsentry/sentry-php/tree/4.33.2"
+                "source": "https://github.com/getsentry/sentry-php/tree/4.34.0"
             },
             "funding": [
                 {
@@ -2142,7 +2142,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-10-07T12:48:05+00:00"
+            "time": "2026-10-08T11:25:58+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4222,11 +4222,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b1f9890d9af53a25c58129e78f0aadd31f90d7f4",
-                "reference": "b1f9890d9af53a25c58129e78f0aadd31f90d7f4",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/6155239b488e95d26d1ebd95c6b4bb294d7f09db",
+                "reference": "6155239b488e95d26d1ebd95c6b4bb294d7f09db",
                 "shasum": ""
             },
             "require": {
@@ -4282,7 +4282,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-06T06:15:36+00:00"
+            "time": "2026-10-08T21:09:11+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
