@@ -345,16 +345,16 @@
         },
         {
             "name": "davidhirtz/yii2-skeleton",
-            "version": "3.15.0",
+            "version": "3.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-skeleton.git",
-                "reference": "de29d6ed34ed9ecdb63b4d113b04e9b0202d5729"
+                "reference": "d80ff5d25527fbedd48d8a9da95b0393294b42c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/de29d6ed34ed9ecdb63b4d113b04e9b0202d5729",
-                "reference": "de29d6ed34ed9ecdb63b4d113b04e9b0202d5729",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/d80ff5d25527fbedd48d8a9da95b0393294b42c0",
+                "reference": "d80ff5d25527fbedd48d8a9da95b0393294b42c0",
                 "shasum": ""
             },
             "require": {
@@ -424,9 +424,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-skeleton",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-skeleton/issues",
-                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.15.0"
+                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.16.0"
             },
-            "time": "2026-10-11T08:17:58+00:00"
+            "time": "2026-10-11T08:54:20+00:00"
         },
         {
             "name": "davidhirtz/yii2-tenant",

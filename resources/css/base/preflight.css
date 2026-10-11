@@ -276,7 +276,8 @@ textarea /*,
     opacity: 1; /* 4 */
 }
 
-button {
+button,
+[role="button"] {
     cursor: pointer;
 }
 

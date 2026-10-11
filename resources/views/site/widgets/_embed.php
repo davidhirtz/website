@@ -17,7 +17,7 @@ use yii\helpers\Html;
 
 ?>
 <div class="overlay" data-embed>
-    <button class="overlay embed:hidden group cursor-pointer" data-embed-src="<?= $asset->getFormattedEmbedUrl(); ?>">
+    <button class="overlay embed:hidden group" data-embed-src="<?= $asset->getFormattedEmbedUrl(); ?>">
         <span class="embed-play absolute top-1/2 left-1/2 w-12 aspect-square rounded-full bg-white group-hover:bg-brand"></span>
     </button>
     <div data-embed-cc class="overlay embed:block hidden place-content-center align-center p-4">
@@ -32,7 +32,7 @@ use yii\helpers\Html;
                 ]); ?>
             </p>
             <p>
-                <cc-button class="btn cursor-pointer" data-add-categories="required,external" role="button"><?= Yii::t('app', 'EMBED_BUTTON_ACCEPT') ?></cc-button>
+                <cc-button class="btn" data-add-categories="required,external" role="button"><?= Yii::t('app', 'EMBED_BUTTON_ACCEPT') ?></cc-button>
             </p>
         </div>
     </div>

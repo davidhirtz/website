@@ -78,7 +78,7 @@ use Hirtz\Skeleton\Widgets\Buttons\AdminButton;
                     <?php
                 } ?>
                 <li class="has-hidden:hidden">
-                    <cc-settings class="cursor-pointer" hidden><?= Yii::t('app', 'CC_SETTINGS_BUTTON') ?></cc-settings>
+                    <cc-settings hidden><?= Yii::t('app', 'CC_SETTINGS_BUTTON') ?></cc-settings>
                 </li>
             </ul>
         </nav>

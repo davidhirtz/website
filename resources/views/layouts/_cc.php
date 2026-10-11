@@ -40,7 +40,7 @@ $links = Yii::t('app', 'CC_LINKS', [
             <div class="max-h-[80svh] flex flex-col gap-6">
                 <div class="grid gap-6 overflow-y-scroll">
                     <div class="text-right">
-                        <x-toggle class="cursor-pointer font-extralight text-xs tracking-widest uppercase" data-target-id="cc-tab" role="button"><?= Yii::t('app', 'CC_BUTTON_BACK') ?></x-toggle>
+                        <x-toggle class="font-extralight text-xs tracking-widest uppercase" data-target-id="cc-tab" role="button"><?= Yii::t('app', 'CC_BUTTON_BACK') ?></x-toggle>
                     </div>
                     <div class="grid gap-4">
                         <?php foreach ($consent->getCategories() as $i => $category) {
@@ -49,11 +49,11 @@ $links = Yii::t('app', 'CC_LINKS', [
                             } ?>
                             <div class="grid gap-2 group">
                                 <div class="flex justify-between gap-4">
-                                    <x-toggle class="flex items-center gap-2 cursor-pointer" role="button">
+                                    <x-toggle class="flex items-center gap-2" role="button">
                                         <svg class="w-5 aspect-square group-active:rotate-90 transition-transform" viewBox="0 0 50 50">
                                             <path class="stroke-cream stroke-2" d="m16 8 16 16-16 16"/>
                                         </svg>
-                                        <div class="font-serif"><?= Html::encode($category->getTitle()); ?></div>
+                                        <div class="font-serif font-bold"><?= Html::encode($category->getTitle()); ?></div>
                                     </x-toggle>
                                     <label class="w-10">
                                         <span class="sr-only"><?= Html::encode($category->getTitle()); ?></span>
@@ -64,7 +64,7 @@ $links = Yii::t('app', 'CC_LINKS', [
                                     <p><?= Html::encode($category->getDescription()); ?></p>
                                     <?php foreach ($category->getServices() as $service) {
                                         ?>
-                                        <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 border-t border-current/30 pt-2 text-xs">
+                                        <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 border-t pt-2 text-xs">
                                             <dt class="font-bold"><?= Yii::t('app', 'CC_SERVICE_LABEL') ?></dt>
                                             <dd><?= Html::encode($service->getName()); ?></dd>
                                             <dt class="font-bold"><?= Yii::t('app', 'CC_PROVIDER_LABEL') ?></dt>
