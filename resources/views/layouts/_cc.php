@@ -64,7 +64,7 @@ $links = Yii::t('app', 'CC_LINKS', [
                                     <p><?= Html::encode($category->getDescription()); ?></p>
                                     <?php foreach ($category->getServices() as $service) {
                                         ?>
-                                        <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 border-t pt-2 text-xs">
+                                        <dl class="grid grid-cols-[minmax(5rem,auto)_1fr] gap-x-3 gap-y-1 border-t pt-2 text-xs">
                                             <dt class="font-bold"><?= Yii::t('app', 'CC_SERVICE_LABEL') ?></dt>
                                             <dd><?= Html::encode($service->getName()); ?></dd>
                                             <dt class="font-bold"><?= Yii::t('app', 'CC_PROVIDER_LABEL') ?></dt>

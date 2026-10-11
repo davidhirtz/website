@@ -13,7 +13,7 @@ return [
     'CC_COOKIES_LABEL' => 'Cookies',
     'CC_IMPRINT_LINK' => 'Impressum',
     'CC_LINKS' => 'Mehr dazu: {privacy} · {imprint}',
-    'CC_PRIVACY_LINK' => 'Datenschutzerklärung',
+    'CC_PRIVACY_LINK' => 'Datenschutz',
     'CC_PROVIDER_LABEL' => 'Anbieter',
     'CC_PURPOSE_LABEL' => 'Zweck',
     'CC_SERVICE_LABEL' => 'Dienst',
