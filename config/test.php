@@ -24,10 +24,5 @@ return ArrayHelper::merge(require __DIR__ . '/prod.php', [
             'username' => getenv('MYSQL_USER') ?: ($db['username'] ?? 'root'),
             'password' => getenv('MYSQL_PASSWORD') ?: ($db['password'] ?? ''),
         ],
-        // `Test\TestCase` points `@webroot` at a scratch directory it deletes again, so the committed manifest
-        // is named against the project root instead.
-        'vite' => [
-            'manifestPath' => '@root/web/dist/.vite/manifest.json',
-        ],
     ],
 ]);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "501dd1a161bea341db2defa782560a0d",
+    "content-hash": "f9477b290cd9a1fda71fe9563058693c",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -484,16 +484,16 @@
         },
         {
             "name": "davidhirtz/yii2-vite",
-            "version": "3.3.0",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-vite.git",
-                "reference": "b96f802d2e3be4ec43b38d728d5336b34ed277cc"
+                "reference": "0d71ec40e62cf9096129062c552017bae9f0ecaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/b96f802d2e3be4ec43b38d728d5336b34ed277cc",
-                "reference": "b96f802d2e3be4ec43b38d728d5336b34ed277cc",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/0d71ec40e62cf9096129062c552017bae9f0ecaf",
+                "reference": "0d71ec40e62cf9096129062c552017bae9f0ecaf",
                 "shasum": ""
             },
             "require": {
@@ -530,9 +530,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-vite",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-vite/issues",
-                "source": "https://github.com/davidhirtz/yii2-vite/tree/3.3.0"
+                "source": "https://github.com/davidhirtz/yii2-vite/tree/3.4.0"
             },
-            "time": "2026-10-01T07:22:42+00:00"
+            "time": "2026-10-12T14:10:48+00:00"
         },
         {
             "name": "doctrine/lexer",
