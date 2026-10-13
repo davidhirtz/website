@@ -15,9 +15,6 @@ final class Section extends \Hirtz\Cms\Models\Section
     public const int TYPE_FULL_WIDTH = 2;
 
     /**
-     * `wrapper()` is the flex row both types share, so `Widgets\SectionStack` wraps consecutive sections in one
-     * container instead of the view hardcoding it.
-     *
      * @return list<SectionType>
      */
     #[Override]
