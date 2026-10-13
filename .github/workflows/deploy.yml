@@ -1,4 +1,4 @@
-name: Deploy on srv01.anakin.anakin.cloud
+name: Deploy
 on:
   push:
     branches:
@@ -6,13 +6,14 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy on ${{ vars.SSH_HOST }}
     runs-on: ubuntu-latest
     if: ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] != '' }}
 
     env:
       BRANCH: ${{ github.head_ref || github.ref_name }}
       DEPLOY_PATH: ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] }}
+      PHP: ${{ vars.PHP || 'php' }}
 
     steps:
       - name: Display Branch Name
@@ -24,18 +25,19 @@ jobs:
       - name: Deploy on Server
         uses: appleboy/ssh-action@v1.2.5
         with:
-          host: srv01.anakin.anakin.cloud
-          username: anakin
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          envs: DEPLOY_PATH
+          envs: DEPLOY_PATH,PHP
           script: |
             set -e
             cd "$DEPLOY_PATH"
-            php yii maintenance/enable || test -f runtime/maintenance.php
+            if [ -f composer.phar ]; then COMPOSER="$PHP composer.phar"; else COMPOSER=composer; fi
+            $PHP yii maintenance/enable || test -f runtime/maintenance.php
             git pull
-            composer install --optimize-autoloader --no-dev
-            php yii migrate --interactive=0
-            php yii cache/flush-all --interactive=0
-            php yii registry/push
-            php yii maintenance/disable
+            $COMPOSER install --optimize-autoloader --no-dev
+            $PHP yii migrate --interactive=0
+            $PHP yii cache/flush-all --interactive=0
+            $PHP yii registry/push
+            $PHP yii maintenance/disable

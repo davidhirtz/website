@@ -81,14 +81,18 @@ php yii params/create registryUrl https://registry.davidhirtz.com/registry/push
 php yii params/create registryKey <the key>
 ```
 
-Leaving both parameters unset is not an error, and neither is a registry that is down or a key that was revoked: the command warns and exits 0, which is why the deploy carries it as the last step inside the maintenance window. `--strict` turns both into a failure instead. A console application knows no URL of its own, so the deploy passes `--url`; without it the installation reports itself as an unnamed local one.
+Leaving both parameters unset is not an error, and neither is a registry that is down or a key that was revoked: the command warns and exits 0, which is why the deploy carries it as the last step inside the maintenance window. `--strict` turns both into a failure instead.
 
-The deploy is keyed by branch on a repository variable, and a branch without one is skipped:
+The deploy is keyed by branch on a repository variable, and a branch without one is skipped. The server is named by variables too, so every project uses the same workflow:
 
-| Variable                | What it does                                                                        |
-|-------------------------|-------------------------------------------------------------------------------------|
-| `DEPLOY_PATH_<branch>`  | the directory on the server the deploy runs in; unset, nothing deploys                |
-| `REGISTRY_URL_<branch>` | the installation's own URL, passed to `registry/push`; unset, nothing is reported     |
+| Variable               | What it does                                                                            |
+|------------------------|-----------------------------------------------------------------------------------------|
+| `DEPLOY_PATH_<branch>` | the directory on the server the deploy runs in; unset, nothing deploys                  |
+| `SSH_HOST`             | the server the deploy connects to                                                       |
+| `SSH_USERNAME`         | the user it connects as, with the private key in the `SSH_KEY` secret                   |
+| `PHP`                  | the PHP binary on the server; unset, `php`                                              |
+
+A `composer.phar` in the deploy path is used when there is one, the global `composer` otherwise.
 
 
 ### Permissions
