@@ -72,18 +72,21 @@ return [
 The migrations seed a tenant for the installation. Visit `/admin/cms/setup` once as an administrator afterwards to create the index entry.
 
 
-### Registry
+### Registry (optional)
 
-The installation reports itself to the version registry: `php yii registry/push` posts what the system *Application* tab shows — name, version, commit, the installed extensions, PHP, database, Yii and the migration state — to `params.registryUrl`, authenticated with `params.registryKey`. `php yii registry/show` prints the same report without sending it.
+An installation can report itself to a version registry: `php yii registry/push` posts what the system *Application* tab shows — name, version, commit, the installed extensions, PHP, database, Yii and the migration state — to `params.registryUrl`, authenticated with `params.registryKey`. `php yii registry/show` prints the same report without sending it. Most installations need none of this and can skip the section.
 
 ```bash
-php yii params/create registryUrl https://registry.davidhirtz.com/registry/push
+php yii params/create registryUrl https://REGISTRY-HOST/registry/push
 php yii params/create registryKey <the key>
 ```
 
 Leaving both parameters unset is not an error, and neither is a registry that is down or a key that was revoked: the command warns and exits 0, which is why the deploy carries it as the last step inside the maintenance window. `--strict` turns both into a failure instead.
 
-The deploy is keyed by branch on a repository variable, and a branch without one is skipped. The server is named by variables too, so every project uses the same workflow:
+
+### Deployment
+
+Every push runs the checks on GitHub (the `check` job of `.github/workflows/deploy.yml`), and the deploy waits for them. The deploy is keyed by branch on a repository variable, and a branch without one is skipped. The server is named by variables too, so every project uses the same workflow:
 
 | Variable               | What it does                                                                            |
 |------------------------|-----------------------------------------------------------------------------------------|
@@ -108,7 +111,7 @@ The environment is selected by the `YII_ENV` environment variable and decides wh
 YII_ENV=dev php yii <command>
 ```
 
-CSS and JavaScript assets are processed with [Vite](https://vitejs.dev/) and need to be recompiled after a change. Run `npm install` to install the development dependencies, `npm run dev` to start the Vite development server or `npm run build` to compile the assets for production.
+CSS and JavaScript assets are processed with [Vite](https://vitejs.dev/) and need to be recompiled after a change. Run `npm install` to install the development dependencies, `npm run dev` to start the Vite development server or `npm run build` to compile the assets for production. The compiled files in `web/dist` are committed and the deploy does not build them, so commit `web/dist` with every CSS or JavaScript change.
 
 
 ### Checks
@@ -123,7 +126,7 @@ composer check
 
 It reports and never rewrites: a style failure asks for `composer cs-fix` rather than fixing the tree under a commit that is already made. `composer install-hooks` points `core.hooksPath` at `.githooks` and is needed once per clone — a hook under `.git/hooks` is not committed. `git push --no-verify` skips the gate deliberately.
 
-A push to a branch with a deploy path deploys it and nothing on the way there runs these checks, so this hook is the only gate between a broken commit and the server.
+The same checks run on GitHub before a deploy; the hook reports a failure before the push rather than after it.
 
 The individual commands, for when only one of them is wanted:
 
@@ -198,3 +201,9 @@ Structure
       tests/              tests for the application
       vendor/             dependent 3rd-party packages
       web/                the webroot, containing the entry script, published resources and uploads
+
+
+License
+-------
+
+Released under the [MIT License](LICENSE).

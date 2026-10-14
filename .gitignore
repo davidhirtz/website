@@ -8,6 +8,11 @@
 /config/local.php
 /tests/config/db.php
 
+# IDE: only the shared code style and inspections are committed
+/.idea/*
+!/.idea/codeStyles/
+!/.idea/inspectionProfiles/
+
 # Debug
 /web/css/*.map
 /web/js/*.map

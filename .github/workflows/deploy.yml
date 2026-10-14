@@ -2,17 +2,54 @@ name: Deploy
 on:
   push:
     branches:
-      - '*'
+      - '**'
 
 jobs:
-  deploy:
-    name: Deploy on ${{ vars.SSH_HOST }}
+  # The same gates as `composer check` and the pre-push hook, so a push that skipped the hook — `--no-verify`, a
+  # commit made on GitHub — still cannot deploy a broken commit.
+  check:
+    name: Check
     runs-on: ubuntu-latest
-    if: ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] != '' }}
+
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_DATABASE: cms_template_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     env:
-      BRANCH: ${{ github.head_ref || github.ref_name }}
-      DEPLOY_PATH: ${{ vars[format('DEPLOY_PATH_{0}', github.head_ref || github.ref_name )] }}
+      MYSQL_DSN: mysql:host=127.0.0.1;dbname=cms_template_test
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ''
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: imagick, intl, pdo_mysql
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress
+
+      - name: Run checks
+        run: vendor/bin/check
+
+  deploy:
+    name: Deploy on ${{ vars.SSH_HOST }}
+    needs: check
+    runs-on: ubuntu-latest
+    if: ${{ vars[format('DEPLOY_PATH_{0}', github.ref_name)] != '' }}
+
+    env:
+      BRANCH: ${{ github.ref_name }}
+      DEPLOY_PATH: ${{ vars[format('DEPLOY_PATH_{0}', github.ref_name)] }}
       PHP: ${{ vars.PHP || 'php' }}
 
     steps:
@@ -39,5 +76,6 @@ jobs:
             $COMPOSER install --optimize-autoloader --no-dev
             $PHP yii migrate --interactive=0
             $PHP yii cache/flush-all --interactive=0
+            # Optional: reports the installation to a version registry, a no-op without `registryUrl` and `registryKey`
             $PHP yii registry/push
             $PHP yii maintenance/disable

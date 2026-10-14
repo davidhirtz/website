@@ -14,8 +14,6 @@ export default defineConfig(({}) => ({
         },
         rollupOptions: {
             external: [
-                '/fonts/Moderat-Bold.woff2',
-                '/fonts/Moderat-Regular.woff2',
                 '/images/site/play.svg',
             ],
             input: {

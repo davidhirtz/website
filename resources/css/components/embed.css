@@ -7,7 +7,7 @@
 }
 
 .embedded {
-    background-color: #dedfd6;
+    background-color: var(--color-neutral-200);
     -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 

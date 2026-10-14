@@ -28,8 +28,6 @@
 
 @source not inline("filter");
 
-@source "../../app/helpers/*.php";
-@source "../../app/models/*.php";
-@source "../../app/widgets/*.php";
-@source "../js/*.ts";
+@source "../../app/**/*.php";
+@source "../js/**/*.ts";
 @source "../views/**/*.php";

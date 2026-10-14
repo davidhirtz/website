@@ -51,7 +51,7 @@ $links = Yii::t('app', 'CC_LINKS', [
                                 <div class="flex justify-between gap-4">
                                     <x-toggle class="flex items-center gap-2" role="button">
                                         <svg class="w-5 aspect-square group-active:rotate-90 transition-transform" viewBox="0 0 50 50">
-                                            <path class="stroke-cream stroke-2" d="m16 8 16 16-16 16"/>
+                                            <path class="stroke-white stroke-2" d="m16 8 16 16-16 16"/>
                                         </svg>
                                         <div class="font-serif font-bold"><?= Html::encode($category->getTitle()); ?></div>
                                     </x-toggle>

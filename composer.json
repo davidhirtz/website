@@ -3,6 +3,7 @@
   "description": "Yii2 CMS Template",
   "homepage": "https://www.github.com/davidhirtz/yii2-cms-template",
   "type": "project",
+  "license": "MIT",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {

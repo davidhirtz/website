@@ -15,8 +15,11 @@
 
 RewriteEngine on
 
+# Redirects the bare domain to `https://www.` — `draft.` (the staging host) and local development hosts are left
+# alone. Remove these lines for a site that is served without `www.`.
 RewriteCond %{HTTP_HOST} !^(www|draft)\. [NC]
-RewriteCond %{HTTP_HOST} !\.localhost$ [NC]
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
+RewriteCond %{HTTP_HOST} !\.(localhost|test)(:\d+)?$ [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
