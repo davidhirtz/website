@@ -15,7 +15,8 @@
 @import "./utilities/animations.css";
 @import "./utilities/overlay.css";
 
-@import "tailwindcss/utilities.css";
+/* Only the sources listed below, not the whole project: the docs' examples and the installer's presets are not the site. */
+@import "tailwindcss/utilities.css" source(none);
 
 @custom-variant active (&.active);
 
