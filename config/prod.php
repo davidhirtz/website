@@ -107,7 +107,7 @@ return [
                 'xl' => 1600, // 100rem
             ],
             'transformations' => [
-                // TODO: Add your transformations here.
+                // The scaled copies responsive images are served in, see docs/content-model.md#images.
             ],
         ],
     ],

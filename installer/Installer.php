@@ -194,16 +194,24 @@ final class Installer
         $this->replace('config/prod.php', "'name' => '" . self::TEMPLATE_NAME . "',", "'name' => " . var_export($this->name, true) . ',');
         $this->replace('config/test.php', self::TEMPLATE_TEST_DATABASE, $testDatabase);
         $this->replace('.github/workflows/deploy.yml', self::TEMPLATE_TEST_DATABASE, $testDatabase);
-        $this->replace('README.md', self::TEMPLATE_TEST_DATABASE, $testDatabase);
         $this->replace('README.md', "README\n============================\n", "$this->name\n" . str_repeat('=', mb_strlen($this->name)) . "\n");
-        $this->replace('README.md', 'REPOSITORY', $this->slug);
 
-        if ($this->remote !== '') {
-            $this->replace('README.md', "git@github.com:OWNER/$this->slug.git", $this->remote);
+        $documents = ['README.md', 'AGENTS.md', ...array_map(
+            fn (string $path): string => substr($path, strlen($this->root) + 1),
+            glob("$this->root/docs/*.md") ?: [],
+        )];
+
+        foreach ($documents as $document) {
+            // How to create a project is the template's to explain, not the project's.
+            $this->replacePattern($document, '/<!-- template -->.*?<!-- \\/template -->\\n+/s', '');
+            $this->replace($document, self::TEMPLATE_TEST_DATABASE, $testDatabase);
+
+            if ($this->remote !== '') {
+                $this->replace($document, 'git@github.com:OWNER/REPOSITORY.git', $this->remote);
+            }
+
+            $this->replace($document, 'REPOSITORY', $this->slug);
         }
-
-        // How to create a project is the template's to explain, not the project's.
-        $this->replacePattern('README.md', '/<!-- template -->.*?<!-- \\/template -->\\n+/s', '');
 
         $title = json_encode($this->name, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $this->replace('web/manifest.json', '"name": ""', "\"name\": $title");
