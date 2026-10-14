@@ -18,7 +18,8 @@
   },
   "autoload": {
     "psr-4": {
-      "App\\": "app"
+      "App\\": "app",
+      "Installer\\": "installer"
     }
   },
   "autoload-dev": {
@@ -41,6 +42,9 @@
     "cs-fix": "php-cs-fixer fix",
     "install-hooks": "git config core.hooksPath .githooks",
     "phpstan": "phpstan --memory-limit=1G",
+    "post-create-project-cmd": [
+      "Installer\\Installer::postCreateProject"
+    ],
     "post-install-cmd": [
       "yii\\composer\\Installer::postInstall"
     ],

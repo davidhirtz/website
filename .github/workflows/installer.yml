@@ -1,0 +1,59 @@
+# Creates a project from this commit the way `composer create-project` does and runs its checks, so the installer
+# cannot break unnoticed. The installer removes this file from every project it creates.
+name: Installer
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  create-project:
+    name: Create project (${{ matrix.preset }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        preset:
+          - bare
+
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: template
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: imagick, intl, pdo_mysql
+          coverage: none
+
+      - name: Create the project
+        env:
+          INSTALL_NAME: CI Project
+          INSTALL_PRESET: ${{ matrix.preset }}
+          INSTALL_DB_USER: root
+          INSTALL_DB_PASSWORD: ''
+          INSTALL_NPM: '0'
+          GIT_AUTHOR_NAME: CI
+          GIT_AUTHOR_EMAIL: ci@example.com
+          GIT_COMMITTER_NAME: CI
+          GIT_COMMITTER_EMAIL: ci@example.com
+        run: >
+          composer create-project davidhirtz/yii2-cms-template project dev-main --no-interaction
+          --repository='{"type": "path", "url": "template", "options": {"symlink": false, "versions": {"davidhirtz/yii2-cms-template": "dev-main"}}}'
+
+      - name: Run the project's checks
+        working-directory: project
+        run: |
+          test ! -d installer
+          git log --oneline | grep -q 'Initial commit'
+          vendor/bin/check

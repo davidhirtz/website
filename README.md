@@ -7,34 +7,44 @@ This website is based on the [Yii 2](http://www.yiiframework.com/) framework and
 Requirements
 ------------
 
-This project requires PHP 8.3 or higher, MySQL or MariaDB and ImageMagick. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
+This project requires PHP 8.3 or higher, MySQL or MariaDB, ImageMagick and, for the assets, Node.js 20.19 or higher. Detailed requirements can be found by running [Composer](http://getcomposer.org/).
 
 
 Installation
 ------------
 
-Fetch source code via GIT.
+<!-- template -->
+### A new project
 
 ```bash
-git init
-git remote add origin git@github.com:davidhirtz/REPOSITORY.git
-git fetch origin
-git branch main origin/main
-git checkout main
+composer create-project davidhirtz/yii2-cms-template my-site
 ```
 
-If you do not have [Composer](http://getcomposer.org/) installed, you may install it by following the instructions at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-On Linux and Mac OS X, you'll run the following commands:
+The installer asks for the project's name, the preset and the database. It creates both databases (`<name>` and `<name>_test`), writes `config/db.php`, `config/params.php` and `config/local.php`, migrates, creates the first user and makes the "Initial commit" — then removes itself.
+
+Every answer can be given ahead as an environment variable for a run with `--no-interaction`: `INSTALL_NAME`, `INSTALL_SLUG`, `INSTALL_PACKAGE`, `INSTALL_LICENSE`, `INSTALL_PRESET`, `INSTALL_DB_HOST`, `INSTALL_DB_NAME`, `INSTALL_DB_USER`, `INSTALL_DB_PASSWORD`, and `0` or `1` for `INSTALL_MIGRATE`, `INSTALL_USER`, `INSTALL_NPM` and `INSTALL_GIT`. If it stops half way, fix the cause and run `composer run-script post-create-project-cmd` again.
+<!-- /template -->
+
+### An existing project
 
 ```bash
-curl -sS https://getcomposer.org/installer | php
+git clone git@github.com:OWNER/REPOSITORY.git
+cd REPOSITORY
+composer install
+composer install-hooks
+npm install
 ```
 
-You can then install the dependencies using the following command:
+Then create `config/params.php` and `config/db.php` as described under "Configuration" below, and the first user with `php yii user/create`. A server installs with `composer install --optimize-autoloader --no-dev` instead.
+
+### Running it locally
 
 ```bash
-php composer.phar install --optimize-autoloader --no-dev
+YII_ENV=local php -S localhost:8080 -t web
 ```
+
+`local` loads the gitignored `config/local.php`, which the installer writes; without one, use `YII_ENV=dev`. Sign in at `/admin` and open `/admin/cms/setup` once to create the home page — until then `/` answers with a 404. Apache serves `web/` as the document root with the rewrite rules of `web/.htaccess`.
+
 
 Configuration
 -------------
