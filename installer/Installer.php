@@ -312,7 +312,8 @@ final class Installer
         }
 
         if (!$this->npm) {
-            $steps[] = 'npm install';
+            // A preset's views and scripts are not in the committed `web/dist` yet.
+            $steps[] = $this->preset === 'bare' ? 'npm install' : 'npm install && npm run build';
         }
 
         $steps[] = 'YII_ENV=local php -S localhost:8080 -t web';

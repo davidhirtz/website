@@ -1,0 +1,45 @@
+<?php
+/**
+ * Message translations (domain-first keys; forceTranslation). See UPGRADE.md.
+ *
+ * NOTE: this file must be saved in UTF-8 encoding.
+ */
+return [
+    'CAROUSEL_NEXT' => 'Weiter',
+    'CAROUSEL_PREVIOUS' => 'Zurück',
+    'CC_BUTTON_ALLOW_ALL' => 'Alle erlauben',
+    'CC_BUTTON_ALLOW_SELECTION' => 'Auswahl erlauben',
+    'CC_BUTTON_BACK' => 'zurück',
+    'CC_BUTTON_CUSTOMIZE' => 'Anpassen',
+    'CC_BUTTON_REQUIRED' => 'Nur notwendige',
+    'CC_COOKIES_LABEL' => 'Cookies',
+    'CC_IMPRINT_LINK' => 'Impressum',
+    'CC_LINKS' => 'Mehr dazu: {privacy} · {imprint}',
+    'CC_PRIVACY_LINK' => 'Datenschutz',
+    'CC_PROVIDER_LABEL' => 'Anbieter',
+    'CC_PURPOSE_LABEL' => 'Zweck',
+    'CC_SERVICE_LABEL' => 'Dienst',
+    'CC_SETTINGS_BUTTON' => 'Cookie-Einstellungen',
+    'CC_TITLE' => 'Diese Webseite verwendet Cookies',
+    'CC_TITLE_TEXT' => 'Wir verwenden technisch notwendige Cookies, damit diese Webseite funktioniert. Mit Ihrer Einwilligung nutzen wir außerdem Statistikdienste, um zu verstehen, wie unsere Webseite genutzt wird, und laden Inhalte externer Anbieter wie Videos. Dabei können Daten in die USA übermittelt werden. Ihre Einwilligung ist freiwillig und lässt sich jederzeit über die Cookie-Einstellungen am Ende jeder Seite ändern oder widerrufen.',
+    'EMBED_BUTTON_ACCEPT' => 'Externe Inhalte erlauben',
+    'EMBED_PRIVACY_LINK' => 'Datenschutzerklärung',
+    'EMBED_TEXT' => 'Dieser Inhalt wird von einem externen Anbieter geladen. Mit Ihrer Zustimmung erlauben Sie externe Inhalte auf dieser Webseite, was Sie in den Cookie-Einstellungen jederzeit ändern können. Mehr dazu in unserer {policy}.',
+    'EMBED_TITLE' => 'Externer Inhalt',
+    'MENU_FOOTER' => 'Footer',
+    'MENU_MAIN' => 'Hauptmenü',
+    'SECTION_LINK_LABEL' => 'Button-Link',
+    'SECTION_LINK_TEXT_DEFAULT' => 'Mehr erfahren',
+    'SECTION_LINK_TEXT_LABEL' => 'Button-Text',
+    'SECTION_TYPE_ACCORDION' => 'Akkordeon',
+    'SECTION_TYPE_CALL_TO_ACTION' => 'Call to Action',
+    'SECTION_TYPE_CAROUSEL' => 'Karussell',
+    'SECTION_TYPE_COLUMN' => 'Spalte',
+    'SECTION_TYPE_FULL_WIDTH' => 'Volle Breite',
+    'SECTION_TYPE_GALLERY' => 'Galerie',
+    'SECTION_TYPE_HERO' => 'Hero-Banner',
+    'SECTION_TYPE_IMAGE_TEXT' => 'Bild & Text',
+    'SECTION_TYPE_QUOTE' => 'Zitat',
+    'SECTION_TYPE_TEASERS' => 'Teaser',
+    'SECTION_TYPE_TEXT_IMAGE' => 'Text & Bild',
+];

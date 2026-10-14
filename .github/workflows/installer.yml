@@ -15,6 +15,7 @@ jobs:
       matrix:
         preset:
           - bare
+          - starter
 
     services:
       mysql:
@@ -36,13 +37,17 @@ jobs:
           extensions: imagick, intl, pdo_mysql
           coverage: none
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Create the project
         env:
           INSTALL_NAME: CI Project
           INSTALL_PRESET: ${{ matrix.preset }}
           INSTALL_DB_USER: root
           INSTALL_DB_PASSWORD: ''
-          INSTALL_NPM: '0'
+          INSTALL_NPM: ${{ matrix.preset == 'bare' && '0' || '1' }}
           GIT_AUTHOR_NAME: CI
           GIT_AUTHOR_EMAIL: ci@example.com
           GIT_COMMITTER_NAME: CI

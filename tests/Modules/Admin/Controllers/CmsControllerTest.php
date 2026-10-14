@@ -63,8 +63,8 @@ final class CmsControllerTest extends TestCase
         $response = Yii::$app->runAction('admin/cms/setup/index');
 
         self::assertInstanceOf(Response::class, $response);
-        self::assertEquals(1, Entry::find()->count());
-        self::assertSame(Entry::getModule()->entryIndexSlug, Entry::find()->one()?->slug);
+        // A preset's setup may create more pages than the index entry; the slug is not a column to query by.
+        self::assertContains(Entry::getModule()->entryIndexSlug, array_map(static fn (Entry $entry): ?string => $entry->slug, Entry::find()->all()));
     }
 
     private function login(): void

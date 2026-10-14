@@ -20,7 +20,12 @@ Installation
 composer create-project davidhirtz/yii2-cms-template my-site
 ```
 
-The installer asks for the project's name, the preset and the database. It creates both databases (`<name>` and `<name>_test`), writes `config/db.php`, `config/params.php` and `config/local.php`, migrates, creates the first user and makes the "Initial commit" — then removes itself.
+The installer asks for the project's name, the preset and the database. There are two presets:
+
+- **bare** – the layout, the cookie banner and two text section types ("Column", "Full width"), for a project that brings its own design.
+- **starter** – nine more section types, each with a view of its own in `resources/views/site`: hero banner, image & text, text & image, carousel, gallery, quote, call to action, accordion and teasers of linked pages. `/admin/cms/setup` then creates a home page that shows the ones that need no images, and the imprint and privacy pages the cookie banner links to.
+
+The installer creates both databases (`<name>` and `<name>_test`), writes `config/db.php`, `config/params.php` and `config/local.php`, migrates, creates the first user and makes the "Initial commit" — then removes itself.
 
 Every answer can be given ahead as an environment variable for a run with `--no-interaction`: `INSTALL_NAME`, `INSTALL_SLUG`, `INSTALL_PACKAGE`, `INSTALL_LICENSE`, `INSTALL_PRESET`, `INSTALL_DB_HOST`, `INSTALL_DB_NAME`, `INSTALL_DB_USER`, `INSTALL_DB_PASSWORD`, and `0` or `1` for `INSTALL_MIGRATE`, `INSTALL_USER`, `INSTALL_NPM` and `INSTALL_GIT`. If it stops half way, fix the cause and run `composer run-script post-create-project-cmd` again.
 <!-- /template -->

@@ -1,0 +1,1 @@
+hero banner, image & text, carousel, gallery, quote, call to action, accordion and teasers, with a demo home page
