@@ -12,9 +12,7 @@ use Hirtz\Cms\Models\Actions\SetupContent;
 use Hirtz\Cms\Models\SectionEntry;
 use Hirtz\Media\Test\Fixtures\FileFixture;
 use Hirtz\Media\Test\Fixtures\FolderFixture;
-use Hirtz\Skeleton\Test\Fixtures\UserFixture;
 use Hirtz\Skeleton\Test\Traits\FunctionalTestTrait;
-use Hirtz\Skeleton\Test\Traits\UserFixtureTrait;
 use Yii;
 
 /**
@@ -25,7 +23,6 @@ final class StarterSectionsTest extends TestCase
 {
     use EntryTrait;
     use FunctionalTestTrait;
-    use UserFixtureTrait;
 
     /**
      * @return array<string, mixed>
@@ -33,7 +30,6 @@ final class StarterSectionsTest extends TestCase
     public function fixtures(): array
     {
         return [
-            'user' => UserFixture::class,
             'folder' => FolderFixture::class,
             'file' => FileFixture::class,
         ];
