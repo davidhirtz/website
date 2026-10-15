@@ -8,9 +8,11 @@ const root = 'web/images';
 // plugins break an animation, by merging the paths or dropping the ids that CSS or SMIL animate.
 const exclude = [];
 
-// The defaults, except that styles stay in their `<style>` element: inlined into a `style` attribute, a rule would
-// beat the one in a media query, as the dark mode fill of the favicon.
+// The defaults, repeated until the result stops shrinking, so the next build has nothing left to change. Styles stay
+// in their `<style>` element: inlined into a `style` attribute, a rule would beat the one in a media query, as the
+// dark mode fill of the favicon.
 const config = {
+    multipass: true,
     plugins: [
         {
             name: 'preset-default',
