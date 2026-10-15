@@ -176,18 +176,22 @@ An entry's form has a checkbox for each. `layouts/main.php` renders them with `M
 
 ## Setup
 
-`/admin/cms/setup` runs `App\Modules\Admin\Controllers\SetupController` once, while there are no entries yet. Its
-`getEntryAttributes()` returns the pages to create, each with optional `sections` and subentries (`entries`):
+`php yii setup` inserts the entries of `config/setup.php` while there are none yet, each with optional `sections` and
+subentries (`entries`); without the file, it inserts a home page. Delete the file once every server has run it:
 
 ```php
-[
-    'name' => 'Imprint',
-    'slug' => 'imprint',
-    'menu_ids' => [SiteMenu::Footer->value],
-    'sections' => [
-        ['type' => Section::TYPE_FULL_WIDTH, 'name' => 'Imprint', 'content' => '<p>…</p>'],
+return [
+    'entries' => fn (): array => [
+        [
+            'name' => 'Imprint',
+            'slug' => 'imprint',
+            'menu_ids' => [SiteMenu::Footer->value],
+            'sections' => [
+                ['type' => Section::TYPE_FULL_WIDTH, 'name' => 'Imprint', 'content' => '<p>…</p>'],
+            ],
+        ],
     ],
-],
+];
 ```
 
 ## The rest of the admin

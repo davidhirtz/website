@@ -101,6 +101,9 @@ final class Installer
                 $this->step('Creating the first user');
                 $this->yii(['user/create']);
             }
+
+            $this->step('Creating the first pages');
+            $this->yii(['setup', '--interactive=0'], quiet: true);
         }
 
         if ($this->npm) {
@@ -319,6 +322,10 @@ final class Installer
             $steps[] = 'php yii user/create';
         }
 
+        if (!$hasDatabase || !$this->migrate) {
+            $steps[] = 'php yii setup';
+        }
+
         if (!$this->npm) {
             // A preset's views and scripts are not in the committed `web/dist` yet.
             $steps[] = $this->preset === 'bare' ? 'npm install' : 'npm install && npm run build';
@@ -334,7 +341,7 @@ final class Installer
 
         $this->io->write([
             '',
-            'Then sign in at http://localhost:8080/admin and open /admin/cms/setup once to create the home page.',
+            'Then sign in at http://localhost:8080/admin.',
             '',
         ]);
     }

@@ -24,7 +24,7 @@ INSTALL_DB_USER=… INSTALL_DB_PASSWORD=… INSTALL_GIT_REMOTE=git@github.com:OW
   `YII_USER_PASSWORD=… php yii user/create --name=… --email=… --interactive=0`, or leave it to the user.
 - The new project has no template history and no template remote. Don't push unless asked.
 - Then verify: `composer check` passes, and `YII_ENV=local php -S localhost:8080 -t web` serves `/admin`.
-  `/` is a 404 until someone signed in opens `/admin/cms/setup`.
+  `/` is a 404 until `php yii setup` has run (the installer runs it after migrating).
 - All variables are listed in [docs/installation.md](docs/installation.md#without-questions).
 
 Changes to the installer itself live in `installer/Installer.php`; a preset is a folder in `installer/presets/` copied
@@ -54,7 +54,7 @@ YII_ENV=local php -S localhost:8080 -t web     # serve the site
 | the page layout, menus, footer     | `resources/views/layouts/main.php`                                         |
 | which bundle class is replaced     | `container.definitions` in `config/prod.php`                               |
 | module options, menus, image sizes | `modules` in `config/prod.php`                                             |
-| the pages `/admin/cms/setup` creates | `app/Modules/Admin/Controllers/SetupController.php`                      |
+| the pages `php yii setup` creates  | `config/setup.php` (without it, a home page)                               |
 | colors, spacing, breakpoints       | `resources/css/base/theme.css` (breakpoints also in `config/prod.php`)     |
 | cookie categories and services     | `components.consent` in `config/prod.php`                                  |
 | UI texts                           | `messages/en-US/app.php` and `messages/de/app.php`                         |
@@ -103,7 +103,7 @@ YII_ENV=local php -S localhost:8080 -t web     # serve the site
   `<details>` or a hidden element never does — render it without `Html::prose()` there.
 - An entry's `slug` lives in the permalink table, not on `entry`: you cannot query `Entry::find()->where(['slug' => …])`.
   Load the entries and compare `$entry->slug`.
-- `/admin/cms/setup` only creates entries while there are none.
+- `php yii setup` only creates entries while there are none.
 - In tests, `FunctionalTestTrait::open()` reuses the application. After `Yii::$app->runAction()` of an action that
   redirects, reset the response (`Yii::$app->set('response', Yii::$app->getComponents()['response'])`) before
   `open()`, or the next page is the redirect.

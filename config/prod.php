@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Controllers\SiteController;
 use App\Models\Menus\SiteMenu;
-use App\Modules\Admin\Controllers\SetupController;
 use Hirtz\Cms\Models\Entry;
 use Hirtz\Cms\Models\EntryAsset;
 use Hirtz\Cms\Models\Menus\Menu;
@@ -65,16 +64,6 @@ return [
         ],
     ],
     'modules' => [
-        'admin' => [
-            'modules' => [
-                'cms' => [
-                    // `Cms\...\SetupController` is abstract, so the project's subclass is what the route resolves to.
-                    'controllerMap' => [
-                        'setup' => SetupController::class,
-                    ],
-                ],
-            ],
-        ],
         'cms' => [
             'controllerMap' => [
                 'site' => [

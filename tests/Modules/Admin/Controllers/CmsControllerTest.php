@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Modules\Admin\Controllers;
 
-use App\Models\Entry;
 use App\Tests\TestCase;
 use App\Tests\Traits\EntryTrait;
 use Hirtz\Skeleton\Test\Traits\UserFixtureTrait;
 use Yii;
-use yii\web\Response;
 
 /**
  * Proves the container definitions of `config/prod.php` resolve: the admin renders the project's grid, form rows
@@ -54,17 +52,6 @@ final class CmsControllerTest extends TestCase
         self::assertIsString($html);
         self::assertStringContainsString('Column', $html);
         self::assertStringContainsString('Full width', $html);
-    }
-
-    public function testSetupCreatesTheIndexEntry(): void
-    {
-        $this->login();
-
-        $response = Yii::$app->runAction('admin/cms/setup/index');
-
-        self::assertInstanceOf(Response::class, $response);
-        // A preset's setup may create more pages than the index entry; the slug is not a column to query by.
-        self::assertContains(Entry::getModule()->entryIndexSlug, array_map(static fn (Entry $entry): ?string => $entry->slug, Entry::find()->all()));
     }
 
     private function login(): void

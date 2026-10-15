@@ -8,6 +8,7 @@ use App\Models\Section;
 use App\Models\SectionAsset;
 use App\Tests\TestCase;
 use App\Tests\Traits\EntryTrait;
+use Hirtz\Cms\Models\Actions\SetupContent;
 use Hirtz\Cms\Models\SectionEntry;
 use Hirtz\Media\Test\Fixtures\FileFixture;
 use Hirtz\Media\Test\Fixtures\FolderFixture;
@@ -18,7 +19,7 @@ use Yii;
 
 /**
  * The section types of the starter preset, each through its own view in `resources/views/site`, and the demo
- * content `/admin/cms/setup` creates with them.
+ * content `config/setup.php` declares with them.
  */
 final class StarterSectionsTest extends TestCase
 {
@@ -40,12 +41,8 @@ final class StarterSectionsTest extends TestCase
 
     public function testSetupCreatesTheDemoHomePageAndTheLegalPages(): void
     {
-        $this->getWebUser()->setIdentity($this->getUserFromFixture('owner'));
-        Yii::$app->runAction('admin/cms/setup/index');
-
-        // The setup answers with a redirect, which the next request would otherwise send again.
-        Yii::$app->set('response', Yii::$app->getComponents()['response']);
-        $this->getWebUser()->setIdentity(null);
+        $config = require Yii::getAlias('@app/config/setup.php');
+        self::assertTrue((new SetupContent([], $config['entries']))->run());
 
         $this->open('/');
 

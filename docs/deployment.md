@@ -54,12 +54,13 @@ composer install --optimize-autoloader --no-dev
 php yii params          # cookie validation key and password pepper
 php yii migrate         # asks for the database credentials and writes config/db.php
 php yii user/create
+php yii setup           # the pages of config/setup.php
 ```
 
 The server's user needs read access to the repository, usually with a
 [deploy key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys). Point
-the web server at `web/` (see [installation](installation.md#web-server)), sign in at `/admin` and open
-`/admin/cms/setup` once.
+the web server at `web/` (see [installation](installation.md#web-server)). Once every server has run `setup`,
+`config/setup.php` can be deleted.
 
 Set what differs on the server in `config/params.php`, e.g. `mailerDsn`, `email`, `cookieDomain` and `gtagId`.
 

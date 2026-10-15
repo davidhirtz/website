@@ -40,7 +40,7 @@ It also generates `config/params.php` (cookie validation key and password pepper
 - **bare** — the layout, the cookie banner and two text section types ("Column", "Full width"). For a project that
   brings its own design and content model.
 - **starter** — nine more section types with a view each: hero banner, image & text, text & image, carousel, gallery,
-  quote, call to action, accordion and teasers of linked pages. `/admin/cms/setup` creates a home page that shows the
+  quote, call to action, accordion and teasers of linked pages. `php yii setup` creates a home page that shows the
   types that need no images, and the imprint and privacy pages the cookie banner links to.
   See [the content model](content-model.md) for how they work.
 
@@ -144,11 +144,12 @@ return ArrayHelper::merge(require __DIR__ . '/dev.php', [
 
 ```bash
 php yii user/create
+php yii setup
 ```
 
-asks for a name, an email address and a password. The first user owns the installation. Then sign in at `/admin`
-and open `/admin/cms/setup` once: it creates the home page (and, with the starter preset, the demo and legal
-pages). Until then, `/` answers with a 404.
+`user/create` asks for a name, an email address and a password. The first user owns the installation. `setup` creates
+the home page (and, with the starter preset, the demo and legal pages declared in `config/setup.php`), attributed to
+the owner or to `--user=<email>`. Until then, `/` answers with a 404. The installer runs both when it migrates.
 
 ## Web server
 

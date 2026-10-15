@@ -27,11 +27,11 @@ git clone git@github.com:OWNER/REPOSITORY.git
 cd REPOSITORY
 composer install && composer install-hooks
 npm install
-php yii params && php yii migrate && php yii user/create
+php yii params && php yii migrate && php yii user/create && php yii setup
 YII_ENV=dev php -S localhost:8080 -t web
 ```
 
-Sign in at <http://localhost:8080/admin> and open `/admin/cms/setup` once to create the home page.
+Sign in at <http://localhost:8080/admin>.
 
 ## Everyday commands
 
