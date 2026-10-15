@@ -37,7 +37,7 @@ final class StarterSectionsTest extends TestCase
 
     public function testSetupCreatesTheDemoHomePageAndTheLegalPages(): void
     {
-        $config = require Yii::getAlias('@app/config/setup.php');
+        $config = require Yii::getAlias('@root/config/setup.php');
         self::assertTrue((new SetupContent([], $config['entries']))->run());
 
         $this->open('/');
