@@ -1,20 +1,29 @@
+/* Hidden only once the script marks an element as below the viewport, so the first paint shows the content */
 .reveal {
-    & > * {
+    & > .unrevealed {
         opacity: 0;
         will-change: opacity;
     }
 }
 
+/*
+ * A named group comes in one by one even when it is in view on load, so it is hidden from the start. Only where
+ * scripts run, as nothing else would show it: without them, the group is visible like the rest.
+ */
+@media (scripting: enabled) {
+    .reveal[data-reveal-group] > :not(.revealed) {
+        opacity: 0;
+        will-change: opacity;
+    }
+}
+
+/* Without a `to` and a fill, an element ends on its own opacity rather than being held at 1 */
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
-
-    to {
-        opacity: 1;
-    }
 }
 
 .revealed {
-    animation: 1.2s fadeIn forwards;
+    animation: 1.2s fadeIn;
 }

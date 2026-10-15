@@ -65,6 +65,28 @@ see (`'w-' . $size`) is not generated.
 The frontend scripts are custom elements (`x-toggle`, `x-carousel`, `cc-modal`, …), so markup that contains one works
 wherever it is rendered, including content loaded by the ajax router.
 
+### Reveal
+
+The children of a `.reveal` container fade in one after another as they scroll into view; `Html::prose()` adds the
+class. They are visible by default, so the page works without JavaScript: on page load `resources/js/app/observer.ts`
+leaves what is in view as rendered and hides only the elements below the viewport until they scroll in. Content the
+ajax router swaps in is hidden right away and fades in like the rest. They come in 120ms apart, and none waits more
+than a second.
+
+A container can change that with two attributes:
+
+```html
+<div class="reveal" data-reveal-group="badges" data-reveal-delay="1000">…</div>
+```
+
+- `data-reveal-group` gives its elements a queue of their own, without the one-second cap, so they always come in one
+  by one. A group is hidden from the start (under `@media (scripting: enabled)`, so it still shows without
+  JavaScript) and fades in even when it is in view on load.
+- `data-reveal-delay` sets the time between its elements in milliseconds (default 120).
+
+An element may name another animation class than `revealed` in `data-animation`. The fade ends on the element's own
+opacity, so a child with `opacity-50` stays at half. Videos with a `data-src` load it once they come into view.
+
 ## Checks
 
 A change has to pass the code style ([PHP CS Fixer](https://cs.symfony.com/)), static analysis

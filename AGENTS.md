@@ -99,8 +99,10 @@ YII_ENV=local php -S localhost:8080 -t web     # serve the site
 ## Pitfalls
 
 - Tailwind only generates classes it finds as complete strings in `app/`, `resources/views/` and `resources/js/`.
-- `.reveal` (added by `Html::prose()`) fades content in when it scrolls into view; content inside a closed
-  `<details>` or a hidden element never does — render it without `Html::prose()` there.
+- `.reveal` (added by `Html::prose()`) fades its children in when they scroll into view. They are visible without
+  JavaScript, and the script only hides what is below the viewport on load, so never set `opacity: 0` on them
+  yourself. `data-reveal-group` and `data-reveal-delay` on the container give it its own queue and timing
+  ([docs/development.md](docs/development.md#reveal)).
 - An entry's `slug` lives in the permalink table, not on `entry`: you cannot query `Entry::find()->where(['slug' => …])`.
   Load the entries and compare `$entry->slug`.
 - `php yii setup` only creates entries while there are none.
