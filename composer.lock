@@ -231,16 +231,16 @@
         },
         {
             "name": "davidhirtz/yii2-cms",
-            "version": "3.14.0",
+            "version": "3.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-cms.git",
-                "reference": "f9d52d528d75c9e6588b8d9e93b54ce11798210e"
+                "reference": "2281d8bb817bd03b4f04ccbd4cd2f4473fd4d908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/f9d52d528d75c9e6588b8d9e93b54ce11798210e",
-                "reference": "f9d52d528d75c9e6588b8d9e93b54ce11798210e",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/2281d8bb817bd03b4f04ccbd4cd2f4473fd4d908",
+                "reference": "2281d8bb817bd03b4f04ccbd4cd2f4473fd4d908",
                 "shasum": ""
             },
             "require": {
@@ -281,9 +281,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-cms",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-cms/issues",
-                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.14.0"
+                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.14.1"
             },
-            "time": "2026-10-15T15:45:36+00:00"
+            "time": "2026-10-15T16:21:12+00:00"
         },
         {
             "name": "davidhirtz/yii2-media",
