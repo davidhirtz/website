@@ -20,7 +20,7 @@ h4 {
 }
 
 .prose {
-    @apply hyphens-auto;
+    hyphens: auto;
     hyphenate-limit-chars: 8 3;
 
     a {
@@ -28,7 +28,11 @@ h4 {
     }
 
     p > a:not(.btn) {
-        @apply hover:underline;
+        @media (hover: hover) {
+            &:hover {
+                text-decoration-line: underline;
+            }
+        }
     }
 
     & > * {
@@ -40,6 +44,9 @@ h4 {
     }
 
     p:has(.btn) {
-        @apply mt-8 flex flex-wrap gap-4;
+        display: flex;
+        flex-wrap: wrap;
+        gap: calc(var(--spacing) * 4);
+        margin-top: calc(var(--spacing) * 8);
     }
 }

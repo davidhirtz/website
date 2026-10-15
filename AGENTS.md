@@ -73,10 +73,28 @@ YII_ENV=local php -S localhost:8080 -t web     # serve the site
   both `de` and `en-US`.
 - In views, read fields with `$model->getVisibleAttribute('name')`, encode plain text with `Html::encode()`, and
   output `content` (sanitized HTML) as is. Add `AdminLink::tag($section)` to each section's element.
-- Use the theme tokens (`p-sm`, `gap-md`, `text-h3`, the `xs`–`xl` breakpoints) before arbitrary values.
 - `web/dist` is committed and the deploy does not build: run `npm run build` and commit it with the change.
 - Match the surrounding code: comments explain *why*, in full sentences, and docblocks name the `@var` of every view
   variable.
+
+## Styling
+
+- Style with Tailwind classes in the markup: layout, spacing, typography and colors (`block`, `w-full`, `flex`,
+  `absolute`, `gap-md`, …). Fall back to a file in `resources/css/components/` only for what classes express badly:
+  elements with animated states, transitions, `@starting-style`, `:popover-open` and the like. Component CSS is
+  unlayered and beats any utility, so never set one property of an element in both places.
+- Never use `@apply`. CSS spells out its declarations and reads the theme through its variables
+  (`gap: var(--spacing-xs)`, `color: var(--color-white)`); a hover variant becomes
+  `@media (hover: hover) { &:hover { … } }`.
+- Use the spacing tokens of `resources/css/base/theme.css` (`p-sm`, `gap-md`, `mt-lg`, …). When a value in the design
+  is close to a token, use the token rather than the exact pixel value. The same goes for the text sizes (`text-h3`)
+  and the `xs`–`xl` breakpoints.
+- A distance that belongs to the page rather than to one element — to the page edge, the header height — gets a
+  named spacing token in `@theme` (`--spacing-page: 3.5rem` makes `px-page`, `top-page`), which says more than
+  `top-[30px]`. Add missing colors, font weights and text sizes to `@theme` the same way instead of repeating an
+  arbitrary value.
+- Sizes are in `rem` (1rem = 16px), with the pixel value as a comment in `theme.css`; arbitrary values too
+  (`w-[20.625rem]`, not `w-[330px]`). Only 1px borders stay in `px`.
 
 ## Pitfalls
 

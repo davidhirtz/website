@@ -1,11 +1,11 @@
 {
   "resources/js/app.ts": {
-    "file": "app.js?v=hs57a",
+    "file": "app.js?v=hs5un",
     "name": "app",
     "src": "resources/js/app.ts",
     "isEntry": true,
     "css": [
-      "app.css?v=hs57a"
+      "app.css?v=hs5un"
     ]
   }
 }
