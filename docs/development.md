@@ -51,11 +51,16 @@ YII_ENV=dev php yii <command>
 
 ```bash
 npm run dev     # the Vite dev server, with hot reload
-npm run build   # type-check and build for production
+npm run build   # optimize the SVGs, type-check and build for production
+npm run svgo    # only optimize the SVGs
 ```
 
 **`web/dist` is committed, and the deploy does not build.** Commit it with every CSS or JavaScript change, or the
 server keeps the old files.
+
+The build first runs [svgo](https://svgo.dev/) over every SVG in `web/images` and writes back the ones it makes
+smaller. In rare cases svgo breaks an animation; list such a file in `exclude` in `resources/scripts/svgo.js` and
+svgo leaves it alone.
 
 The CSS is [Tailwind 4](https://tailwindcss.com/). `resources/css/base/theme.css` holds the breakpoints, spacing and
 type scale; `config/prod.php` repeats the breakpoints in pixels for the image `sizes`, so change both together.

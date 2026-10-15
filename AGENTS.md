@@ -39,7 +39,7 @@ into a scratch folder.
 ```bash
 composer check                       # the gate: code style, PHPStan, tests — run before every commit
 composer cs-fix                      # fix the code style
-npm run build                        # rebuild web/dist after any CSS, JS or new Tailwind class
+npm run build                        # optimize web/images/**/*.svg, rebuild web/dist after any CSS, JS or new Tailwind class
 php yii message messages/config.php  # sync translation keys into messages/*/app.php
 YII_ENV=test php yii migrate --interactive=0   # after adding a migration (check also does this)
 YII_ENV=local php -S localhost:8080 -t web     # serve the site
@@ -105,6 +105,8 @@ YII_ENV=local php -S localhost:8080 -t web     # serve the site
   ([docs/development.md](docs/development.md#reveal)).
 - An entry's `slug` lives in the permalink table, not on `entry`: you cannot query `Entry::find()->where(['slug' => …])`.
   Load the entries and compare `$entry->slug`.
+- `npm run build` rewrites the SVGs in `web/images` with svgo. An SVG whose animation svgo breaks goes into `exclude`
+  in `resources/scripts/svgo.js`.
 - `php yii setup` only creates entries while there are none.
 - In tests, `FunctionalTestTrait::open()` reuses the application. After `Yii::$app->runAction()` of an action that
   redirects, reset the response (`Yii::$app->set('response', Yii::$app->getComponents()['response'])`) before
