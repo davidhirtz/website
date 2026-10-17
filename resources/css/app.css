@@ -17,6 +17,7 @@
 
 /* Only the sources listed below, not the whole project: the docs' examples and the installer's presets are not the site. */
 @import "tailwindcss/utilities.css" source(none);
+@import "../../vendor/davidhirtz/yii2-cms/resources/css/tailwind.css";
 
 @custom-variant active (&.active);
 
