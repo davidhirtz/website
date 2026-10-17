@@ -8,7 +8,36 @@ const root = 'web/images';
 // plugins break an animation, by merging the paths or dropping the ids that CSS or SMIL animate.
 const exclude = [];
 
-// The defaults, repeated until the result stops shrinking, so the next build has nothing left to change. Styles stay
+// `clip-rule` only applies to the shapes of a `<clipPath>`, which inherit it from their ancestors. Anywhere else it
+// does nothing, but design tools export it next to every `fill-rule`.
+const removeUselessClipRule = {
+    name: 'removeUselessClipRule',
+    fn: () => ({
+        root: {
+            exit: (root) => {
+                // Returns whether the node is or contains a `<clipPath>`, whose ancestors keep their `clip-rule`.
+                const strip = (node, inClipPath) => {
+                    const isClipPath = node.type === 'element' && node.name === 'clipPath';
+                    let hasClipPath = isClipPath;
+
+                    for (const child of node.children ?? []) {
+                        hasClipPath = strip(child, inClipPath || isClipPath) || hasClipPath;
+                    }
+
+                    if (node.type === 'element' && !inClipPath && !hasClipPath) {
+                        delete node.attributes['clip-rule'];
+                    }
+
+                    return hasClipPath;
+                };
+
+                strip(root, false);
+            },
+        },
+    }),
+};
+
+// The defaults plus the plugin above, repeated until the result stops shrinking, so the next build has nothing left to change. Styles stay
 // in their `<style>` element: inlined into a `style` attribute, a rule would beat the one in a media query, as the
 // dark mode fill of the favicon.
 const config = {
@@ -22,6 +51,7 @@ const config = {
                 },
             },
         },
+        removeUselessClipRule,
     ],
 };
 
