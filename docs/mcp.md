@@ -25,7 +25,7 @@ the site's in `config/params.php` (`openaiApiKey`, `geminiApiKey`, `stabilityApi
 
 ## Locally, with Claude Code
 
-`.mcp.json` registers the server `cms`, which runs `php yii mcp/serve` in this folder under `YII_ENV=local`. It acts
+`.mcp.json` registers the server `website`, which runs `php yii mcp/serve` in this folder under `YII_ENV=local`. It acts
 as the owner (the first user), so it works once `php yii user/create` has run. Claude Code asks once before it starts
 a server from a project file. Another user, or the read tools alone:
 
@@ -36,7 +36,7 @@ a server from a project file. Another user, or the read tools alone:
 The same command reaches a server over SSH:
 
 ```bash
-claude mcp add cms-live -- ssh deploy@example.com php /var/www/REPOSITORY/yii mcp/serve --user=me@example.com
+claude mcp add website-live -- ssh deploy@example.com php /var/www/REPOSITORY/yii mcp/serve --user=me@example.com
 ```
 
 ## On the live site
@@ -67,7 +67,7 @@ A client without OAuth uses a token instead, created under *Account → Access t
 [--expires=90]`, and sent as a header:
 
 ```bash
-claude mcp add --transport http cms https://www.example.com/mcp --header "Authorization: Bearer <token>"
+claude mcp add --transport http website https://www.example.com/mcp --header "Authorization: Bearer <token>"
 ```
 
 Behind a proxy, `request.trustedHosts` must be set, or the endpoint names itself with `http://` and every token is

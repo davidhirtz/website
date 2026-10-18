@@ -342,7 +342,7 @@ final class Installer
         $this->io->write([
             '',
             'Then sign in at http://localhost:8080/admin.',
-            'Claude Code in this folder edits the content through the "cms" server of .mcp.json, see docs/mcp.md.',
+            'Claude Code in this folder edits the content through the "website" server of .mcp.json, see docs/mcp.md.',
             '',
         ]);
     }

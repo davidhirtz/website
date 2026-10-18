@@ -38,8 +38,8 @@ final class ConfigurationTest extends TestCase
     {
         $config = json_decode((string)file_get_contents(dirname(__DIR__) . '/.mcp.json'), true, flags: JSON_THROW_ON_ERROR);
 
-        self::assertSame(['yii', 'mcp/serve'], $config['mcpServers']['cms']['args'] ?? null);
-        self::assertSame('local', $config['mcpServers']['cms']['env']['YII_ENV'] ?? null);
+        self::assertSame(['yii', 'mcp/serve'], $config['mcpServers']['website']['args'] ?? null);
+        self::assertSame('local', $config['mcpServers']['website']['env']['YII_ENV'] ?? null);
     }
 
     /**

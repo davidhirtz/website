@@ -151,7 +151,7 @@ php yii setup
 the home page (and, with the starter preset, the demo and legal pages declared in `config/setup.php`), attributed to
 the owner or to `--user=<email>`. Until then, `/` answers with a 404. The installer runs both when it migrates.
 
-Once the owner exists, Claude Code in this folder can edit the content through the `cms` server of `.mcp.json`, see
+Once the owner exists, Claude Code in this folder can edit the content through the `website` server of `.mcp.json`, see
 [Agents (MCP)](mcp.md).
 
 ## Web server

@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "cms": {
+    "website": {
       "command": "php",
       "args": ["yii", "mcp/serve"],
       "env": {
