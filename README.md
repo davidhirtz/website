@@ -50,6 +50,8 @@ php yii message messages/config.php # update the translation files
 - [The content model](docs/content-model.md) — including how to add a section type
 - [Deployment](docs/deployment.md)
 - [Cookie consent](docs/cookie-consent.md)
+- [Agents (MCP)](docs/mcp.md)
+- [Optional bundles](docs/bundles.md) — Shopify products, locations
 - [AGENTS.md](AGENTS.md) — for AI coding agents
 
 

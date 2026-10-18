@@ -64,6 +64,7 @@ asked to publish. It needs the database and the first user. See [docs/mcp.md](do
 | colors, spacing, breakpoints       | `resources/css/base/theme.css` (breakpoints also in `config/prod.php`)     |
 | cookie categories and services     | `components.consent` in `config/prod.php`                                  |
 | UI texts                           | `messages/en-US/app.php` and `messages/de/app.php`                         |
+| Shopify products, locations        | `composer require` a bundle, see [docs/bundles.md](docs/bundles.md)        |
 
 [docs/content-model.md](docs/content-model.md#adding-a-section-type) walks through adding a section type.
 

@@ -6,5 +6,6 @@
 - [Deployment](deployment.md) — how a push deploys, configuring a repository and a server, cron jobs
 - [Cookie consent](cookie-consent.md) — categories, services, Google tags, the consent log
 - [Agents (MCP)](mcp.md) — editing the content with Claude, locally and on the live site
+- [Optional bundles](bundles.md) — Shopify products, locations and Google Places
 
 For AI coding agents, [AGENTS.md](../AGENTS.md) sums up the conventions and commands.
