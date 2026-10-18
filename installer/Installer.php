@@ -9,11 +9,11 @@ use Composer\Package\Locker;
 use Composer\Script\Event;
 use FilesystemIterator;
 use PDO;
+use PDOException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 use stdClass;
-use Throwable;
 
 /**
  * Turns a fresh `composer create-project` copy of the template into a project: it asks for the project's name,
@@ -58,6 +58,7 @@ final class Installer
     private bool $npm;
     private bool $git;
     private string $remote;
+    private bool $databaseFailed = false;
 
     private function __construct(
         private readonly IOInterface $io,
@@ -142,11 +143,74 @@ final class Installer
 
         $this->io->write('');
 
-        $this->migrate = $this->confirm('MIGRATE', 'Run the migrations?', true);
+        $this->migrate = $this->confirm('MIGRATE', 'Run the migrations?', true) && $this->checkDatabaseConnection();
         $this->createUser = $this->migrate && $this->confirm('USER', 'Create the first user?', $this->io->isInteractive());
         $this->npm = $this->confirm('NPM', 'Install the Node dependencies?', self::commandExists('npm'));
         $this->git = !is_dir("$this->root/.git") && $this->confirm('GIT', 'Create a git repository with an "Initial commit"?', true);
         $this->remote = $this->git ? $this->ask('GIT_REMOTE', 'Git remote "origin", empty for none', '') : '';
+    }
+
+    /**
+     * Connects before anything is written, so wrong credentials are asked again instead of skipping the migrations,
+     * the first user and the pages at the end. Without a terminal, the run goes on without them.
+     */
+    private function checkDatabaseConnection(): bool
+    {
+        while (true) {
+            try {
+                $this->connect();
+                return true;
+            } catch (PDOException $exception) {
+                $this->io->writeError(['', '<warning>' . $this->describeDatabaseError($exception) . '</warning>']);
+            }
+
+            if (!$this->io->isInteractive() || !$this->io->askConfirmation('<info>Enter other credentials?</info> [<comment>Y/n</comment>]: ')) {
+                $this->io->write(['The migrations, the first user and the pages are skipped, see the next steps at the end.', '']);
+                $this->databaseFailed = true;
+
+                return false;
+            }
+
+            // Asked directly rather than through `ask()`, whose `INSTALL_*` variables would answer the same again.
+            $this->dbHost = trim((string)$this->io->ask("<info>Database host</info> [<comment>$this->dbHost</comment>]: ", $this->dbHost));
+            $this->dbUser = trim((string)$this->io->ask("<info>Database user</info> [<comment>$this->dbUser</comment>]: ", $this->dbUser));
+            $this->dbPassword = (string)$this->io->askAndHideAnswer('<info>Database password</info>: ');
+        }
+    }
+
+    private function connect(): PDO
+    {
+        [$host, $port] = array_pad(explode(':', $this->dbHost, 2), 2, null);
+
+        return new PDO("mysql:host=$host" . ($port ? ";port=$port" : ''), $this->dbUser, $this->dbPassword, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_TIMEOUT => 5,
+        ]);
+    }
+
+    /**
+     * Says what the server's error means for whoever installs, with its own message last for a search.
+     */
+    private function describeDatabaseError(PDOException $exception): string
+    {
+        $message = $exception->getMessage();
+        $code = (int)($exception->errorInfo[1] ?? 0) ?: (preg_match('/\[(\d{4})]/', $message, $matches) ? (int)$matches[1] : 0);
+
+        $hint = match ($code) {
+            1045 => "The database server refused the user \"$this->dbUser\": the user does not exist or the password is wrong.",
+            // MariaDB answers 1698 for an unknown user too, and root signs in through unix_socket by default.
+            1698 => "The database server refused the user \"$this->dbUser\". Either it does not exist, or it signs in through"
+                . ' unix_socket, as root does on MariaDB, and only from the system account of the same name. Enter a user'
+                . ' with a password, or create one with `CREATE USER ... IDENTIFIED BY ...` and'
+                . ' `GRANT ALL PRIVILEGES ON *.* TO ...`.',
+            1044, 1142 => "The user \"$this->dbUser\" may not create databases. Create \"$this->dbName\" and"
+                . " \"{$this->dbName}_test\" yourself, or grant the user the CREATE privilege.",
+            2002, 2003, 2005, 2006 => "No database server answers at \"$this->dbHost\". Is MySQL or MariaDB running, and is"
+                . ' the host right?',
+            default => 'The database server could not be reached.',
+        };
+
+        return "$hint\n($message)";
     }
 
     /**
@@ -254,12 +318,8 @@ final class Installer
 
         $this->step('Creating the databases');
 
-        [$host, $port] = array_pad(explode(':', $this->dbHost, 2), 2, null);
-
         try {
-            $pdo = new PDO("mysql:host=$host" . ($port ? ";port=$port" : ''), $this->dbUser, $this->dbPassword, [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            ]);
+            $pdo = $this->connect();
 
             foreach ([$this->dbName, "{$this->dbName}_test"] as $database) {
                 $pdo->exec('CREATE DATABASE IF NOT EXISTS `' . str_replace('`', '``', $database) . '` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
@@ -267,11 +327,13 @@ final class Installer
             }
 
             return true;
-        } catch (Throwable $exception) {
+        } catch (PDOException $exception) {
             $this->io->writeError([
-                "<warning>The databases could not be created: {$exception->getMessage()}</warning>",
+                '<warning>The databases could not be created. ' . $this->describeDatabaseError($exception) . '</warning>',
                 '<warning>Fix `config/db.php`, then run the migrations by hand (see below).</warning>',
             ]);
+
+            $this->databaseFailed = true;
 
             return false;
         }
@@ -340,6 +402,14 @@ final class Installer
         }
 
         $this->io->write(['', "<info>$this->name is ready.</info> Next:", '']);
+
+        if ($this->databaseFailed) {
+            $this->io->write([
+                "  The database is not set up yet: correct the credentials in config/db.php and create the databases",
+                "  \"$this->dbName\" and \"{$this->dbName}_test\" if the user may not, then:",
+                '',
+            ]);
+        }
 
         foreach ($steps as $step) {
             $this->io->write("  $step");

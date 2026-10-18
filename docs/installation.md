@@ -35,6 +35,10 @@ The installer asks a few questions, then sets the project up and removes itself:
 
 It also generates `config/params.php` (cookie validation key and password pepper) and `config/local.php`.
 
+When the migrations are on, it connects to the database right after these questions. If the server refuses, it says
+why and asks for other credentials; without a terminal, it skips the migrations, the first user and the pages, and lists
+them among the next steps.
+
 ### Presets
 
 - **bare** — the layout, the cookie banner and two text section types ("Column", "Full width"). For a project that
