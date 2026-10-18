@@ -13,6 +13,11 @@
 	Header set Cache-Control "max-age=31536000, public"
 </filesMatch>
 
+# An SVG opened on its own runs its scripts on the site's origin; uploads are sanitised, this is the second line.
+<filesMatch "(?i)\.svg$">
+	Header set Content-Security-Policy "script-src 'none'"
+</filesMatch>
+
 RewriteEngine on
 
 # Redirects the bare domain to `https://www.` — `draft.` (the staging host) and local development hosts are left
