@@ -135,7 +135,7 @@ The key and category must be string literals in the `Yii::t()` call itself. A ke
 ternary is invisible to the extractor, which **deletes it from every language file** on its next run.
 
 ```bash
-php yii message messages/config.php
+./yii message
 ```
 
 adds new keys to `messages/de/app.php` and `messages/en-US/app.php` and removes unused ones. Add a language in

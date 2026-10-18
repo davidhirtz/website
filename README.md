@@ -1,5 +1,5 @@
-README
-============================
+Website
+=======
 
 A website built on [Yii 2](https://www.yiiframework.com/) and [yii2-cms](https://github.com/davidhirtz/yii2-cms): pages
 made of typed sections, a media library with responsive images, menus, a cookie consent banner that blocks external
@@ -40,7 +40,7 @@ npm run dev                         # Vite dev server
 npm run build                       # build web/dist — commit it, the deploy does not build
 composer check                      # code style, static analysis and tests, as CI runs them
 composer cs-fix                     # fix the code style
-php yii message messages/config.php # update the translation files
+./yii message                       # update the translation files
 ```
 
 ## Documentation

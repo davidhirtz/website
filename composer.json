@@ -1,6 +1,6 @@
 {
   "name": "davidhirtz/website",
-  "description": "Yii2 CMS Template",
+  "description": "Website template for yii2-cms",
   "homepage": "https://github.com/davidhirtz/website",
   "type": "project",
   "license": "MIT",

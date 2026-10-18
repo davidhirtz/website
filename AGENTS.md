@@ -40,7 +40,7 @@ into a scratch folder.
 composer check                       # the gate: code style, PHPStan, tests — run before every commit
 composer cs-fix                      # fix the code style
 npm run build                        # optimize web/images/**/*.svg, rebuild web/dist after any CSS, JS or new Tailwind class
-php yii message messages/config.php  # sync translation keys into messages/*/app.php
+./yii message                        # sync translation keys into messages/*/app.php
 YII_ENV=test php yii migrate --interactive=0   # after adding a migration (check also does this)
 YII_ENV=local php -S localhost:8080 -t web     # serve the site
 ```

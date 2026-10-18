@@ -60,5 +60,7 @@ jobs:
         working-directory: project
         run: |
           test ! -d installer
+          test ! -f SECURITY.md
+          head -n 1 README.md | grep -qx 'CI Project'
           git log --oneline | grep -q 'Initial commit'
           vendor/bin/check

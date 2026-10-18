@@ -197,7 +197,7 @@ final class Installer
         $this->replace('config/prod.php', "'name' => '" . self::TEMPLATE_NAME . "',", "'name' => " . var_export($this->name, true) . ',');
         $this->replace('config/test.php', self::TEMPLATE_TEST_DATABASE, $testDatabase);
         $this->replace('.github/workflows/deploy.yml', self::TEMPLATE_TEST_DATABASE, $testDatabase);
-        $this->replace('README.md', "README\n============================\n", "$this->name\n" . str_repeat('=', mb_strlen($this->name)) . "\n");
+        $this->replace('README.md', "Website\n=======\n", "$this->name\n" . str_repeat('=', mb_strlen($this->name)) . "\n");
 
         $documents = ['README.md', 'AGENTS.md', ...array_map(
             fn (string $path): string => substr($path, strlen($this->root) + 1),
@@ -288,6 +288,8 @@ final class Installer
 
         self::removeDirectory("$this->root/installer");
         @unlink("$this->root/.github/workflows/installer.yml");
+        // Its reports are for the template's maintainer, not for whoever runs the project.
+        @unlink("$this->root/SECURITY.md");
 
         $composer = getenv('COMPOSER_BINARY') ?: 'composer';
         $this->exec(str_ends_with($composer, '.phar') || is_file($composer)

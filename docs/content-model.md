@@ -93,7 +93,7 @@ As an example, a "Logos" type that shows the section's images in a row:
 
    `AdminLink::tag()` adds the "edit" link signed-in editors see on the site.
 
-3. **Name it**: `php yii message messages/config.php` adds `SECTION_TYPE_LOGOS` to the language files; fill in
+3. **Name it**: `./yii message` adds `SECTION_TYPE_LOGOS` to the language files; fill in
    the translations.
 
 4. **Test it**: render a page with such a section, as `tests/Functional/SiteControllerTest.php` does, and assert
