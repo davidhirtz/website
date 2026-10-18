@@ -13,6 +13,7 @@ use Hirtz\Cms\Modules\Admin\Widgets\Forms\EntryActiveForm;
 use Hirtz\Cms\Modules\Admin\Widgets\Forms\SectionActiveForm;
 use Hirtz\Cms\Modules\Admin\Widgets\Grids\EntryGridView;
 use Hirtz\Cms\Sitemap\EntrySitemap;
+use Hirtz\Skeleton\Assets\AdminAssetBundle;
 use Hirtz\Skeleton\Consent\Categories\AnalyticsCategory;
 use Hirtz\Skeleton\Consent\Categories\ExternalCategory;
 use Hirtz\Skeleton\Consent\Categories\RequiredCategory;
@@ -23,6 +24,17 @@ use Hirtz\Skeleton\Validators\HtmlValidator;
 return [
     'name' => 'CMS Template',
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                AdminAssetBundle::class => [
+                    'faviconOptions' => [
+                        'href' => '/images/favicons/favicon.svg',
+                        'sizes' => 'any',
+                        'type' => 'image/svg+xml',
+                    ],
+                ],
+            ],
+        ],
         // A closure, as the texts are translated
         'consent' => [
             'categories' => fn (ConsentManager $consent): array => [

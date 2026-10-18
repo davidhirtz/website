@@ -22,7 +22,6 @@ Most of what the project does comes from its dependencies, which are configured 
 | [yii2-skeleton](https://github.com/davidhirtz/yii2-skeleton)     | the application, users, the admin shell, cookie consent, console commands |
 | [yii2-cms](https://github.com/davidhirtz/yii2-cms)               | entries, sections, categories, menus, the site controller          |
 | [yii2-media](https://github.com/davidhirtz/yii2-media)           | files, folders, assets, image transformations                      |
-| [yii2-anakin](https://github.com/davidhirtz/yii2-anakin)         | the admin theme                                                    |
 | [yii2-vite](https://github.com/davidhirtz/yii2-vite)             | the Vite manifest and dev server integration                       |
 | [yii2-dev](https://github.com/davidhirtz/yii2-dev)               | the code style, static analysis and test configuration (`require-dev`) |
 

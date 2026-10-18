@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ae6d2787c60dd420e63867d2329f47c",
+    "content-hash": "b8d90f83b138b5f25796cf3818b174da",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -174,60 +174,6 @@
                 "source": "https://github.com/DASPRiD/Enum/tree/1.0.7"
             },
             "time": "2025-09-16T12:23:56+00:00"
-        },
-        {
-            "name": "davidhirtz/yii2-anakin",
-            "version": "3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/davidhirtz/yii2-anakin.git",
-                "reference": "7716e31250048b629b7e73badeb736bff5b84487"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-anakin/zipball/7716e31250048b629b7e73badeb736bff5b84487",
-                "reference": "7716e31250048b629b7e73badeb736bff5b84487",
-                "shasum": ""
-            },
-            "require": {
-                "davidhirtz/yii2-skeleton": "^3.18",
-                "php": "^8.3"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^12.5",
-                "symfony/browser-kit": "^7.4",
-                "symfony/css-selector": "^7.4"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "bootstrap": "Hirtz\\Anakin\\Bootstrap",
-                "branch-alias": {
-                    "dev-main": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Hirtz\\Anakin\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "David Hirtz",
-                    "homepage": "https://www.davidhirtz.com/"
-                }
-            ],
-            "description": "Admin theme for ANAKIN admin panel based on Yii 2.0 framework",
-            "homepage": "https://www.anakin.co/",
-            "support": {
-                "issues": "https://github.com/davidhirtz/yii2-anakin/issues",
-                "source": "https://github.com/davidhirtz/yii2-anakin/tree/3.4.0"
-            },
-            "time": "2026-10-15T15:50:31+00:00"
         },
         {
             "name": "davidhirtz/yii2-cms",

@@ -8,7 +8,6 @@
   "prefer-stable": true,
   "require": {
     "php": "^8.3",
-    "davidhirtz/yii2-anakin": "^3.1.1",
     "davidhirtz/yii2-cms": "^3.15",
     "davidhirtz/yii2-skeleton": "^3.19",
     "davidhirtz/yii2-vite": "^3.4"
