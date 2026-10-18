@@ -53,8 +53,8 @@ jobs:
           GIT_COMMITTER_NAME: CI
           GIT_COMMITTER_EMAIL: ci@example.com
         run: >
-          composer create-project davidhirtz/yii2-cms-template project dev-main --no-interaction
-          --repository='{"type": "path", "url": "template", "options": {"symlink": false, "versions": {"davidhirtz/yii2-cms-template": "dev-main"}}}'
+          composer create-project davidhirtz/website project dev-main --no-interaction
+          --repository='{"type": "path", "url": "template", "options": {"symlink": false, "versions": {"davidhirtz/website": "dev-main"}}}'
 
       - name: Run the project's checks
         working-directory: project

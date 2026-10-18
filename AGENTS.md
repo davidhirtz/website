@@ -15,7 +15,7 @@ creates and migrates `<db>` and `<db>_test`, builds the assets and commits every
 ```bash
 INSTALL_NAME="Project Name" INSTALL_PRESET=starter \
 INSTALL_DB_USER=… INSTALL_DB_PASSWORD=… INSTALL_GIT_REMOTE=git@github.com:OWNER/REPOSITORY.git \
-    composer create-project davidhirtz/yii2-cms-template project-folder --no-interaction
+    composer create-project davidhirtz/website project-folder --no-interaction
 ```
 
 - Ask the user for the preset (`bare` or `starter`), the database credentials and the git remote rather than guessing.
@@ -30,7 +30,7 @@ INSTALL_DB_USER=… INSTALL_DB_PASSWORD=… INSTALL_GIT_REMOTE=git@github.com:OW
 Changes to the installer itself live in `installer/Installer.php`; a preset is a folder in `installer/presets/` copied
 over the project. `.github/workflows/installer.yml` creates a project for each preset on every push and runs its
 checks — the way to test an installer change locally is the same `create-project` with
-`--repository='{"type":"path","url":"<template copy without vendor>","options":{"symlink":false,"versions":{"davidhirtz/yii2-cms-template":"dev-main"}}}'`
+`--repository='{"type":"path","url":"<template copy without vendor>","options":{"symlink":false,"versions":{"davidhirtz/website":"dev-main"}}}'`
 into a scratch folder.
 <!-- /template -->
 

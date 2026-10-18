@@ -1,7 +1,7 @@
 {
-  "name": "davidhirtz/yii2-cms-template",
+  "name": "davidhirtz/website",
   "description": "Yii2 CMS Template",
-  "homepage": "https://www.github.com/davidhirtz/yii2-cms-template",
+  "homepage": "https://github.com/davidhirtz/website",
   "type": "project",
   "license": "MIT",
   "minimum-stability": "dev",

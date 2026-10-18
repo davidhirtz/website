@@ -9,7 +9,7 @@ content until it is allowed, and an admin to edit it all.
 ## Creating a project
 
 ```bash
-composer create-project davidhirtz/yii2-cms-template my-site
+composer create-project davidhirtz/website my-site
 ```
 
 The installer asks for the project's name, the database and a preset — **bare** for two text section types and

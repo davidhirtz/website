@@ -14,7 +14,7 @@
 ## A new project
 
 ```bash
-composer create-project davidhirtz/yii2-cms-template my-site
+composer create-project davidhirtz/website my-site
 ```
 
 The installer asks a few questions, then sets the project up and removes itself:
@@ -53,7 +53,7 @@ Every answer can be given ahead as an environment variable, which is what `--no-
 
 ```bash
 INSTALL_NAME="My Site" INSTALL_PRESET=starter INSTALL_DB_USER=root INSTALL_DB_PASSWORD=secret \
-    composer create-project davidhirtz/yii2-cms-template my-site --no-interaction
+    composer create-project davidhirtz/website my-site --no-interaction
 ```
 
 The variables are `INSTALL_NAME`, `INSTALL_SLUG`, `INSTALL_PACKAGE`, `INSTALL_LICENSE`, `INSTALL_PRESET`,
