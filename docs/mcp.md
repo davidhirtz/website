@@ -17,10 +17,11 @@ the connected user can do, in plain language: the first thing to give an editor)
 
 ## Image generation
 
-`generate_image` creates an image with OpenAI and attaches it as a draft. It is offered once there is a key to pay
-with: an editor's own, added under *Account → API keys*, or else the site's in `config/params.php`
-(`php yii params/create openaiApiKey sk-…`, at most 20 images per user and day). `modules.media.imageGeneratorKeys`
-narrows that to `site` or `user`; a site that should not generate images sets `modules.media.imageGenerator` to `null`.
+`generate_image` creates an image with OpenAI, Google Gemini, Stability AI or Adobe Firefly and attaches it as a
+draft. A service is offered once there is a key to pay with: an editor's own, added under *Account → API keys*, or else
+the site's in `config/params.php` (`openaiApiKey`, `geminiApiKey`, `stabilityApiKey`, or `fireflyClientId` with
+`fireflyClientSecret`; at most 20 images per user and day). `modules.media.imageGeneratorKeys` narrows that to `site` or
+`user`; `modules.media.imageGenerators` removes a service with `null`.
 
 ## Locally, with Claude Code
 
