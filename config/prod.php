@@ -50,10 +50,10 @@ return [
                 ],
             ],
         ],
-        // Agents edit the content through `php yii mcp/serve` locally; `POST /mcp` stays off until the site is public
-        // over HTTPS, see docs/mcp.md.
+        // Agents edit the content through `php yii mcp/serve` locally and through `POST /mcp`, signed in with OAuth or
+        // a token, on the live site, which must be served over HTTPS, see docs/mcp.md.
         'mcp' => [
-            'enableHttp' => false,
+            'enableHttp' => true,
             'enableOAuth' => true,
         ],
         'sitemap' => [

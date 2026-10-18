@@ -41,16 +41,16 @@ claude mcp add website-live -- ssh deploy@example.com php /var/www/REPOSITORY/yi
 
 ## On the live site
 
-`POST /mcp` is off (`components.mcp.enableHttp` in `config/prod.php`). Turn it on once the site is served over HTTPS:
+`POST /mcp` is on, with OAuth (`components.mcp.enableHttp` and `enableOAuth` in `config/prod.php`). Serve the site
+over HTTPS, as the sign-in and the tokens travel with every request, or turn it off:
 
 ```php
 'mcp' => [
-    'enableHttp' => true,
-    'enableOAuth' => true,
+    'enableHttp' => false,
 ],
 ```
 
-Then add the URL `https://www.example.com/mcp` as a custom connector in the client, in claude.ai under *Settings →
+Add the URL `https://www.example.com/mcp` as a custom connector in the client, in claude.ai under *Settings →
 Connectors → Add custom connector*, in ChatGPT under its connector settings. Signing in leads to the admin's consent
 page, where the user approves the connection, read-only or read-write, and revokes it later under *Account → Connected
 apps*. The page names the host the client's `client_id` belongs to and the host the code is sent to, so a client that

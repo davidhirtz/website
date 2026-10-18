@@ -26,11 +26,12 @@ final class ConfigurationTest extends TestCase
         self::assertSame(['a' => ['btn']], $validator->allowedClasses);
     }
 
-    public function testTheMcpEndpointIsOffAndAllowsAnyClient(): void
+    public function testTheMcpEndpointIsOnWithOAuthAndAllowsAnyClient(): void
     {
         $mcp = Mcp::getComponent();
 
-        self::assertFalse($mcp->enableHttp);
+        self::assertTrue($mcp->enableHttp);
+        self::assertTrue($mcp->enableOAuth);
         self::assertSame([], $mcp->allowedClientIds);
     }
 
