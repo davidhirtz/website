@@ -43,6 +43,7 @@ npm run build                        # optimize web/images/**/*.svg, rebuild web
 ./yii message                        # sync translation keys into messages/*/app.php
 YII_ENV=test php yii migrate --interactive=0   # after adding a migration (check also does this)
 YII_ENV=local php -S localhost:8080 -t web     # serve the site
+docker compose up                    # or serve it with PHP and MariaDB in Docker, see docs/installation.md#docker
 ```
 
 ## Content

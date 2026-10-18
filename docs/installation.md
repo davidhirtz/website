@@ -73,6 +73,21 @@ composer run-script post-create-project-cmd
 ```
 
 Each step leaves alone what an earlier run already did.
+
+### With Docker
+
+On a machine without PHP, clone this repository instead and run the installer in the container of
+[`compose.yaml`](#docker):
+
+```bash
+git clone https://github.com/davidhirtz/website.git my-site
+cd my-site
+docker compose run --rm app sh installer/docker.sh
+docker compose up
+```
+
+It asks the same questions but the database's, which is the container's, and keeps the clone's git history instead
+of making an "Initial commit".
 <!-- /template -->
 
 ## An existing project
@@ -193,6 +208,35 @@ server {
     }
 }
 ```
+
+### Docker
+
+`compose.yaml` runs the site with PHP 8.5's built-in server and a MariaDB 11.8 server, for trying the project out or working
+on it without PHP, Composer and Node.js on the machine:
+
+```bash
+docker compose up
+```
+
+The first start installs the Composer dependencies, generates `config/params.php`, migrates both databases, creates
+the first user and the home page, which takes a few minutes. Then sign in at <http://localhost:8080/admin> as
+`admin@example.com` with the password `website123`. Set `ADMIN_EMAIL` and `ADMIN_PASSWORD` before the first start for
+other credentials, and `PORT` for another port.
+
+Run any other command in the running container:
+
+```bash
+docker compose exec app npm run build
+docker compose exec app composer check
+docker compose exec app php yii message
+```
+
+The project folder is mounted into the container, so changes show without a restart. The database is a volume of its
+own, `docker compose down --volumes` removes it. The site's database comes from environment variables that
+`config/dev.php` reads ahead of `config/db.php`, which a machine with its own MySQL server can therefore keep.
+
+On Linux, the container writes as the user 1000. Set `DOCKER_UID` and `DOCKER_GID` to the output of `id -u` and
+`id -g` when they differ.
 
 ### Permissions
 

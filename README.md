@@ -16,6 +16,14 @@ The installer asks for the project's name, the database and a preset — **bare*
 nothing else, or **starter** for nine more (hero banner, image & text, carousel, gallery, quote, call to action,
 accordion, teasers) and demo content. It creates the databases, writes the configuration, creates the first user and
 makes the "Initial commit". See [installation](docs/installation.md#a-new-project).
+
+Without PHP, clone this repository and run the installer and the site in Docker:
+
+```bash
+git clone https://github.com/davidhirtz/website.git my-site && cd my-site
+docker compose run --rm app sh installer/docker.sh
+docker compose up
+```
 <!-- /template -->
 
 ## Getting started
@@ -32,6 +40,9 @@ YII_ENV=dev php -S localhost:8080 -t web
 ```
 
 Sign in at <http://localhost:8080/admin>.
+
+Or, with nothing but Docker, `docker compose up` and sign in as `admin@example.com` with the password `website123`, see
+[Docker](docs/installation.md#docker).
 
 ## Everyday commands
 

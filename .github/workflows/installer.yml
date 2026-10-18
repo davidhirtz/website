@@ -64,3 +64,35 @@ jobs:
           head -n 1 README.md | grep -qx 'CI Project'
           git log --oneline | grep -q 'Initial commit'
           vendor/bin/check
+
+  # What a tester without PHP does: the installer and the site in the containers of compose.yaml.
+  docker:
+    name: Docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # The runner's user is not 1000, the default of compose.yaml.
+      - name: Run the containers as the checkout's owner
+        run: |
+          echo "DOCKER_UID=$(id -u)" >> "$GITHUB_ENV"
+          echo "DOCKER_GID=$(id -g)" >> "$GITHUB_ENV"
+
+      - name: Run the installer in the container
+        run: >
+          docker compose run --rm -T -e INSTALL_NAME="CI Project" -e INSTALL_PRESET=starter
+          app sh installer/docker.sh
+
+      - name: Start the site
+        run: docker compose up --detach --wait --wait-timeout 600
+
+      - name: Request the home page and the admin
+        run: |
+          test ! -d installer
+          curl --fail --silent --show-error --output /dev/null http://localhost:8080/
+          curl --fail --silent --show-error --output /dev/null --location http://localhost:8080/admin
+
+      - name: Show the logs
+        if: failure()
+        run: docker compose logs

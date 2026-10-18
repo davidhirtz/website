@@ -59,6 +59,7 @@ final class Installer
     private bool $git;
     private string $remote;
     private bool $databaseFailed = false;
+    private bool $hasPages = false;
 
     private function __construct(
         private readonly IOInterface $io,
@@ -98,13 +99,15 @@ final class Installer
                 }
             }
 
+            // The pages are attributed to the owner, so they wait for the first user.
             if ($this->createUser) {
                 $this->step('Creating the first user');
-                $this->yii(['user/create']);
-            }
 
-            $this->step('Creating the first pages');
-            $this->yii(['setup', '--interactive=0'], quiet: true);
+                if ($this->yii(['user/create']) === 0) {
+                    $this->step('Creating the first pages');
+                    $this->hasPages = $this->yii(['setup', '--interactive=0'], quiet: true) === 0;
+                }
+            }
         }
 
         if ($this->npm) {
@@ -382,12 +385,15 @@ final class Installer
             $steps[] = 'php yii migrate && YII_ENV=test php yii migrate --interactive=0';
         }
 
-        if (!$hasDatabase || !$this->createUser) {
-            $steps[] = 'php yii user/create';
-        }
+        // The container creates the first user and the pages when it starts.
+        if (!getenv('INSTALL_DOCKER')) {
+            if (!$hasDatabase || !$this->createUser) {
+                $steps[] = 'php yii user/create';
+            }
 
-        if (!$hasDatabase || !$this->migrate) {
-            $steps[] = 'php yii setup';
+            if (!$this->hasPages) {
+                $steps[] = 'php yii setup';
+            }
         }
 
         if (!$this->npm) {
@@ -395,7 +401,8 @@ final class Installer
             $steps[] = $this->preset === 'bare' ? 'npm install' : 'npm install && npm run build';
         }
 
-        $steps[] = 'YII_ENV=local php -S localhost:8080 -t web';
+        // `installer/docker.sh` runs it in the container, which starts the server itself.
+        $steps[] = getenv('INSTALL_DOCKER') ? 'docker compose up' : 'YII_ENV=local php -S localhost:8080 -t web';
 
         if ($directory = $this->getProjectDirectory()) {
             array_unshift($steps, 'cd ' . (preg_match('#^[\w./-]+$#', $directory) ? $directory : escapeshellarg($directory)));
