@@ -38,6 +38,12 @@ return [
                 ],
             ],
         ],
+        // Agents edit the content through `php yii mcp/serve` locally; `POST /mcp` stays off until the site is public
+        // over HTTPS, see docs/mcp.md.
+        'mcp' => [
+            'enableHttp' => false,
+            'enableOAuth' => true,
+        ],
         'sitemap' => [
             'sitemaps' => [
                 EntrySitemap::class,

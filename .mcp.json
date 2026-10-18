@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "cms": {
+      "command": "php",
+      "args": ["yii", "mcp/serve"],
+      "env": {
+        "YII_ENV": "local"
+      }
+    }
+  }
+}

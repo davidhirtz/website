@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use Hirtz\Skeleton\Mcp\Mcp;
 use Hirtz\Skeleton\Validators\HtmlValidator;
 use Yii;
 
@@ -23,6 +24,22 @@ final class ConfigurationTest extends TestCase
         }
 
         self::assertSame(['a' => ['btn']], $validator->allowedClasses);
+    }
+
+    public function testTheMcpEndpointIsOffAndAllowsAnyClient(): void
+    {
+        $mcp = Mcp::getComponent();
+
+        self::assertFalse($mcp->enableHttp);
+        self::assertSame([], $mcp->allowedClientIds);
+    }
+
+    public function testTheMcpServerRunsTheConsoleCommand(): void
+    {
+        $config = json_decode((string)file_get_contents(dirname(__DIR__) . '/.mcp.json'), true, flags: JSON_THROW_ON_ERROR);
+
+        self::assertSame(['yii', 'mcp/serve'], $config['mcpServers']['cms']['args'] ?? null);
+        self::assertSame('local', $config['mcpServers']['cms']['env']['YII_ENV'] ?? null);
     }
 
     /**

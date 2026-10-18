@@ -45,6 +45,12 @@ YII_ENV=test php yii migrate --interactive=0   # after adding a migration (check
 YII_ENV=local php -S localhost:8080 -t web     # serve the site
 ```
 
+## Content
+
+`.mcp.json` registers `cms`, the site's MCP server (`php yii mcp/serve`, as the owner): create, translate and publish
+content through it rather than through migrations, SQL or `config/setup.php`, and create records as drafts unless
+asked to publish. It needs the database and the first user. See [docs/mcp.md](docs/mcp.md).
+
 ## Where to change what
 
 | To change…                         | Edit                                                                       |
