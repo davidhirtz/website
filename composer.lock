@@ -293,16 +293,16 @@
         },
         {
             "name": "davidhirtz/yii2-skeleton",
-            "version": "3.19.0",
+            "version": "3.19.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-skeleton.git",
-                "reference": "9092528b1451c9590a809aadb4006eb6ac7565a0"
+                "reference": "7fca924bb959d2d7cd110ca5df6f156a1e90780b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/9092528b1451c9590a809aadb4006eb6ac7565a0",
-                "reference": "9092528b1451c9590a809aadb4006eb6ac7565a0",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/7fca924bb959d2d7cd110ca5df6f156a1e90780b",
+                "reference": "7fca924bb959d2d7cd110ca5df6f156a1e90780b",
                 "shasum": ""
             },
             "require": {
@@ -372,9 +372,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-skeleton",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-skeleton/issues",
-                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.19.0"
+                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.19.2"
             },
-            "time": "2026-10-18T12:38:40+00:00"
+            "time": "2026-10-18T17:53:53+00:00"
         },
         {
             "name": "davidhirtz/yii2-tenant",
@@ -687,22 +687,22 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.15.5",
+            "version": "7.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a"
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ffb62ec787050ae4fa9449cdd6b80335db69bda2",
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^2.5.3",
-                "guzzlehttp/psr7": "^2.13.1",
+                "guzzlehttp/promises": "^2.6",
+                "guzzlehttp/psr7": "^2.13.2",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -795,7 +795,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.15.5"
+                "source": "https://github.com/guzzle/guzzle/tree/7.16.0"
             },
             "funding": [
                 {
@@ -811,7 +811,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:21:06+00:00"
+            "time": "2026-10-18T13:38:36+00:00"
         },
         {
             "name": "guzzlehttp/promises",
