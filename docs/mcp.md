@@ -18,9 +18,9 @@ the connected user can do, in plain language: the first thing to give an editor)
 ## Image generation
 
 `generate_image` creates an image with OpenAI and attaches it as a draft. It is offered once there is a key to pay
-with: the site's in `config/params.php` (`php yii params/create openaiApiKey sk-…`), at most 20 images per user and
-day, or each editor's own under *Account → API keys* with `modules.media.imageGeneratorKeys` set to `user` or
-`user-then-site`. A site that should not generate images sets `modules.media.imageGenerator` to `null`.
+with: an editor's own, added under *Account → API keys*, or else the site's in `config/params.php`
+(`php yii params/create openaiApiKey sk-…`, at most 20 images per user and day). `modules.media.imageGeneratorKeys`
+narrows that to `site` or `user`; a site that should not generate images sets `modules.media.imageGenerator` to `null`.
 
 ## Locally, with Claude Code
 
