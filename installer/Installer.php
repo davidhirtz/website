@@ -242,8 +242,8 @@ final class Installer
         }
 
         // Generates the cookie validation key and the password pepper into `config/params.php`. Its listing of
-        // all parameters, secrets included, is only shown when it fails.
-        $this->yii(['params'], quiet: true);
+        // all parameters, secrets included, is only shown when it fails, which would also hide its confirmations.
+        $this->yii(['params', '--interactive=0'], quiet: true);
     }
 
     private function createDatabases(): bool
@@ -480,10 +480,16 @@ final class Installer
      */
     private function exec(array $command, array $env = [], bool $quiet = false): int
     {
-        $process = proc_open($command, [STDIN, $quiet ? ['pipe', 'w'] : STDOUT, STDERR], $pipes, $this->root, [...getenv(), ...$env]);
+        // A quiet command gets no input either: a question it asked could not be seen, so it would wait forever.
+        $descriptors = $quiet ? [['pipe', 'r'], ['pipe', 'w'], STDERR] : [STDIN, STDOUT, STDERR];
+        $process = proc_open($command, $descriptors, $pipes, $this->root, [...getenv(), ...$env]);
 
         if (!is_resource($process)) {
             return 1;
+        }
+
+        if ($quiet) {
+            fclose($pipes[0]);
         }
 
         $output = $quiet ? (string)stream_get_contents($pipes[1]) : '';
