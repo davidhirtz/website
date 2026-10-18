@@ -335,6 +335,10 @@ final class Installer
 
         $steps[] = 'YII_ENV=local php -S localhost:8080 -t web';
 
+        if ($directory = $this->getProjectDirectory()) {
+            array_unshift($steps, 'cd ' . (preg_match('#^[\w./-]+$#', $directory) ? $directory : escapeshellarg($directory)));
+        }
+
         $this->io->write(['', "<info>$this->name is ready.</info> Next:", '']);
 
         foreach ($steps as $step) {
@@ -349,12 +353,34 @@ final class Installer
         ]);
     }
 
+    /**
+     * Returns the path to change into before the next steps, relative to the folder `composer create-project` was run
+     * in, or an empty string when that is the project folder. Composer changes into the project to run the scripts,
+     * but `PWD` still names the shell's folder.
+     */
+    private function getProjectDirectory(): string
+    {
+        $cwd = getenv('PWD');
+
+        if (!$cwd || ($cwd = realpath($cwd)) === false || ($root = realpath($this->root)) === false) {
+            return $this->root;
+        }
+
+        if ($cwd === $root) {
+            return '';
+        }
+
+        return str_starts_with($root, $cwd . DIRECTORY_SEPARATOR) ? substr($root, strlen($cwd) + 1) : $root;
+    }
+
     private function ask(string $key, string $question, string $default): string
     {
         $answer = getenv("INSTALL_$key");
 
         if ($answer === false) {
-            $answer = $this->io->ask(sprintf('<info>%s</info> [<comment>%s</comment>]: ', $question, $default), $default);
+            // An empty default shows no brackets, which would otherwise read as an empty list.
+            $hint = $default !== '' ? " [<comment>$default</comment>]" : '';
+            $answer = $this->io->ask("<info>$question</info>$hint: ", $default);
         }
 
         return trim((string)$answer);
