@@ -53,6 +53,7 @@ final class Installer
     private string $dbName;
     private string $dbUser;
     private string $dbPassword;
+    private bool $update;
     private bool $migrate;
     private bool $createUser;
     private bool $npm;
@@ -84,6 +85,13 @@ final class Installer
         if ($this->preset !== 'bare') {
             $this->step("Applying the \"$this->preset\" preset");
             $this->copyDirectory("$this->root/installer/presets/$this->preset", $this->root);
+        }
+
+        // The template's lock is as old as its last release, so a new project would start on outdated bundles.
+        // Before the migrations, which then include those of the newer versions.
+        if ($this->update) {
+            $this->step('Updating the bundles');
+            $this->composer(['update', 'davidhirtz/*', '--with-all-dependencies', '--no-interaction']);
         }
 
         $this->step('Writing the local configuration');
@@ -136,6 +144,7 @@ final class Installer
         $this->package = $this->ask('PACKAGE', 'Composer package name', "app/$this->slug");
         $this->license = $this->ask('LICENSE', 'License, "MIT" keeps the LICENSE file', 'proprietary');
         $this->preset = $this->askPreset();
+        $this->update = $this->confirm('UPDATE', 'Update the davidhirtz/* bundles to their latest versions?', true);
 
         $this->io->write(['', 'The database, created when it does not exist yet. The tests use a second one with the suffix "_test".']);
 
@@ -356,10 +365,7 @@ final class Installer
         // Its reports are for the template's maintainer, not for whoever runs the project.
         @unlink("$this->root/SECURITY.md");
 
-        $composer = getenv('COMPOSER_BINARY') ?: 'composer';
-        $this->exec(str_ends_with($composer, '.phar') || is_file($composer)
-            ? [PHP_BINARY, $composer, 'dump-autoload', '--quiet']
-            : [$composer, 'dump-autoload', '--quiet']);
+        $this->composer(['dump-autoload', '--quiet']);
     }
 
     private function initGit(): void
@@ -546,6 +552,20 @@ final class Installer
     private function yii(array $arguments, array $env = [], bool $quiet = false): int
     {
         return $this->exec([PHP_BINARY, 'yii', ...$arguments], $env, $quiet);
+    }
+
+    /**
+     * Runs the Composer that runs the installer.
+     *
+     * @param list<string> $arguments
+     */
+    private function composer(array $arguments): int
+    {
+        $composer = getenv('COMPOSER_BINARY') ?: 'composer';
+
+        return $this->exec(str_ends_with($composer, '.phar') || is_file($composer)
+            ? [PHP_BINARY, $composer, ...$arguments]
+            : [$composer, ...$arguments]);
     }
 
     /**

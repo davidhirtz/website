@@ -26,6 +26,7 @@ The installer asks a few questions, then sets the project up and removes itself:
 | Composer package    | `app/<slug>`                  | `name` in `composer.json`                                                |
 | License             | `proprietary`                 | anything but `MIT` removes `LICENSE`                                     |
 | Preset              | `bare`                        | see below                                                                |
+| Bundle update       | yes                           | updates the `davidhirtz/*` packages past the template's `composer.lock`  |
 | Database            | `127.0.0.1`, `<slug>`, `root` | `config/db.php`; it creates `<name>` and `<name>_test` when they're missing |
 | Migrations          | yes                           | migrates both databases                                                  |
 | First user          | yes, when interactive         | runs `php yii user/create`                                               |
@@ -62,7 +63,7 @@ INSTALL_NAME="My Site" INSTALL_PRESET=starter INSTALL_DB_USER=root INSTALL_DB_PA
 
 The variables are `INSTALL_NAME`, `INSTALL_SLUG`, `INSTALL_PACKAGE`, `INSTALL_LICENSE`, `INSTALL_PRESET`,
 `INSTALL_DB_HOST` (with an optional `:port`), `INSTALL_DB_NAME`, `INSTALL_DB_USER`, `INSTALL_DB_PASSWORD`,
-`INSTALL_GIT_REMOTE`, and `0` or `1` for `INSTALL_MIGRATE`, `INSTALL_USER`, `INSTALL_NPM` and `INSTALL_GIT`.
+`INSTALL_GIT_REMOTE`, and `0` or `1` for `INSTALL_UPDATE`, `INSTALL_MIGRATE`, `INSTALL_USER`, `INSTALL_NPM` and `INSTALL_GIT`.
 
 ### When it stops half way
 
