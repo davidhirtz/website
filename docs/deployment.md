@@ -45,11 +45,15 @@ digits and underscores can have a deploy path, since GitHub allows nothing else 
 
 ## Setting up a server
 
-Once per server and branch:
+Once per server and branch, in the folder of the virtual host (see
+[installation](installation.md#on-a-server) for why not `git clone`):
 
 ```bash
-git clone git@github.com:OWNER/REPOSITORY.git /var/www/example
 cd /var/www/example
+git init
+git remote add origin git@github.com:OWNER/REPOSITORY.git
+git fetch origin
+git checkout --track origin/main
 composer install --optimize-autoloader --no-dev
 php yii params          # cookie validation key and password pepper
 php yii migrate         # asks for the database credentials and writes config/db.php

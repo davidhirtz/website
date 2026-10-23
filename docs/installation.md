@@ -92,6 +92,8 @@ of making an "Initial commit".
 
 ## An existing project
 
+### For development
+
 ```bash
 git clone git@github.com:OWNER/REPOSITORY.git
 cd REPOSITORY
@@ -100,8 +102,25 @@ composer install-hooks
 npm install
 ```
 
-Then create the configuration and the database as described below. On a server, install with
-`composer install --optimize-autoloader --no-dev` instead, and skip `install-hooks` and `npm install`.
+### On a server
+
+The folder usually exists already, created with the virtual host and maybe holding files of its own, so `git clone`
+refuses it. Check the repository out into it instead:
+
+```bash
+cd /var/www/example
+git init
+git remote add origin git@github.com:OWNER/REPOSITORY.git
+git fetch origin
+git checkout --track origin/main
+composer install --optimize-autoloader --no-dev
+```
+
+Files already in the folder stay untracked, unless the repository has a file of the same name, in which case the
+checkout stops: move it out of the way first. Skip `install-hooks` and `npm install`, since `web/dist` is committed.
+The server's user needs read access to the repository, see [deployment](deployment.md#setting-up-a-server).
+
+Then, in both cases, create the configuration and the database as described below.
 
 ## Configuration
 
@@ -192,22 +211,88 @@ long cache headers for assets, and redirects a bare domain to `https://www.` —
 ### nginx
 
 ```nginx
+# An SVG opened on its own runs its scripts on the site's origin; uploads are sanitised, this is the second line.
+# A map rather than an `add_header` in a location, which would drop the server's headers for that location.
+map $uri $svg_csp {
+    ~*\.svg$ "script-src 'none'";
+}
+
+# Redirects HTTP and the bare domain to https://www.
 server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com www.example.com;
+    return 301 https://www.example.com$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name example.com;
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+    return 301 https://www.example.com$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
     server_name www.example.com;
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
     root /var/www/example/web;
     index index.php;
+    charset utf-8;
+
+    # The largest upload the media library accepts, together with PHP's `upload_max_filesize` and `post_max_size`
+    client_max_body_size 128M;
+
+    server_tokens off;
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header Content-Security-Policy $svg_csp always;
+
+    gzip on;
+    gzip_types application/javascript application/json application/manifest+json image/svg+xml text/css;
 
     location / {
         try_files $uri $uri/ /index.php$is_args$args;
     }
 
+    # Hidden files such as `.htaccess`, but not `.well-known` for Let's Encrypt. Regular expressions are tried in
+    # order, so this comes first.
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+
+    # A changed file gets a new URL, so assets can be cached for a year. A missing image still goes to index.php,
+    # which creates the image transformation on its first request.
+    location ~* \.(avif|css|gif|ico|jpe?g|js|mp4|otf|png|svg|webp|woff2?)$ {
+        expires 1y;
+        try_files $uri /index.php$is_args$args;
+    }
+
+    # Nothing uploaded or published may run as PHP
+    location ~ ^/(assets|uploads)/.*\.php$ {
+        deny all;
+    }
+
     location ~ \.php$ {
+        try_files $uri =404;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_pass unix:/run/php/php8.3-fpm.sock;
     }
 }
 ```
+
+Unlike Apache, nginx passes the `Authorization` header to PHP as it is, which the [MCP endpoint](mcp.md) needs. The
+application sends its own `Content-Security-Policy` with `frame-ancestors 'self'`, so `X-Frame-Options` is not needed;
+`X-XSS-Protection` is ignored by current browsers. For a site served without `www.`, swap the server names of the
+redirect and the site. Certbot can add the certificates and the redirects itself (`certbot --nginx`).
 
 ### Docker
 
