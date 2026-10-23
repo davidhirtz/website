@@ -35,6 +35,14 @@ final class SiteControllerTest extends TestCase
         ];
     }
 
+    public function testTheIndexWithoutAnEntryLinksToTheAdmin(): void
+    {
+        $this->open('/');
+
+        self::assertResponseStatusCodeSame(404);
+        self::assertSelectorExists('main section.p-md .prose a[href="/admin/cms/entry/index"]');
+    }
+
     public function testTheIndexEntryIsServedByTheProjectLayout(): void
     {
         $entry = $this->createEntry();
