@@ -205,8 +205,10 @@ YII_ENV=local php -S localhost:8080 -t web
 ### Apache
 
 Point the document root at `web/`. `web/.htaccess` routes every request that is not a file to `index.php`, sets
-long cache headers for assets, and redirects a bare domain to `https://www.` — `draft.` subdomains, `localhost`,
-`127.0.0.1` and `*.test` / `*.localhost` hosts are left alone. Remove those lines for a site served without `www.`.
+long cache headers for assets, sends HSTS and `nosniff`, and refuses PHP files in `assets/` and `uploads/`. It
+redirects a bare domain to `https://www.` — `draft.` subdomains are left alone — and everything else to HTTPS, apart
+from `localhost`, `127.0.0.1` and `*.test` / `*.localhost` hosts. Remove the `www.` lines for a site served without
+`www.`. It needs `mod_headers` and `mod_rewrite`.
 
 ### nginx
 
