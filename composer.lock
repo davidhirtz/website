@@ -177,22 +177,22 @@
         },
         {
             "name": "davidhirtz/yii2-cms",
-            "version": "3.15.0",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-cms.git",
-                "reference": "4b9a89ebff57987054272178a29a59d7976a5499"
+                "reference": "92ec4b61b5492f1b81edefcb535d566fe209b7b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/4b9a89ebff57987054272178a29a59d7976a5499",
-                "reference": "4b9a89ebff57987054272178a29a59d7976a5499",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-cms/zipball/92ec4b61b5492f1b81edefcb535d566fe209b7b0",
+                "reference": "92ec4b61b5492f1b81edefcb535d566fe209b7b0",
                 "shasum": ""
             },
             "require": {
-                "davidhirtz/yii2-media": "^3.17",
-                "davidhirtz/yii2-skeleton": "^3.19",
-                "davidhirtz/yii2-tenant": "^3.2",
+                "davidhirtz/yii2-media": "^3.20",
+                "davidhirtz/yii2-skeleton": "^3.22",
+                "davidhirtz/yii2-tenant": "^3.6",
                 "php": "^8.3"
             },
             "require-dev": {
@@ -227,26 +227,26 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-cms",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-cms/issues",
-                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.15.0"
+                "source": "https://github.com/davidhirtz/yii2-cms/tree/3.18.0"
             },
-            "time": "2026-10-18T12:46:56+00:00"
+            "time": "2026-10-22T20:53:33+00:00"
         },
         {
             "name": "davidhirtz/yii2-media",
-            "version": "3.17.0",
+            "version": "3.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-media.git",
-                "reference": "8cb40a882a77da8ee5454e687cdd02fc6168e495"
+                "reference": "8b9b44218802bb5b6449ac4c478900767d0a8489"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-media/zipball/8cb40a882a77da8ee5454e687cdd02fc6168e495",
-                "reference": "8cb40a882a77da8ee5454e687cdd02fc6168e495",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-media/zipball/8b9b44218802bb5b6449ac4c478900767d0a8489",
+                "reference": "8b9b44218802bb5b6449ac4c478900767d0a8489",
                 "shasum": ""
             },
             "require": {
-                "davidhirtz/yii2-skeleton": "^3.19",
+                "davidhirtz/yii2-skeleton": "^3.22",
                 "ext-exif": "*",
                 "ext-imagick": "*",
                 "ext-libxml": "*",
@@ -287,22 +287,22 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-media",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-media/issues",
-                "source": "https://github.com/davidhirtz/yii2-media/tree/3.17.0"
+                "source": "https://github.com/davidhirtz/yii2-media/tree/3.22.0"
             },
-            "time": "2026-10-18T12:40:26+00:00"
+            "time": "2026-10-23T06:26:05+00:00"
         },
         {
             "name": "davidhirtz/yii2-skeleton",
-            "version": "3.19.2",
+            "version": "3.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-skeleton.git",
-                "reference": "7fca924bb959d2d7cd110ca5df6f156a1e90780b"
+                "reference": "fa9e2f4d4ae98826d48ab5560eaf1fd89ea66e6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/7fca924bb959d2d7cd110ca5df6f156a1e90780b",
-                "reference": "7fca924bb959d2d7cd110ca5df6f156a1e90780b",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-skeleton/zipball/fa9e2f4d4ae98826d48ab5560eaf1fd89ea66e6e",
+                "reference": "fa9e2f4d4ae98826d48ab5560eaf1fd89ea66e6e",
                 "shasum": ""
             },
             "require": {
@@ -372,26 +372,26 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-skeleton",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-skeleton/issues",
-                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.19.2"
+                "source": "https://github.com/davidhirtz/yii2-skeleton/tree/3.22.1"
             },
-            "time": "2026-10-18T17:53:53+00:00"
+            "time": "2026-10-23T05:02:02+00:00"
         },
         {
             "name": "davidhirtz/yii2-tenant",
-            "version": "3.5.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-tenant.git",
-                "reference": "716032972357a1893c52ef7787490ff2844e312b"
+                "reference": "86de8f34c913248894f29f1a75822b294f1ff3bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-tenant/zipball/716032972357a1893c52ef7787490ff2844e312b",
-                "reference": "716032972357a1893c52ef7787490ff2844e312b",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-tenant/zipball/86de8f34c913248894f29f1a75822b294f1ff3bc",
+                "reference": "86de8f34c913248894f29f1a75822b294f1ff3bc",
                 "shasum": ""
             },
             "require": {
-                "davidhirtz/yii2-skeleton": "^3.18",
+                "davidhirtz/yii2-skeleton": "^3.22",
                 "php": "^8.3"
             },
             "require-dev": {
@@ -426,22 +426,22 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-tenant",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-tenant/issues",
-                "source": "https://github.com/davidhirtz/yii2-tenant/tree/3.5.0"
+                "source": "https://github.com/davidhirtz/yii2-tenant/tree/3.7.0"
             },
-            "time": "2026-10-15T15:36:20+00:00"
+            "time": "2026-10-22T20:38:52+00:00"
         },
         {
             "name": "davidhirtz/yii2-vite",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidhirtz/yii2-vite.git",
-                "reference": "f963b56499f812517fb68ff3f1350ceda8ef3943"
+                "reference": "ae09e932d79bf4c8a1d8a4946c2122f37ec6c6fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/f963b56499f812517fb68ff3f1350ceda8ef3943",
-                "reference": "f963b56499f812517fb68ff3f1350ceda8ef3943",
+                "url": "https://api.github.com/repos/davidhirtz/yii2-vite/zipball/ae09e932d79bf4c8a1d8a4946c2122f37ec6c6fc",
+                "reference": "ae09e932d79bf4c8a1d8a4946c2122f37ec6c6fc",
                 "shasum": ""
             },
             "require": {
@@ -478,9 +478,9 @@
             "homepage": "https://www.github.com/davidhirtz/yii2-vite",
             "support": {
                 "issues": "https://github.com/davidhirtz/yii2-vite/issues",
-                "source": "https://github.com/davidhirtz/yii2-vite/tree/3.4.1"
+                "source": "https://github.com/davidhirtz/yii2-vite/tree/3.4.2"
             },
-            "time": "2026-10-17T19:35:13+00:00"
+            "time": "2026-10-17T20:24:33+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -3436,16 +3436,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "528948210cc46f967a4b98e83b19e76f2b504993"
+                "reference": "9dfce66f1e97360ea5e6d3e38ab14277e4cc591e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/528948210cc46f967a4b98e83b19e76f2b504993",
-                "reference": "528948210cc46f967a4b98e83b19e76f2b504993",
+                "url": "https://api.github.com/repos/composer/semver/zipball/9dfce66f1e97360ea5e6d3e38ab14277e4cc591e",
+                "reference": "9dfce66f1e97360ea5e6d3e38ab14277e4cc591e",
                 "shasum": ""
             },
             "require": {
@@ -3497,7 +3497,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.5.1"
+                "source": "https://github.com/composer/semver/tree/3.5.2"
             },
             "funding": [
                 {
@@ -3509,7 +3509,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-05T13:12:12+00:00"
+            "time": "2026-10-22T15:37:26+00:00"
         },
         {
             "name": "composer/xdebug-handler",
