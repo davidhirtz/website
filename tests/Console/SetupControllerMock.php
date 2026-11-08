@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Console;
 
-use Hirtz\Cms\Console\Controllers\SetupController;
+use Hirtz\Skeleton\Console\Controllers\SetupController;
 use Hirtz\Skeleton\Test\Traits\StdOutBufferControllerTrait;
 
 /**

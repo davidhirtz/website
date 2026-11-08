@@ -8,10 +8,10 @@ use App\Models\Section;
 use App\Models\SectionAsset;
 use App\Tests\TestCase;
 use App\Tests\Traits\EntryTrait;
-use Hirtz\Cms\Models\Actions\SetupContent;
 use Hirtz\Cms\Models\SectionEntry;
 use Hirtz\Media\Test\Fixtures\FileFixture;
 use Hirtz\Media\Test\Fixtures\FolderFixture;
+use Hirtz\Skeleton\Setup\Setup;
 use Hirtz\Skeleton\Test\Traits\FunctionalTestTrait;
 use Yii;
 
@@ -38,7 +38,9 @@ final class StarterSectionsTest extends TestCase
     public function testSetupCreatesTheDemoHomePageAndTheLegalPages(): void
     {
         $config = require Yii::getAlias('@root/config/setup.php');
-        self::assertTrue((new SetupContent([], $config['entries']))->run());
+        foreach (Setup::getComponent()->run(['entries' => $config['entries']]) as $seeder) {
+            self::assertSame([], $seeder->getFailed());
+        }
 
         $this->open('/');
 
