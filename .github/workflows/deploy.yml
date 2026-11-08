@@ -60,22 +60,26 @@ jobs:
         run: echo "$DEPLOY_PATH"
 
       - name: Deploy on Server
-        uses: appleboy/ssh-action@v1.2.5
-        with:
-          host: ${{ vars.SSH_HOST }}
-          username: ${{ vars.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          envs: DEPLOY_PATH,PHP
-          script: |
-            set -e
-            cd "$DEPLOY_PATH"
-            if [ -f composer.phar ]; then COMPOSER="$PHP composer.phar"; else COMPOSER=composer; fi
-            $PHP yii maintenance/enable || test -f runtime/maintenance.php
-            git pull
-            $COMPOSER install --optimize-autoloader --no-dev
-            $PHP yii migrate --interactive=0
-            $PHP yii cache/flush-all --interactive=0
-            # Optional: reports the installation to a version registry, a no-op without `registryUrl` and `registryKey`
-            $PHP yii registry/push
-            $PHP yii maintenance/disable
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USERNAME }}
+          SSH_PORT: 22
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=accept-new -o ConnectTimeout=30 \
+            "$SSH_USER@$SSH_HOST" "DEPLOY_PATH=$(printf %q "$DEPLOY_PATH") PHP=$(printf %q "$PHP") bash -s" <<'EOF'
+          set -e
+          cd "$DEPLOY_PATH"
+          if [ -f composer.phar ]; then COMPOSER="$PHP composer.phar"; else COMPOSER=composer; fi
+          $PHP yii maintenance/enable || test -f runtime/maintenance.php
+          git pull
+          $COMPOSER install --optimize-autoloader --no-dev
+          $PHP yii migrate --interactive=0
+          $PHP yii cache/flush-all --interactive=0
+          # Optional: reports the installation to a version registry, a no-op without `registryUrl` and `registryKey`
+          $PHP yii registry/push
+          $PHP yii maintenance/disable
+          EOF
